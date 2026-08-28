@@ -383,9 +383,9 @@ const STORES = [{"id": "shop-sidney", "name": "Babe's Honey Sidney", "type": "sh
     });
 
     const map = L.map("map", { scrollWheelZoom: true });
-    L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
       maxZoom: 19,
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      attribution: '&copy; Esri',
     }).addTo(map);
     map.setView([48.55, -123.45], 9);
 
