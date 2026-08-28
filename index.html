@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find Babe’s Honey &amp; Bee Line — Vancouver Island</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Rye&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <style>
+    :root {
+      --bg: #171717;
+      --band-blue: #4D7099;
+      --band-blue-mid: #5B7FA6;
+      --band-blue-deep: #3E5F84;
+      --light: #F2F2F2;
+      --ink: #171717;
+      --white: #FFFFFF;
+      --white-90: rgba(255,255,255,0.9);
+      --white-70: rgba(255,255,255,0.7);
+      --black: #000000;
+      --pin-shop: #D4AF6A;
+      --pin-retailer: #1A2E1C;
+      --line-on-blue: rgba(255,255,255,0.22);
+      --line-on-light: rgba(23,23,23,0.12);
+      --muted-on-light: rgba(23,23,23,0.62);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: Raleway, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15.5px;
+      font-weight: 300;
+      letter-spacing: 0.4px;
+      color: var(--white-90);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+    .app {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 20px 16px;
+      background:
+        linear-gradient(165deg, rgba(77,112,153,0.92) 0%, rgba(91,127,166,0.88) 45%, rgba(62,95,132,0.94) 100%);
+      background-color: var(--band-blue);
+    }
+    html.embed, html.embed body {
+      background: var(--band-blue);
+      height: 100%;
+      overflow: hidden;
+    }
+    html.embed .app {
+      max-width: none;
+      height: 100%;
+      min-height: 100%;
+      padding: 10px 12px 8px;
+    }
+    html.embed .brand { padding: 0 2px 8px; }
+    html.embed .brand .sub { display: none; }
+    html.embed .brand h1 {
+      font-family: Raleway, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+    html.embed .layout { flex: 1; min-height: 0; height: auto; max-height: none; }
+    html.embed #map { min-height: 0; }
+
+    .brand { padding: 4px 2px 14px; }
+    .brand h1 {
+      font-family: Rye, "Rockwell", Georgia, serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.15;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+    .brand .sub {
+      margin: 8px 0 0;
+      color: var(--white-70);
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.4px;
+    }
+    .toolbar { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .search { position: relative; }
+    .search input {
+      width: 100%;
+      border: 1px solid var(--line-on-blue);
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border-radius: 0;
+      padding: 11px 14px 11px 40px;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.4px;
+      outline: none;
+    }
+    .search input::placeholder { color: var(--white-70); }
+    .search input:focus {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.18);
+    }
+    .search svg {
+      position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px; color: var(--white-70);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      border: 1px solid var(--white-90);
+      background: transparent;
+      color: var(--white);
+      border-radius: 2px;
+      padding: 7px 12px;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .chip:hover { background: rgba(255,255,255,0.12); }
+    .chip.on {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 12px;
+      flex: 1;
+      min-height: 420px;
+      height: min(70vh, 720px);
+      max-height: min(70vh, 720px);
+      align-items: stretch;
+      overflow: hidden;
+    }
+    #map {
+      height: 100%;
+      min-height: 0;
+      border-radius: 0;
+      overflow: hidden;
+      border: 1px solid var(--line-on-blue);
+      background: #c5d0db;
+    }
+    .list-wrap {
+      background: var(--light);
+      border: 1px solid var(--line-on-blue);
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+      color: var(--ink);
+    }
+    .list-head {
+      padding: 12px 16px 10px;
+      font-size: 0.72rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted-on-light);
+      font-weight: 700;
+      border-bottom: 1px solid var(--line-on-light);
+      background: var(--light);
+    }
+    .list { overflow: auto; flex: 1; background: var(--light); }
+    .row {
+      display: block; width: 100%; text-align: left; border: 0;
+      border-bottom: 1px solid var(--line-on-light);
+      background: transparent; padding: 14px 16px; cursor: pointer;
+      font: inherit; color: inherit;
+    }
+    .row:hover { background: #e8e8e8; }
+    .row.active {
+      background: #e0e0e0;
+      box-shadow: inset 3px 0 0 var(--black);
+    }
+    .row .nm {
+      display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+      font-family: Raleway, sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .badge {
+      font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase;
+      background: var(--black); color: var(--white); border-radius: 0;
+      padding: 2px 7px; font-weight: 700;
+    }
+    .row .addr {
+      color: var(--muted-on-light);
+      font-size: 0.88rem;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      margin-top: 3px;
+      text-transform: none;
+    }
+    .prods { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      background: transparent;
+      border: 1px solid var(--line-on-light);
+      border-radius: 0;
+      padding: 2px 6px;
+      color: var(--muted-on-light);
+    }
+    .empty {
+      padding: 28px 16px;
+      color: var(--muted-on-light);
+      font-weight: 300;
+    }
+    .note {
+      margin: 12px 4px 0;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.4px;
+      color: var(--white-70);
+      text-align: center;
+    }
+    .leaflet-popup-content-wrapper {
+      background: var(--light);
+      color: var(--ink);
+      border-radius: 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .leaflet-popup-tip { background: var(--light); }
+    .leaflet-popup-content {
+      margin: 12px 14px;
+      font-family: Raleway, sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+    }
+    .pop h3 {
+      font-family: Raleway, sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 4px;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .pop .meta { font-size: 0.88rem; color: var(--muted-on-light); line-height: 1.4; }
+    .pop a {
+      display: inline-block;
+      margin-top: 2px;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 0;
+    }
+    .pop a:hover { background: #222; }
+    .pin { width: 28px; height: 36px; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.4)); }
+    .leaflet-container {
+      font-family: Raleway, sans-serif;
+      background: #c5d0db;
+    }
+    .leaflet-control-attribution { font-size: 10px !important; }
+    .legend {
+      background: rgba(242,242,242,0.95);
+      padding: 7px 10px;
+      border-radius: 0;
+      border: 1px solid var(--line-on-light);
+      font-family: Raleway, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .legend i {
+      display: inline-block;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    @media (max-width: 860px) {
+      .app { padding: 12px; }
+      .layout {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        height: auto;
+        max-height: none;
+      }
+      #map { min-height: 42vh; height: 42vh; max-height: 420px; }
+      .list-wrap { min-height: 260px; max-height: 48vh; }
+      html.embed .layout { height: 100%; }
+      html.embed #map { height: 46%; min-height: 180px; max-height: none; }
+      html.embed .list-wrap { min-height: 0; max-height: none; flex: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="brand">
+      <h1>Find Babe’s near you</h1>
+      <p class="sub">Honey and Sparkling Bee Line on Vancouver Island &amp; the Gulf Islands.</p>
+    </header>
+    <div class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search by store or city…" autocomplete="off" />
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="layout">
+      <div id="map" role="application" aria-label="Store map"></div>
+      <aside class="list-wrap">
+        <div class="list-head" id="count">Stores</div>
+        <div class="list" id="list"></div>
+      </aside>
+    </div>
+    <p class="note">Stock changes. Call the store if you need a specific size.</p>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+const STORES = [{"id": "shop-sidney", "name": "Babe's Honey Sidney", "type": "shop", "address": "#7, 2042 Mills Rd W", "city": "Sidney", "postal": "", "lat": 48.655874, "lng": -123.416517, "hours": "Wed–Sat 10am–5pm", "phone": "250-658-8319", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Creamed 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml", "Earl Grey 750ml", "Currantly Hip 750ml", "Ginger Splash 750ml", "Bee Line keg"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "A-CCW-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER", "BLine-750-ERL", "BLine-750-CUR", "BLine-750-GNG", "Jun-k18"], "notes": "Full lineup: honey refills, growler fills, cans, bottles, and tasting."}, {"id": "shop-galey", "name": "Babe's at Galey Farms Market", "type": "shop", "address": "4150 Blenkinsop Rd", "city": "Victoria", "postal": "V8X 2C4", "lat": 48.478234, "lng": -123.356292, "hours": "Daily 9am–5:30pm", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Creamed 1kg", "Bulk", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml", "Earl Grey 750ml", "Currantly Hip 750ml", "Ginger Splash 750ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "A-CCW-1K", "BULK", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER", "BLine-750-ERL", "BLine-750-CUR", "BLine-750-GNG"], "notes": "Look for Babe's section inside Galey Farms Market. Honey (including 3kg) and Bee Line drinks in two coolers. No refills."}, {"id": "1348742", "name": "Country Grocer Cedar", "type": "retailer", "address": "1824 Cedar Rd", "city": "Cedar", "postal": "", "lat": 49.107467, "lng": -123.862114, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1169673", "name": "Fairway Market West Saanich", "type": "retailer", "address": "7108 W Saanich Rd", "city": "Central Saanich", "postal": "V8M 1P8", "lat": 48.575258, "lng": -123.446383, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1353414", "name": "Peninsula Co-op Keating", "type": "retailer", "address": "2132 Keating Cross Rd", "city": "Central Saanich", "postal": "V8M 2A6", "lat": 48.565568, "lng": -123.412067, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1373381", "name": "Silver Rill Corn", "type": "retailer", "address": "7117 Central Saanich Rd", "city": "Central Saanich", "postal": "V8M 1Y3", "lat": 48.575316, "lng": -123.402579, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1306672", "name": "Thrifty Foods Wallace", "type": "retailer", "address": "7860 Wallace Dr", "city": "Central Saanich", "postal": "", "lat": 48.596321, "lng": -123.418279, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1345657", "name": "Country Grocer Chemainus", "type": "retailer", "address": "2835 Oak St", "city": "Chemainus", "postal": "", "lat": 48.925554, "lng": -123.715371, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1361382", "name": "Jollity Farm Shop & Cafe", "type": "retailer", "address": "2589 Oak St", "city": "Chemainus", "postal": "", "lat": 48.925517, "lng": -123.716555, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL"], "notes": ""}, {"id": "1274615", "name": "Country Grocer Cobble Hill", "type": "retailer", "address": "1400 Cowichan Bay Rd", "city": "Cobble Hill", "postal": "V0R 1L3", "lat": 48.709656, "lng": -123.608474, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1303005", "name": "Red Barn Market Brookside", "type": "retailer", "address": "611 Brookside Rd", "city": "Colwood", "postal": "V9C 0C3", "lat": 48.409163, "lng": -123.508799, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1326126", "name": "Save-On-Foods Colwood", "type": "retailer", "address": "#100 - 1913 Sooke Rd", "city": "Colwood", "postal": "V9B 1V9", "lat": 48.440818, "lng": -123.470131, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1306674", "name": "Thrifty Foods Colwood", "type": "retailer", "address": "1860 Island Hwy", "city": "Colwood", "postal": "", "lat": 48.443512, "lng": -123.470192, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1339166", "name": "Old Farm Market Crofton", "type": "retailer", "address": "5164 Francis st", "city": "Crofton", "postal": "V0R 2C0", "lat": 48.760006, "lng": -123.683964, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500"], "notes": ""}, {"id": "1343130", "name": "Country Grocer Duncan", "type": "retailer", "address": "3288 Cowichan Lake Rd", "city": "Duncan", "postal": "V9L 4B9", "lat": 48.791086, "lng": -123.737121, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1246513", "name": "Great Greens", "type": "retailer", "address": "4485 Trans-Canada Hwy", "city": "Duncan", "postal": "V9L 6L8", "lat": 48.772846, "lng": -123.698775, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Creamed 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml", "Currantly Hip 750ml", "Ginger Splash 750ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "A-CCW-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER", "BLine-750-CUR", "BLine-750-GNG"], "notes": ""}, {"id": "1256391", "name": "Country Grocer Esquimalt", "type": "retailer", "address": "1153 Esquimalt Rd", "city": "Esquimalt", "postal": "V9A 3N7", "lat": 48.429429, "lng": -123.411213, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "678809", "name": "Red Barn Market Esquimalt", "type": "retailer", "address": "1310 Esquimalt Rd", "city": "Esquimalt", "postal": "V9A 3P6", "lat": 48.430024, "lng": -123.41738, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1306676", "name": "Thrifty Foods Admirals", "type": "retailer", "address": "1495 Admirals Rd", "city": "Esquimalt", "postal": "", "lat": 48.447042, "lng": -123.428198, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1346872", "name": "Country Grocer Ladysmith", "type": "retailer", "address": "1020 1st Ave", "city": "Ladysmith", "postal": "V9G 1A5", "lat": 48.996541, "lng": -123.822986, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1317868", "name": "Country Grocer Lake Cowichan", "type": "retailer", "address": "83 Lake Cowichan Rd", "city": "Lake Cowichan", "postal": "", "lat": 48.827878, "lng": -124.050506, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1169359", "name": "Fairway Market Goldstream", "type": "retailer", "address": "772 Goldstream Ave", "city": "Langford", "postal": "V9B 2X3", "lat": 48.449203, "lng": -123.498251, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "527547", "name": "Market on Millstream", "type": "retailer", "address": "2401 Millstream Rd", "city": "Langford", "postal": "", "lat": 48.462193, "lng": -123.496607, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml", "Currantly Hip 750ml", "Ginger Splash 750ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER", "BLine-750-CUR", "BLine-750-GNG"], "notes": ""}, {"id": "1286344", "name": "Save-On-Foods McCallum", "type": "retailer", "address": "759 McCallum Rd", "city": "Langford", "postal": "V9B 6A2", "lat": 48.458855, "lng": -123.499346, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1306036", "name": "Thrifty Foods Belmont", "type": "retailer", "address": "3011 Merchant Wy", "city": "Langford", "postal": "V9B 2M9", "lat": 48.438122, "lng": -123.509366, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "17", "name": "Farm Gate Store", "type": "retailer", "address": "568 Fernhill Road", "city": "Mayne Island", "postal": "V0N 2J2", "lat": 48.845386, "lng": -123.278183, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1318633", "name": "Tru Value Mayne", "type": "retailer", "address": "472 Village Bay Rd", "city": "Mayne Island", "postal": "", "lat": 48.850444, "lng": -123.298511, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Creamed 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-CCW-1K"], "notes": ""}, {"id": "1436203", "name": "Flying Dutchman Market", "type": "retailer", "address": "4569 William Head Rd", "city": "Metchosin", "postal": "V9C 3Y6", "lat": 48.374393, "lng": -123.532973, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1298389", "name": "Nootka Rose", "type": "retailer", "address": "4480 Happy Valley road", "city": "Metchosin", "postal": "", "lat": 48.379602, "lng": -123.532708, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1317863", "name": "Country Grocer Bowen", "type": "retailer", "address": "1800 Dufferin Crescent", "city": "Nanaimo", "postal": "", "lat": 49.184483, "lng": -123.984151, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1317869", "name": "Country Grocer Chase River", "type": "retailer", "address": "82 Twelfth St", "city": "Nanaimo", "postal": "", "lat": 49.129345, "lng": -123.923244, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1041601", "name": "Fickle Fig Farm Market", "type": "retailer", "address": "1780 Mills Rd", "city": "North Saanich", "postal": "V8L 5S9", "lat": 48.655785, "lng": -123.426692, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1169283", "name": "Fairway Market Oak Bay", "type": "retailer", "address": "2187 Oak Bay Ave #101", "city": "Oak Bay", "postal": "V8R 1G1", "lat": 48.426375, "lng": -123.31646, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Currantly Hip 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-CUR"], "notes": ""}, {"id": "1037794", "name": "Old Farm Market Oak Bay", "type": "retailer", "address": "2585 Cadboro Bay Road", "city": "Oak Bay", "postal": "V8R 5J1", "lat": 48.437946, "lng": -123.312403, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1435517", "name": "Tru Value Foods Pender", "type": "retailer", "address": "4605 Bedwell Harbour Rd", "city": "Pender Island", "postal": "V0N 2M0", "lat": 48.779862, "lng": -123.280911, "hours": "", "phone": "", "products": ["Wildflower 500g", "Mermaid Tears 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "BLine-473-MER", "BLine-473-GNG"], "notes": ""}, {"id": "1256647", "name": "Country Grocer Royal Oak", "type": "retailer", "address": "4420 W Saanich Rd", "city": "Saanich", "postal": "V8Z 3E9", "lat": 48.492293, "lng": -123.389568, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1169249", "name": "Fairway Market Gorge", "type": "retailer", "address": "272 Gorge Rd W", "city": "Saanich", "postal": "V9A 1M6", "lat": 48.448547, "lng": -123.398968, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1169281", "name": "Fairway Market Shelbourne", "type": "retailer", "address": "3651 Shelbourne St", "city": "Saanich", "postal": "V8P 5E3", "lat": 48.460131, "lng": -123.331959, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-GNG"], "notes": ""}, {"id": "479799", "name": "Mount Douglas Market", "type": "retailer", "address": "4101 Shelbourne St", "city": "Saanich", "postal": "", "lat": 48.477625, "lng": -123.333283, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "605654", "name": "Red Barn Market Mattick's Farm", "type": "retailer", "address": "5325 Cordova Bay Rd", "city": "Saanich", "postal": "V8Y 2L3", "lat": 48.51524, "lng": -123.366041, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1032910", "name": "Red Barn Market West Saanich", "type": "retailer", "address": "5550 W Saanich Rd", "city": "Saanich", "postal": "", "lat": 48.533164, "lng": -123.438681, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1286345", "name": "Save-On-Foods Blanshard", "type": "retailer", "address": "3510 Blanshard St", "city": "Saanich", "postal": "V8X 1W3", "lat": 48.456581, "lng": -123.373091, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1286346", "name": "Save-On-Foods Tillicum", "type": "retailer", "address": "3170 Tillicum Rd", "city": "Saanich", "postal": "V9A 7C5", "lat": 48.453973, "lng": -123.39602, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "541213", "name": "The Root Cellar McKenzie", "type": "retailer", "address": "1286 McKenzie Ave", "city": "Saanich", "postal": "V8P 5P2", "lat": 48.472533, "lng": -123.352137, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Creamed 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml", "Currantly Hip 750ml", "Ginger Splash 750ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "A-CCW-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER", "BLine-750-CUR", "BLine-750-GNG"], "notes": ""}, {"id": "1306040", "name": "Thrifty Foods Broadmead", "type": "retailer", "address": "777 Royal Oak Dr #100", "city": "Saanich", "postal": "", "lat": 48.496886, "lng": -123.381638, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1306037", "name": "Thrifty Foods Cloverdale", "type": "retailer", "address": "3475 Quadra St", "city": "Saanich", "postal": "", "lat": 48.454804, "lng": -123.358692, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1308022", "name": "Thrifty Foods Tuscany", "type": "retailer", "address": "1626 McKenzie Ave", "city": "Saanich", "postal": "V8N 1A5", "lat": 48.468944, "lng": -123.331584, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1068929", "name": "Dan's Farm & Country Market", "type": "retailer", "address": "2030 Bear Hill Rd", "city": "Saanichton", "postal": "V8M 1X7", "lat": 48.551049, "lng": -123.416752, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1246525", "name": "Country Grocer Salt Spring", "type": "retailer", "address": "374 Lower Ganges Rd", "city": "Salt Spring Island", "postal": "V0R 2P2", "lat": 48.860602, "lng": -123.51123, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1306835", "name": "Thrifty Foods Salt Spring", "type": "retailer", "address": "114 Purvis Ln", "city": "Salt Spring Island", "postal": "", "lat": 48.85378, "lng": -123.499741, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K"], "notes": ""}, {"id": "1169293", "name": "Fairway Market Sidney", "type": "retailer", "address": "2531 Beacon Ave", "city": "Sidney", "postal": "V8L 1Y2", "lat": 48.648255, "lng": -123.395716, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1286351", "name": "Save-On-Foods Sidney", "type": "retailer", "address": "2345 Beacon Ave", "city": "Sidney", "postal": "V8L 1W9", "lat": 48.648143, "lng": -123.402325, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1306670", "name": "Thrifty Foods Sidney", "type": "retailer", "address": "9810 Seventh St", "city": "Sidney", "postal": "", "lat": 48.649641, "lng": -123.404349, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1440455", "name": "Stickleback Oceanfront Cider and Taphouse", "type": "retailer", "address": "5449 Sooke Rd", "city": "Sooke", "postal": "V9Z 0C8", "lat": 48.393951, "lng": -123.655694, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Currantly Hip 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-CUR"], "notes": ""}, {"id": "1169685", "name": "Village Food Market", "type": "retailer", "address": "103-6661 Sooke Rd", "city": "Sooke", "postal": "", "lat": 48.377696, "lng": -123.72175, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1178883", "name": "Western Foods", "type": "retailer", "address": "6660 Sooke Rd #1400", "city": "Sooke", "postal": "V9Z 0A5", "lat": 48.379851, "lng": -123.722219, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500"], "notes": ""}, {"id": "527274", "name": "Caffe Fantastico Harbour Road", "type": "retailer", "address": "398 Harbour Rd", "city": "Victoria", "postal": "V9A 0B7", "lat": 48.432226, "lng": -123.378441, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "665911", "name": "Caffe Fantastico Kings Road", "type": "retailer", "address": "965 Kings Rd", "city": "Victoria", "postal": "V8T 1W7", "lat": 48.437352, "lng": -123.358952, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Bee Line keg"], "productCodes": ["BLine-473-MER", "Jun-k18"], "notes": ""}, {"id": "1438065", "name": "Easy 4u Convenience", "type": "retailer", "address": "711A Broughton St", "city": "Victoria", "postal": "V8W 1E2", "lat": 48.4235, "lng": -123.364815, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1169285", "name": "Fairway Market Quadra", "type": "retailer", "address": "2635 Quadra St", "city": "Victoria", "postal": "V8T 4E3", "lat": 48.438021, "lng": -123.358033, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1169695", "name": "Forbes Pharmacy (Jubilee on Fort)", "type": "retailer", "address": "1775 Fort St", "city": "Victoria", "postal": "V8R 1J3", "lat": 48.429135, "lng": -123.33046, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "503356", "name": "Heart Pharmacy Fairfield", "type": "retailer", "address": "15-1594 Fairfield Rd", "city": "Victoria", "postal": "", "lat": 48.412528, "lng": -123.337496, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Mermaid Tears 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "BLine-473-MER", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1410279", "name": "High Vibes Victoria", "type": "retailer", "address": "917 Balmoral Rd", "city": "Victoria", "postal": "V8T 1A7", "lat": 48.428413, "lng": -123.351662, "hours": "", "phone": "", "products": ["Wildflower 500g", "Bulk", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml"], "productCodes": ["B-WFW-500", "BULK", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER"], "notes": ""}, {"id": "1174999", "name": "Lifestyle Markets Douglas", "type": "retailer", "address": "2950 Douglas St", "city": "Victoria", "postal": "V8T 4N4", "lat": 48.443341, "lng": -123.370379, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Mermaid Tears 750ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-750-MER"], "notes": ""}, {"id": "1393625", "name": "Lifestyle Markets Cook Street", "type": "retailer", "address": "343 Cook Street", "city": "Victoria", "postal": "V8V 3X8", "lat": 48.41518, "lng": -123.355847, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "BLine-473-MER", "BLine-473-ERL"], "notes": ""}, {"id": "509133", "name": "Market on Yates", "type": "retailer", "address": "903 Yates St", "city": "Victoria", "postal": "", "lat": 48.425332, "lng": -123.358748, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml", "Currantly Hip 750ml", "Ginger Splash 750ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER", "BLine-750-CUR", "BLine-750-GNG"], "notes": ""}, {"id": "1384269", "name": "McLennan's Island Meat and Seafood", "type": "retailer", "address": "307 Cook street", "city": "Victoria", "postal": "V8V 3X5", "lat": 48.41432, "lng": -123.356361, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1207789", "name": "Pharmasave Hillside", "type": "retailer", "address": "1641 Hillside Ave", "city": "Victoria", "postal": "V8T 2C4", "lat": 48.445173, "lng": -123.333957, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g"], "productCodes": ["B-WFW-500", "B-CLV-500"], "notes": ""}, {"id": "1361699", "name": "Pinhalla Pizzeria", "type": "retailer", "address": "516 Fisgard St", "city": "Victoria", "postal": "", "lat": 48.429456, "lng": -123.3689, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL"], "notes": ""}, {"id": "1277925", "name": "Quadra Village Drug Mart", "type": "retailer", "address": "2631 Quadra St", "city": "Victoria", "postal": "V8T 4E3", "lat": 48.438508, "lng": -123.358513, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Creamed 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "A-CCW-1K"], "notes": ""}, {"id": "1079489", "name": "Red Barn Market James Bay", "type": "retailer", "address": "325 Menzies St", "city": "Victoria", "postal": "V8V 0C2", "lat": 48.417183, "lng": -123.372668, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1074909", "name": "Red Barn Market Oak Bay", "type": "retailer", "address": "1933 Oak Bay Ave", "city": "Victoria", "postal": "V8R 1C8", "lat": 48.426314, "lng": -123.324809, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "974422", "name": "Refuge Tap Room", "type": "retailer", "address": "832 Fort St", "city": "Victoria", "postal": "V8W 1H8", "lat": 48.424287, "lng": -123.361096, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}, {"id": "1286350", "name": "Save-On-Foods Foul Bay", "type": "retailer", "address": "1950 Foul Bay Rd", "city": "Victoria", "postal": "V8R 5A7", "lat": 48.430788, "lng": -123.323927, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1286348", "name": "Save-On-Foods Pandora", "type": "retailer", "address": "1010 Pandora Ave", "city": "Victoria", "postal": "V8V 3P5", "lat": 48.427487, "lng": -123.355612, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1286347", "name": "Save-On-Foods Wilson", "type": "retailer", "address": "172 Wilson St", "city": "Victoria", "postal": "V9A 7N6", "lat": 48.432472, "lng": -123.380776, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Creamed 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "A-CCW-1K"], "notes": ""}, {"id": "1435851", "name": "Siam Thai Restaurant", "type": "retailer", "address": "512 Fort St", "city": "Victoria", "postal": "V8W 1E6", "lat": 48.425118, "lng": -123.369012, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Currantly Hip 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-CUR"], "notes": ""}, {"id": "515933", "name": "Special Teas", "type": "retailer", "address": "610 Yates St", "city": "Victoria", "postal": "V8W 1K9", "lat": 48.42662, "lng": -123.366846, "hours": "", "phone": "", "products": ["Wildflower 500g"], "productCodes": ["B-WFW-500"], "notes": ""}, {"id": "1008960", "name": "Sushi Time Express", "type": "retailer", "address": "735 Yates St #120", "city": "Victoria", "postal": "V8W 1L4", "lat": 48.425852, "lng": -123.363557, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml"], "productCodes": ["BLine-473-MER"], "notes": ""}, {"id": "757821", "name": "The Drake", "type": "retailer", "address": "517 Pandora Ave", "city": "Victoria", "postal": "", "lat": 48.428381, "lng": -123.369133, "hours": "", "phone": "", "products": ["Wildflower 1kg", "Bee Line keg"], "productCodes": ["A-WFW-1K", "Jun-k18"], "notes": ""}, {"id": "1300078", "name": "The Root Cellar Cook Street", "type": "retailer", "address": "271 Cook St", "city": "Victoria", "postal": "V8V 3X4", "lat": 48.413947, "lng": -123.35652, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Creamed 500g", "Wildflower 1kg", "Clover 1kg", "Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml", "Mermaid Tears 750ml", "Currantly Hip 750ml", "Ginger Splash 750ml"], "productCodes": ["B-WFW-500", "B-CLV-500", "B-CCW-500", "A-WFW-1K", "A-CLV-1K", "BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG", "BLine-750-MER", "BLine-750-CUR", "BLine-750-GNG"], "notes": ""}, {"id": "1306038", "name": "Thrifty Foods Fairfield", "type": "retailer", "address": "1590 Fairfield Rd", "city": "Victoria", "postal": "", "lat": 48.412855, "lng": -123.337763, "hours": "", "phone": "", "products": ["Clover 500g", "Clover 1kg"], "productCodes": ["B-CLV-500", "A-CLV-1K"], "notes": ""}, {"id": "1306673", "name": "Thrifty Foods Hillside", "type": "retailer", "address": "1580 Hillside Ave", "city": "Victoria", "postal": "", "lat": 48.445026, "lng": -123.338318, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1306039", "name": "Thrifty Foods James Bay", "type": "retailer", "address": "475 Simcoe St", "city": "Victoria", "postal": "", "lat": 48.415203, "lng": -123.37489, "hours": "", "phone": "", "products": ["Wildflower 500g", "Clover 500g", "Wildflower 1kg", "Clover 1kg"], "productCodes": ["B-WFW-500", "B-CLV-500", "A-WFW-1K", "A-CLV-1K"], "notes": ""}, {"id": "1269133", "name": "Tre Fantastico", "type": "retailer", "address": "810 Humboldt St", "city": "Victoria", "postal": "V8V 5B1", "lat": 48.420071, "lng": -123.362886, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml"], "productCodes": ["BLine-473-MER"], "notes": ""}, {"id": "1178867", "name": "Urban Grocer", "type": "retailer", "address": "1625 Fort St", "city": "Victoria", "postal": "V8R 1H9", "lat": 48.427015, "lng": -123.335376, "hours": "", "phone": "", "products": ["Mermaid Tears 473ml", "Earl Grey 473ml", "Currantly Hip 473ml", "Ginger Splash 473ml"], "productCodes": ["BLine-473-MER", "BLine-473-ERL", "BLine-473-CUR", "BLine-473-GNG"], "notes": ""}];
+  </script>
+  <script>
+    document.documentElement.classList.add("embed");
+
+    const CHIPS = [
+      { id: "all", label: "All" },
+      { id: "shops", label: "Our shops" },
+      { id: "honey", label: "Honey" },
+      { id: "beeline", label: "Bee Line" },
+      { id: "Mermaid Tears", label: "Mermaid Tears" },
+      { id: "Earl Grey", label: "Earl Grey" },
+      { id: "Currantly Hip", label: "Currantly Hip" },
+      { id: "Ginger Splash", label: "Ginger Splash" },
+      { id: "Wildflower", label: "Wildflower" },
+      { id: "Clover", label: "Clover" },
+      { id: "Creamed", label: "Creamed" },
+    ];
+
+    let filter = "all";
+    let query = "";
+    let selected = null;
+    const markers = {};
+
+    function esc(s) {
+      return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
+    }
+
+    const pinSvg = (fill, stroke, dot) =>
+      `<svg class="pin" viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg"><path d="M14 1.5c7 0 12.5 5.4 12.5 12.2 0 8.6-10.4 19.6-12.1 21.4a.6.6 0 0 1-.8 0C12 33.3 1.5 22.3 1.5 13.7 1.5 6.9 7 1.5 14 1.5z" fill="${fill}" stroke="${stroke}" stroke-width="1.2"/><circle cx="14" cy="14" r="4.2" fill="${dot}"/></svg>`;
+
+    const shopIcon = L.divIcon({
+      className: "",
+      html: pinSvg("#D4AF6A", "#171717", "#F2F2F2"),
+      iconSize: [28, 36],
+      iconAnchor: [14, 36],
+      popupAnchor: [0, -34],
+    });
+    const storeIcon = L.divIcon({
+      className: "",
+      html: pinSvg("#1A2E1C", "#0A120B", "#F2F2F2"),
+      iconSize: [28, 36],
+      iconAnchor: [14, 36],
+      popupAnchor: [0, -34],
+    });
+
+    const map = L.map("map", { scrollWheelZoom: true });
+    L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+    }).addTo(map);
+    map.setView([48.55, -123.45], 9);
+
+    const legend = L.control({ position: "bottomleft" });
+    legend.onAdd = function () {
+      const d = L.DomUtil.create("div", "legend");
+      d.innerHTML = '<i style="background:#D4AF6A"></i>Babe’s shop<br><i style="background:#1A2E1C"></i>Retailer';
+      return d;
+    };
+    legend.addTo(map);
+
+    const chipBox = document.getElementById("chips");
+    CHIPS.forEach((c) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip" + (c.id === "all" ? " on" : "");
+      b.textContent = c.label;
+      b.dataset.id = c.id;
+      b.addEventListener("click", () => {
+        filter = c.id;
+        [...chipBox.children].forEach((el) => el.classList.toggle("on", el.dataset.id === filter));
+        render(true);
+      });
+      chipBox.appendChild(b);
+    });
+
+    document.getElementById("q").addEventListener("input", (e) => {
+      query = e.target.value.trim().toLowerCase();
+      render(true);
+    });
+
+    function matches(st) {
+      if (query) {
+        const blob = `${st.name} ${st.city} ${st.address}`.toLowerCase();
+        if (!blob.includes(query)) return false;
+      }
+      const products = st.products || [];
+      if (filter === "all") return true;
+      if (filter === "shops") return st.type === "shop";
+      if (filter === "honey") return products.some((p) => /Wildflower|Clover|Creamed|^Bulk$/.test(p));
+      if (filter === "beeline") return products.some((p) => /Bee Line|Mermaid|Earl Grey|Currantly|Ginger/.test(p));
+      return products.some((p) => p.includes(filter));
+    }
+
+    function mapsUrl(st) {
+      const dest = st.lat != null
+        ? `${st.lat},${st.lng}`
+        : encodeURIComponent(`${st.address}, ${st.city}, BC ${st.postal || ""} Canada`);
+      return `https://www.google.com/maps/dir/?api=1&destination=${dest}`;
+    }
+
+    function popupHtml(st) {
+      const hours = st.hours ? `<div class="meta">${esc(st.hours)}</div>` : "";
+      const phone = st.phone ? `<div class="meta"><a href="tel:${esc(st.phone.replace(/[^0-9+]/g,""))}" style="background:none;color:#171717;padding:0;text-transform:none;letter-spacing:0.3px;font-weight:500">${esc(st.phone)}</a></div>` : "";
+      const notes = st.notes ? `<div class="meta" style="margin-top:6px">${esc(st.notes)}</div>` : "";
+      const badge = st.type === "shop" ? ` <span class="badge">Babe's shop</span>` : "";
+      const prod = esc((st.products || []).join(" · "));
+      const cityline = esc(`${st.city}${st.postal ? ", " + st.postal : ""}`);
+      return `<div class="pop">
+        <h3>${esc(st.name)}${badge}</h3>
+        <div class="meta">${esc(st.address)}<br>${cityline}</div>
+        ${hours}${phone}
+        <div class="meta" style="margin-top:6px">${prod}</div>
+        ${notes}
+        <div style="margin-top:8px"><a href="${mapsUrl(st)}" target="_blank" rel="noopener">Directions</a></div>
+      </div>`;
+    }
+
+    function render(fit) {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+      Object.values(markers).forEach((m) => map.removeLayer(m));
+      for (const k of Object.keys(markers)) delete markers[k];
+      const shown = STORES.filter(matches);
+      const mapped = [];
+      shown.forEach((st) => {
+        if (st.lat != null && st.lng != null) {
+          const mk = L.marker([st.lat, st.lng], {
+            icon: st.type === "shop" ? shopIcon : storeIcon,
+            title: st.name,
+            zIndexOffset: st.type === "shop" ? 1000 : 0,
+          });
+          mk.bindPopup(popupHtml(st), { maxWidth: 300 });
+          mk.on("click", () => highlight(st.id, false));
+          mk.addTo(map);
+          markers[st.id] = mk;
+          mapped.push(mk);
+        }
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "row" + (selected === st.id ? " active" : "");
+        btn.dataset.id = st.id;
+        const extra = st.hours ? `<div class="addr">${esc(st.hours)}${st.phone ? " · " + esc(st.phone) : ""}</div>` : "";
+        btn.innerHTML = `<div class="nm">${esc(st.name)}${st.type === "shop" ? ' <span class="badge">Babe\'s shop</span>' : ""}</div>
+          <div class="addr">${esc(st.address)}, ${esc(st.city)}${st.postal ? " " + esc(st.postal) : ""}</div>
+          ${extra}
+          <div class="prods">${(st.products || []).map((p) => `<span class="tag">${esc(p)}</span>`).join("")}</div>`;
+        btn.addEventListener("click", () => {
+          highlight(st.id, true);
+          const mk = markers[st.id];
+          if (mk) {
+            map.setView(mk.getLatLng(), Math.max(map.getZoom(), 14), { animate: true });
+            mk.openPopup();
+          }
+        });
+        list.appendChild(btn);
+      });
+      if (!shown.length) {
+        list.innerHTML = `<div class="empty">No stores match that search. Try another city or clear the filters.</div>`;
+      }
+      document.getElementById("count").textContent = `${shown.length} place${shown.length === 1 ? "" : "s"}`;
+      if (fit && mapped.length) {
+        map.fitBounds(L.featureGroup(mapped).getBounds().pad(0.14), { maxZoom: 12 });
+      } else if (fit) {
+        map.setView([48.55, -123.45], 9);
+      }
+      setTimeout(() => map.invalidateSize(), 60);
+    }
+
+    function highlight(id, scrollList) {
+      selected = id;
+      document.querySelectorAll(".row").forEach((el) => el.classList.toggle("active", el.dataset.id === id));
+      if (scrollList) {
+        const el = document.querySelector(`.row[data-id="${CSS.escape(id)}"]`);
+        if (el) el.scrollIntoView({ block: "nearest" });
+      }
+    }
+
+    render(true);
+    window.addEventListener("resize", () => map.invalidateSize());
+  </script>
+</body>
+</html>
