@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <rect width="80" height="80" rx="8" fill="#F2F2F2"/>
+  <ellipse cx="40" cy="16" rx="16" ry="5" fill="#CFCFCF"/>
+  <path d="M24 16 v40 a16 8 0 0 0 32 0 V16" fill="#8B1E3F" stroke="#171717" stroke-width="1.5"/>
+  <ellipse cx="40" cy="16" rx="16" ry="5" fill="none" stroke="#171717" stroke-width="1.5"/>
+  <rect x="26" y="28" width="28" height="14" fill="#5C1028"/>
+  <text x="40" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#fff">CUR</text>
+  <ellipse cx="40" cy="56" rx="16" ry="5" fill="#8B1E3F" stroke="#171717" stroke-width="1.5"/>
+</svg>

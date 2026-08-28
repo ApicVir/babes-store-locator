@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <rect width="80" height="80" rx="8" fill="#F2F2F2"/>
+  <rect x="34" y="14" width="12" height="28" rx="3" fill="#1A2E1C"/>
+  <path d="M28 40 h24 l4 8 H24z" fill="#D4AF6A"/>
+  <path d="M36 48 c0 10 4 18 4 22" stroke="#D4AF6A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="40" cy="72" r="3" fill="#D4AF6A"/>
+  <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#fff">TAP</text>
+</svg>
