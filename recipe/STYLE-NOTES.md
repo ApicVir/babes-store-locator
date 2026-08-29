@@ -30,7 +30,7 @@ Avoided: cream `#F7F1E3`, honey-gold app chrome, painting the whole page `#17171
 
 ## Layout rhythm (matches live site)
 
-1. **Sticky white header** — Raleway uppercase nav, centered B&W logo (`NO+BEE+LOGO+B+W.png`).
+1. **Sticky white header** — Raleway uppercase nav, centered B&W logo (`NO+BEE+LOGO+B+W.png`) with `filter:brightness(0)` so the white logo reads on the white header (asset is white-on-transparent for blue/photo bands).
 2. **Photo hero** — full-bleed farm/sky (`IMG_4489.JPG`) + `rgba(23,23,23,~0.55)` overlay; white Rye headline; black square CTA + white outlined secondary; white stats (readable on the photo).
 3. **Adapter** — `#F2F2F2` band, dark Rye headings, white square cards, black Adapt CTA.
 4. **Science** — white band, dark headings, white rule cards with `#555` body (not white-on-white).
