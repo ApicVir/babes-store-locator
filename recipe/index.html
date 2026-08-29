@@ -11,37 +11,44 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Rye&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{background:#F4E9D6}
+  body{background:#171717}
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes floatUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-  ::selection{background:#E9B949;color:#2A1C0E}
+  ::selection{background:#E9B949;color:#171717}
+</style>
+
+<style id="babes-site-align">
+  body{background:#171717!important;color:#F2F2F2!important}
+  a{color:inherit}
+  /* light panels keep dark ink */
+  .babes-panel, [data-panel="light"]{color:#171717}
 </style>
 </helmet>
 
-<div style="font-family:'Hanken Grotesk',system-ui,sans-serif;color:#2A1C0E;background:#F4E9D6;min-height:100vh;-webkit-font-smoothing:antialiased">
+<div style="font-family:Raleway, 'Helvetica Neue', Arial, sans-serif;color:#F2F2F2;background:#171717;min-height:100vh;-webkit-font-smoothing:antialiased">
 
   <!-- ============ HEADER ============ -->
-  <header style="position:sticky;top:0;z-index:50;background:rgba(244,233,214,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #E1CFA8">
+  <header style="position:sticky;top:0;z-index:50;background:rgba(23,23,23,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.22)">
     <div style="max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-      <nav style="display:flex;gap:22px;flex:1;font-size:12px;letter-spacing:0.14em;font-weight:600;color:#6B5430;text-transform:uppercase">
-        <a href="#adapter" style="color:#6B5430;text-decoration:none">Adapter</a>
-        <a href="#science" style="color:#6B5430;text-decoration:none">The Science</a>
-        <a href="#honey" style="color:#6B5430;text-decoration:none">Our Honey</a>
+      <nav style="display:flex;gap:22px;flex:1;font-size:12px;letter-spacing:0.14em;font-weight:600;color:rgba(255,255,255,0.7);text-transform:uppercase">
+        <a href="#adapter" style="color:rgba(255,255,255,0.7);text-decoration:none">Adapter</a>
+        <a href="#science" style="color:rgba(255,255,255,0.7);text-decoration:none">The Science</a>
+        <a href="#honey" style="color:rgba(255,255,255,0.7);text-decoration:none">Our Honey</a>
       </nav>
       <div style="display:flex;flex-direction:column;align-items:center;line-height:1;flex-shrink:0">
-        <div style="display:flex;align-items:center;gap:8px;color:#9A7A3E;font-size:9px;letter-spacing:0.32em;font-weight:700">
-          <span style="width:22px;height:1.5px;background:#9A7A3E"></span>EST 1945<span style="width:22px;height:1.5px;background:#9A7A3E"></span>
+        <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:9px;letter-spacing:0.32em;font-weight:700">
+          <span style="width:22px;height:1.5px;background:rgba(255,255,255,0.7)"></span>EST 1945<span style="width:22px;height:1.5px;background:rgba(255,255,255,0.7)"></span>
         </div>
-        <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:24px;letter-spacing:0.02em;color:#2A1C0E;margin-top:3px">BABE'S HONEY</div>
-        <div style="font-family:'Zilla Slab',serif;font-weight:500;font-size:10px;letter-spacing:0.22em;color:#6B5430;margin-top:1px">FARM &amp; FERMENTORIUM</div>
+        <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:24px;letter-spacing:0.02em;color:#FFFFFF;margin-top:3px">BABE'S HONEY</div>
+        <div style="font-family:Raleway, Helvetica, Arial, sans-serif;font-weight:600;font-size:10px;letter-spacing:0.22em;color:rgba(255,255,255,0.7);text-transform:uppercase;margin-top:1px">FARM &amp; FERMENTORIUM</div>
       </div>
-      <nav style="display:flex;gap:22px;flex:1;justify-content:flex-end;font-size:12px;letter-spacing:0.14em;font-weight:600;color:#6B5430;text-transform:uppercase">
-        <a href="https://apicvir.github.io/babes-store-locator/" target="_blank" rel="noopener" style="color:#6B5430;text-decoration:none">Find Stores</a>
-        <a href="https://www.babes-honey-farm.com/retailers" target="_blank" rel="noopener" style="color:#6B5430;text-decoration:none">Retailers</a>
+      <nav style="display:flex;gap:22px;flex:1;justify-content:flex-end;font-size:12px;letter-spacing:0.14em;font-weight:600;color:rgba(255,255,255,0.7);text-transform:uppercase">
+        <a href="https://apicvir.github.io/babes-store-locator/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);text-decoration:none">Find Stores</a>
+        <a href="https://www.babes-honey-farm.com/retailers" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);text-decoration:none">Retailers</a>
       </nav>
     </div>
   </header>
@@ -49,132 +56,132 @@
   <!-- ============ HERO ============ -->
   <section style="max-width:1200px;margin:0 auto;padding:64px 28px 40px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center">
     <div>
-      <div style="display:inline-flex;align-items:center;gap:8px;background:#FBEFD2;border:1px solid #E6Cf95;color:#9A6B16;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:0.04em;margin-bottom:22px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid #D4AF6A;color:#D4AF6A;padding:6px 14px;border-radius:0;font-size:12px;font-weight:700;letter-spacing:0.04em;margin-bottom:22px">
         🍯 Real honey, not refined sugar
       </div>
-      <h1 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:56px;line-height:1.02;letter-spacing:-0.01em;margin:0 0 18px;color:#241708">Bake it with<br>honey instead.</h1>
-      <p style="font-size:18px;line-height:1.55;color:#5C4628;max-width:480px;margin:0 0 28px;text-wrap:pretty">Paste any recipe and we'll convert the sugar to raw Babe's honey — adjusting the liquid, leavening and oven temperature using real baking science. Then we'll pick the honey that pairs best.</p>
+      <h1 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:56px;line-height:1.02;letter-spacing:-0.01em;margin:0 0 18px;color:#FFFFFF">Bake it with<br>honey instead.</h1>
+      <p style="font-size:17px;line-height:1.55;color:rgba(255,255,255,0.75);max-width:480px;font-weight:300;margin:0 0 28px;text-wrap:pretty">Paste any recipe and we'll convert the sugar to raw Babe's honey — adjusting the liquid, leavening and oven temperature using real baking science. Then we'll pick the honey that pairs best.</p>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
-        <a href="#adapter" style="background:{{ accent }};color:#2A1C0E;font-weight:700;font-size:15px;padding:14px 26px;border-radius:12px;text-decoration:none;box-shadow:0 6px 18px rgba(186,123,18,0.28)">Adapt a recipe →</a>
-        <a href="#science" style="background:#fff;color:#5C4628;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;text-decoration:none;border:1px solid #E1CFA8">How it works</a>
+        <a href="#adapter" style="background:{{ ctaBg }};color:{{ ctaFg }};font-weight:700;font-size:15px;padding:14px 26px;border-radius:0;text-decoration:none;box-shadow:none;letter-spacing:1px;text-transform:uppercase">Adapt a recipe →</a>
+        <a href="#science" style="background:transparent;color:#FFFFFF;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:14px 26px;border-radius:0;text-decoration:none;border:1px solid rgba(255,255,255,0.5)">How it works</a>
       </div>
       <div style="display:flex;gap:28px;margin-top:34px">
-        <div><div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:#241708">1945</div><div style="font-size:12px;color:#8A6F45;font-weight:600;letter-spacing:0.03em">Family farm, est.</div></div>
-        <div style="width:1px;background:#E1CFA8"></div>
-        <div><div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:#241708">Raw</div><div style="font-size:12px;color:#8A6F45;font-weight:600;letter-spacing:0.03em">Unpasteurized &amp; local</div></div>
-        <div style="width:1px;background:#E1CFA8"></div>
-        <div><div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:#241708">7</div><div style="font-size:12px;color:#8A6F45;font-weight:600;letter-spacing:0.03em">Honey varieties</div></div>
+        <div><div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:26px;color:#171717">1945</div><div style="font-size:12px;color:#555555;font-weight:600;letter-spacing:0.03em">Family farm, est.</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.22)"></div>
+        <div><div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:26px;color:#171717">Raw</div><div style="font-size:12px;color:#555555;font-weight:600;letter-spacing:0.03em">Unpasteurized &amp; local</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.22)"></div>
+        <div><div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:26px;color:#171717">7</div><div style="font-size:12px;color:#555555;font-weight:600;letter-spacing:0.03em">Honey varieties</div></div>
       </div>
     </div>
     <div style="position:relative">
-      <div style="position:absolute;inset:-14px;background:radial-gradient(circle at 50% 40%,#F7D98A,#EFC25E 60%,#E6A82F);border-radius:28px;transform:rotate(-2deg)"></div>
-      <div style="position:relative;display:block;width:100%;height:440px;border-radius:20px;overflow:hidden;box-shadow:0 20px 48px rgba(80,52,12,0.28);background:radial-gradient(circle at 50% 35%,#F7D98A,#E6A82F 70%,#C9871F);display:flex;align-items:center;justify-content:center;font-size:130px">🍯</div>
+      <div style="position:absolute;inset:-14px;background:radial-gradient(circle at 50% 40%,#D4AF6A,#EFC25E 60%,#E6A82F);border-radius:0;transform:rotate(-2deg)"></div>
+      <div style="position:relative;display:block;width:100%;height:440px;border-radius:0;overflow:hidden;box-shadow:0 20px 48px rgba(80,52,12,0.28);background:radial-gradient(circle at 50% 35%,#D4AF6A,#E6A82F 70%,#C9871F);display:flex;align-items:center;justify-content:center;font-size:130px">🍯</div>
     </div>
   </section>
 
   <!-- ============ ADAPTER ============ -->
   <section id="adapter" style="max-width:1200px;margin:0 auto;padding:44px 28px 24px;scroll-margin-top:90px">
     <div style="text-align:center;margin-bottom:30px">
-      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">The Recipe Adapter</div>
-      <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:38px;margin:0;color:#241708">Paste a recipe. Get the honey version.</h2>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D4AF6A;margin-bottom:8px">The Recipe Adapter</div>
+      <h2 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:38px;margin:0;color:#FFFFFF">Paste a recipe. Get the honey version.</h2>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:24px;align-items:start">
 
       <!-- INPUT CARD -->
-      <div style="background:#fff;border:1px solid #EADCBD;border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(120,84,24,0.07)">
+      <div style="background:#FFFFFF;border:1px solid #E0E0E0;border-radius:0;padding:24px;box-shadow:none">
         <!-- input mode tabs -->
-        <div style="display:flex;gap:6px;background:#F6ECD6;border:1px solid #EADCBD;border-radius:13px;padding:5px;margin-bottom:16px">
+        <div style="display:flex;gap:6px;background:#F2F2F2;border:1px solid #E0E0E0;border-radius:0;padding:5px;margin-bottom:16px">
           <sc-for list="{{ inputTabs }}" as="t" hint-placeholder-count="3">
-            <button onClick="{{ t.onClick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 6px;border:none;border-radius:9px;cursor:pointer;font-weight:700;font-size:13px;background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.shadow }}"><span style="font-size:14px">{{ t.icon }}</span>{{ t.label }}</button>
+            <button onClick="{{ t.onClick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 6px;border:none;border-radius:0;cursor:pointer;font-weight:700;font-size:13px;background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.shadow }}"><span style="font-size:14px">{{ t.icon }}</span>{{ t.label }}</button>
           </sc-for>
         </div>
 
         <!-- TYPE / PASTE -->
         <sc-if value="{{ modePaste }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-            <label style="font-weight:700;font-size:14px;color:#5C4628">{{ pasteLabel }}</label>
-            <button onClick="{{ loadExample }}" style="background:#FBEFD2;border:1px solid #E6Cf95;color:#9A6B16;font-weight:600;font-size:12.5px;padding:7px 13px;border-radius:9px;cursor:pointer">Load example</button>
+            <label style="font-weight:700;font-size:14px;color:#333333">{{ pasteLabel }}</label>
+            <button onClick="{{ loadExample }}" style="background:transparent;border:1px solid #D4AF6A;color:#D4AF6A;font-weight:600;font-size:12.5px;padding:7px 13px;border-radius:0;cursor:pointer">Load example</button>
           </div>
-          <textarea value="{{ recipeText }}" onChange="{{ onRecipeChange }}" placeholder="Type or paste a recipe — e.g.&#10;1 cup granulated sugar&#10;1/2 cup brown sugar&#10;1 cup milk&#10;2 cups flour&#10;Bake at 350°F" style="width:100%;height:264px;resize:vertical;border:1.5px solid #E6D6B4;border-radius:13px;padding:15px;font-family:'Hanken Grotesk',monospace;font-size:14px;line-height:1.6;color:#3A2A14;background:#FFFDF8;outline:none"></textarea>
+          <textarea value="{{ recipeText }}" onChange="{{ onRecipeChange }}" placeholder="Type or paste a recipe — e.g.&#10;1 cup granulated sugar&#10;1/2 cup brown sugar&#10;1 cup milk&#10;2 cups flour&#10;Bake at 350°F" style="width:100%;height:264px;resize:vertical;border:1.5px solid #DDDDDD;border-radius:0;padding:15px;font-family:Raleway, Helvetica, Arial, sans-serif;font-size:14px;line-height:1.6;color:#3A2A14;background:#FFFFFF;outline:none"></textarea>
         </sc-if>
 
         <!-- PASTE A LINK -->
         <sc-if value="{{ modeLink }}" hint-placeholder-val="{{ false }}">
-          <label style="font-weight:700;font-size:14px;color:#5C4628;display:block;margin-bottom:10px">Paste a recipe link</label>
+          <label style="font-weight:700;font-size:14px;color:#333333;display:block;margin-bottom:10px">Paste a recipe link</label>
           <div style="display:flex;gap:9px">
-            <input value="{{ linkUrl }}" onChange="{{ onLinkChange }}" placeholder="https://… a recipe page" style="flex:1;min-width:0;border:1.5px solid #E6D6B4;border-radius:12px;padding:13px 15px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;color:#3A2A14;background:#FFFDF8;outline:none">
-            <button onClick="{{ fetchLink }}" style="background:{{ accent }};color:#2A1C0E;font-weight:700;font-size:14px;padding:0 20px;border:none;border-radius:12px;cursor:pointer;white-space:nowrap">{{ fetchLabel }}</button>
+            <input value="{{ linkUrl }}" onChange="{{ onLinkChange }}" placeholder="https://… a recipe page" style="flex:1;min-width:0;border:1.5px solid #DDDDDD;border-radius:0;padding:13px 15px;font-family:Raleway, Helvetica, Arial, sans-serif;font-size:14px;color:#3A2A14;background:#FFFFFF;outline:none">
+            <button onClick="{{ fetchLink }}" style="background:{{ ctaBg }};color:{{ ctaFg }};font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:0 20px;border:none;border-radius:0;cursor:pointer;white-space:nowrap">{{ fetchLabel }}</button>
           </div>
-          <div style="margin-top:14px;height:200px;border:1.5px dashed #E0CD9F;border-radius:13px;background:#FCF6E9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px">
-            <sc-if value="{{ extracting }}" hint-placeholder-val="{{ false }}"><span style="width:28px;height:28px;border:3px solid rgba(186,123,18,0.25);border-top-color:#B97B12;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite;margin-bottom:14px"></span></sc-if>
+          <div style="margin-top:14px;height:200px;border:1.5px dashed #CCCCCC;border-radius:0;background:#F2F2F2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px">
+            <sc-if value="{{ extracting }}" hint-placeholder-val="{{ false }}"><span style="width:28px;height:28px;border:3px solid rgba(186,123,18,0.25);border-top-color:#D4AF6A;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite;margin-bottom:14px"></span></sc-if>
             <sc-if value="{{ showLinkIcon }}" hint-placeholder-val="{{ true }}"><div style="font-size:34px;margin-bottom:10px">🔗</div></sc-if>
-            <div style="font-size:14px;color:#9A7E50;line-height:1.5;max-width:330px">{{ linkNote }}</div>
+            <div style="font-size:14px;color:#666666;line-height:1.5;max-width:330px">{{ linkNote }}</div>
           </div>
         </sc-if>
 
         <!-- UPLOAD A PHOTO -->
         <sc-if value="{{ modePhoto }}" hint-placeholder-val="{{ false }}">
-          <label style="font-weight:700;font-size:14px;color:#5C4628;display:block;margin-bottom:10px">Upload a photo of a recipe</label>
-          <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:262px;border:1.5px dashed #E0CD9F;border-radius:13px;background:#FCF6E9;cursor:pointer;padding:24px;position:relative;overflow:hidden" style-hover="border-color:#E0B85E;background:#FBF3E1">
+          <label style="font-weight:700;font-size:14px;color:#333333;display:block;margin-bottom:10px">Upload a photo of a recipe</label>
+          <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:262px;border:1.5px dashed #CCCCCC;border-radius:0;background:#F2F2F2;cursor:pointer;padding:24px;position:relative;overflow:hidden" style-hover="border-color:#D4AF6A;background:#E8E8E8">
             <input type="file" accept="image/*" onChange="{{ onPhoto }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
             {{ photoPreviewEl }}
-            <sc-if value="{{ extracting }}" hint-placeholder-val="{{ false }}"><span style="position:relative;width:30px;height:30px;border:3px solid rgba(186,123,18,0.25);border-top-color:#B97B12;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite;margin-bottom:14px"></span></sc-if>
+            <sc-if value="{{ extracting }}" hint-placeholder-val="{{ false }}"><span style="position:relative;width:30px;height:30px;border:3px solid rgba(186,123,18,0.25);border-top-color:#D4AF6A;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite;margin-bottom:14px"></span></sc-if>
             <sc-if value="{{ showPhotoIcon }}" hint-placeholder-val="{{ true }}"><div style="position:relative;font-size:38px;margin-bottom:10px">📷</div></sc-if>
-            <div style="position:relative;font-size:14px;color:#9A7E50;line-height:1.5;max-width:320px;font-weight:600">{{ photoNote }}</div>
+            <div style="position:relative;font-size:14px;color:#666666;line-height:1.5;max-width:320px;font-weight:600">{{ photoNote }}</div>
           </label>
         </sc-if>
 
         <div style="margin-top:18px">
-          <div style="font-weight:700;font-size:13px;color:#5C4628;margin-bottom:9px">How much sugar to swap</div>
+          <div style="font-weight:700;font-size:13px;color:#333333;margin-bottom:9px">How much sugar to swap</div>
           <div style="display:flex;gap:8px">
             <sc-for list="{{ swapOptions }}" as="opt" hint-placeholder-count="3">
-              <button onClick="{{ opt.onClick }}" style="flex:1;padding:11px 6px;border-radius:11px;cursor:pointer;font-weight:700;font-size:13px;border:1.5px solid {{ opt.border }};background:{{ opt.bg }};color:{{ opt.fg }}">{{ opt.label }}</button>
+              <button onClick="{{ opt.onClick }}" style="flex:1;padding:11px 6px;border-radius:0;cursor:pointer;font-weight:700;font-size:13px;border:1.5px solid {{ opt.border }};background:{{ opt.bg }};color:{{ opt.fg }}">{{ opt.label }}</button>
             </sc-for>
           </div>
         </div>
 
         <div style="margin-top:18px">
-          <div style="font-weight:700;font-size:13px;color:#5C4628;margin-bottom:9px">Honey variety</div>
+          <div style="font-weight:700;font-size:13px;color:#333333;margin-bottom:9px">Honey variety</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <sc-for list="{{ honeyChips }}" as="chip" hint-placeholder-count="4">
-              <button onClick="{{ chip.onClick }}" style="display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;cursor:pointer;font-weight:600;font-size:12.5px;border:1.5px solid {{ chip.border }};background:{{ chip.bg }};color:{{ chip.fg }}"><span style="width:11px;height:11px;border-radius:50%;background:{{ chip.swatch }};box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)"></span>{{ chip.label }}</button>
+              <button onClick="{{ chip.onClick }}" style="display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:0;cursor:pointer;font-weight:600;font-size:12.5px;border:1.5px solid {{ chip.border }};background:{{ chip.bg }};color:{{ chip.fg }}"><span style="width:11px;height:11px;border-radius:50%;background:{{ chip.swatch }};box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)"></span>{{ chip.label }}</button>
             </sc-for>
           </div>
         </div>
 
-        <button onClick="{{ adapt }}" style="width:100%;margin-top:22px;background:{{ accent }};color:#2A1C0E;font-weight:800;font-size:16px;padding:16px;border:none;border-radius:13px;cursor:pointer;box-shadow:0 8px 20px rgba(186,123,18,0.3);display:flex;align-items:center;justify-content:center;gap:10px">
-          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;border:2.5px solid rgba(42,28,14,0.3);border-top-color:#2A1C0E;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite"></span></sc-if>
+        <button onClick="{{ adapt }}" style="width:100%;margin-top:22px;background:{{ ctaBg }};color:{{ ctaFg }};font-weight:700;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px;border:none;border-radius:0;cursor:pointer;box-shadow:none;display:flex;align-items:center;justify-content:center;gap:10px">
+          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;border:2.5px solid rgba(42,28,14,0.3);border-top-color:#171717;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite"></span></sc-if>
           {{ adaptLabel }}
         </button>
-        <div style="text-align:center;font-size:11.5px;color:#A08A60;margin-top:9px">{{ engineNote }}</div>
+        <div style="text-align:center;font-size:11.5px;color:#888888;margin-top:9px">{{ engineNote }}</div>
       </div>
 
       <!-- OUTPUT CARD -->
       <div style="min-height:200px">
         <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ true }}">
-          <div style="background:#FCF6E9;border:1.5px dashed #E0CD9F;border-radius:20px;padding:54px 30px;text-align:center;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div style="background:#F2F2F2;border:1.5px dashed #CCCCCC;border-radius:0;padding:54px 30px;text-align:center;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center">
             <div style="font-size:46px;margin-bottom:14px">🐝</div>
-            <div style="font-family:'Zilla Slab',serif;font-weight:600;font-size:21px;color:#5C4628;margin-bottom:6px">Your honey-adapted recipe appears here</div>
-            <div style="font-size:14px;color:#9A7E50;max-width:300px;line-height:1.5">Paste a recipe on the left (or load the example) and hit <strong>Adapt</strong>.</div>
+            <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:600;font-size:21px;color:#333333;margin-bottom:6px">Your honey-adapted recipe appears here</div>
+            <div style="font-size:14px;color:#666666;max-width:300px;line-height:1.5">Paste a recipe on the left (or load the example) and hit <strong>Adapt</strong>.</div>
           </div>
         </sc-if>
 
         <sc-if value="{{ showResult }}" hint-placeholder-val="{{ false }}">
           <div style="animation:floatUp 0.4s ease both">
             <!-- ingredient diff -->
-            <div style="background:#fff;border:1px solid #EADCBD;border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(120,84,24,0.07);margin-bottom:16px">
+            <div style="background:#FFFFFF;border:1px solid #E0E0E0;border-radius:0;padding:22px;box-shadow:none;margin-bottom:16px">
               <div style="display:flex;align-items:center;gap:9px;margin-bottom:16px">
-                <span style="width:30px;height:30px;border-radius:8px;background:{{ accent }};display:flex;align-items:center;justify-content:center;font-size:16px">🍯</span>
-                <h3 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:20px;margin:0;color:#241708">Honey-adapted ingredients</h3>
+                <span style="width:30px;height:30px;border-radius:0;background:{{ accent }};display:flex;align-items:center;justify-content:center;font-size:16px">🍯</span>
+                <h3 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:20px;margin:0;color:#171717">Honey-adapted ingredients</h3>
               </div>
               <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="6">
-                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #F0E7D2">
-                  <span style="width:5px;border-radius:3px;flex-shrink:0;background:{{ ing.bar }}"></span>
+                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #F2F2F2">
+                  <span style="width:5px;border-radius:0;flex-shrink:0;background:{{ ing.bar }}"></span>
                   <div style="flex:1">
                     <div style="font-size:14.5px;font-weight:600;color:{{ ing.color }};line-height:1.4">{{ ing.adapted }}</div>
                     <sc-if value="{{ ing.changed }}" hint-placeholder-val="{{ false }}">
-                      <div style="font-size:12.5px;color:#A08A60;text-decoration:line-through;margin-top:2px">{{ ing.original }}</div>
+                      <div style="font-size:12.5px;color:#888888;text-decoration:line-through;margin-top:2px">{{ ing.original }}</div>
                     </sc-if>
                   </div>
                 </div>
@@ -182,29 +189,29 @@
             </div>
 
             <!-- adjustments -->
-            <div style="background:#FBF3E1;border:1px solid #EAD9B2;border-radius:20px;padding:22px;margin-bottom:16px">
-              <h3 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:17px;margin:0 0 13px;color:#241708">What we changed &amp; why</h3>
+            <div style="background:#E8E8E8;border:1px solid #E0E0E0;border-radius:0;padding:22px;margin-bottom:16px">
+              <h3 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:17px;margin:0 0 13px;color:#171717">What we changed &amp; why</h3>
               <div style="display:flex;flex-direction:column;gap:11px">
                 <sc-for list="{{ adjustments }}" as="adj" hint-placeholder-count="4">
                   <div style="display:flex;gap:11px;align-items:flex-start">
                     <span style="font-size:17px;line-height:1.2;flex-shrink:0">{{ adj.icon }}</span>
-                    <div><span style="font-weight:700;font-size:13.5px;color:#3A2A14">{{ adj.title }} </span><span style="font-size:13.5px;color:#6B5430;line-height:1.45">{{ adj.detail }}</span></div>
+                    <div><span style="font-weight:700;font-size:13.5px;color:#3A2A14">{{ adj.title }} </span><span style="font-size:13.5px;color:rgba(255,255,255,0.7);line-height:1.45">{{ adj.detail }}</span></div>
                   </div>
                 </sc-for>
               </div>
             </div>
 
             <!-- recommendation -->
-            <div style="background:#fff;border:1px solid #EADCBD;border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(120,84,24,0.07)">
-              <div style="font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B97B12;margin-bottom:12px">Recommended for this recipe</div>
+            <div style="background:#FFFFFF;border:1px solid #E0E0E0;border-radius:0;padding:22px;box-shadow:none">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D4AF6A;margin-bottom:12px">Recommended for this recipe</div>
               <div style="display:flex;gap:16px;align-items:center">
-                <span style="width:54px;height:54px;border-radius:12px;flex-shrink:0;background:{{ rec.swatch }};box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1),0 4px 10px rgba(0,0,0,0.12)"></span>
+                <span style="width:54px;height:54px;border-radius:0;flex-shrink:0;background:{{ rec.swatch }};box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1),0 4px 10px rgba(0,0,0,0.12)"></span>
                 <div style="flex:1">
-                  <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:18px;color:#241708">{{ rec.name }}</div>
-                  <div style="font-size:13.5px;color:#6B5430;line-height:1.45;margin-top:2px">{{ rec.why }}</div>
+                  <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:18px;color:#171717">{{ rec.name }}</div>
+                  <div style="font-size:13.5px;color:rgba(255,255,255,0.7);line-height:1.45;margin-top:2px">{{ rec.why }}</div>
                 </div>
               </div>
-              <a href="#stores" onClick="{{ goStores }}" style="display:block;text-align:center;margin-top:18px;background:#2A1C0E;color:#F4E9D6;font-weight:700;font-size:14.5px;padding:13px;border-radius:11px;text-decoration:none">🗺️ Find this honey near you →</a>
+              <a href="#stores" onClick="{{ goStores }}" style="display:block;text-align:center;margin-top:18px;background:#000000;color:#FFFFFF;font-weight:700;font-size:14.5px;padding:13px;border-radius:0;text-decoration:none">🗺️ Find this honey near you →</a>
             </div>
           </div>
         </sc-if>
@@ -215,34 +222,34 @@
   <!-- ============ SCIENCE ============ -->
   <section id="science" style="max-width:1200px;margin:0 auto;padding:60px 28px;scroll-margin-top:90px">
     <div style="text-align:center;margin-bottom:36px">
-      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">The Baking Science</div>
-      <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:34px;margin:0;color:#241708">Five rules, locked in.</h2>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D4AF6A;margin-bottom:8px">The Baking Science</div>
+      <h2 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:34px;margin:0;color:#FFFFFF">Five rules, locked in.</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
       <sc-for list="{{ rules }}" as="r" hint-placeholder-count="5">
-        <div style="background:#fff;border:1px solid #EADCBD;border-radius:16px;padding:20px">
+        <div style="background:#FFFFFF;border:1px solid #E0E0E0;border-radius:0;padding:20px">
           <div style="font-size:26px;margin-bottom:12px">{{ r.icon }}</div>
-          <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:15px;color:#241708;margin-bottom:7px">{{ r.title }}</div>
-          <div style="font-size:13px;color:#6B5430;line-height:1.5">{{ r.body }}</div>
+          <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:15px;color:#171717;margin-bottom:7px">{{ r.title }}</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5">{{ r.body }}</div>
         </div>
       </sc-for>
     </div>
   </section>
 
   <!-- ============ HONEY ============ -->
-  <section id="honey" style="background:#EFE0C3;scroll-margin-top:90px">
+  <section id="honey" style="background:#1F1F1F;scroll-margin-top:90px">
     <div style="max-width:1200px;margin:0 auto;padding:60px 28px">
       <div style="text-align:center;margin-bottom:36px">
-        <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">From our hives</div>
-        <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:34px;margin:0;color:#241708">Seven raw honeys to bake with.</h2>
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D4AF6A;margin-bottom:8px">From our hives</div>
+        <h2 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:34px;margin:0;color:#FFFFFF">Seven raw honeys to bake with.</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
         <sc-for list="{{ products }}" as="p" hint-placeholder-count="7">
-          <div style="background:#fff;border:1px solid #E6D3AB;border-radius:16px;overflow:hidden">
+          <div style="background:#FFFFFF;border:1px solid #DDDDDD;border-radius:0;overflow:hidden">
             <div style="height:8px;background:{{ p.swatch }}"></div>
             <div style="padding:18px">
-              <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:17px;color:#241708;margin-bottom:5px">{{ p.name }}</div>
-              <div style="font-size:13px;color:#6B5430;line-height:1.5">{{ p.note }}</div>
+              <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:17px;color:#171717;margin-bottom:5px">{{ p.name }}</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5">{{ p.note }}</div>
             </div>
           </div>
         </sc-for>
@@ -253,36 +260,36 @@
   <!-- ============ STORES + CART ============ -->
   <section id="stores" style="max-width:1200px;margin:0 auto;padding:60px 28px;scroll-margin-top:90px">
     <div style="text-align:center;margin-bottom:30px">
-      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">Find it near you</div>
-      <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:34px;margin:0;color:#241708">Stores &amp; a ready-to-shop cart.</h2>
-      <p style="font-size:15px;color:#6B5430;max-width:520px;margin:14px auto 0;line-height:1.5">Enter your postal code to find stores carrying Babe's, then build a cart with your honey plus everything else the recipe needs.</p>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D4AF6A;margin-bottom:8px">Find it near you</div>
+      <h2 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:34px;margin:0;color:#FFFFFF">Stores &amp; a ready-to-shop cart.</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.7);max-width:520px;margin:14px auto 0;line-height:1.5">Enter your postal code to find stores carrying Babe's, then build a cart with your honey plus everything else the recipe needs.</p>
     </div>
 
     <div style="max-width:560px;margin:0 auto 26px;display:flex;gap:10px">
-      <input value="{{ postal }}" onChange="{{ onPostalChange }}" placeholder="Postal code (e.g. V8X 2H7)" style="flex:1;border:1.5px solid #E6D6B4;border-radius:12px;padding:14px 16px;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#3A2A14;background:#fff;outline:none">
-      <button onClick="{{ findStores }}" style="background:{{ accent }};color:#2A1C0E;font-weight:700;font-size:15px;padding:0 24px;border:none;border-radius:12px;cursor:pointer">Search</button>
+      <input value="{{ postal }}" onChange="{{ onPostalChange }}" placeholder="Postal code (e.g. V8X 2H7)" style="flex:1;border:1.5px solid #DDDDDD;border-radius:0;padding:14px 16px;font-family:Raleway, Helvetica, Arial, sans-serif;font-size:15px;color:#3A2A14;background:#FFFFFF;outline:none">
+      <button onClick="{{ findStores }}" style="background:{{ ctaBg }};color:{{ ctaFg }};font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:0 24px;border:none;border-radius:0;cursor:pointer">Search</button>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
       <!-- stores -->
       <div>
         <sc-if value="{{ showStoresEmpty }}" hint-placeholder-val="{{ true }}">
-          <div style="background:#FCF6E9;border:1.5px dashed #E0CD9F;border-radius:16px;padding:40px 24px;text-align:center;color:#9A7E50;font-size:14px">📍 Enter a postal code to see nearby stores.</div>
+          <div style="background:#F2F2F2;border:1.5px dashed #CCCCCC;border-radius:0;padding:40px 24px;text-align:center;color:#666666;font-size:14px">📍 Enter a postal code to see nearby stores.</div>
         </sc-if>
         <sc-if value="{{ hasStores }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;flex-direction:column;gap:12px">
             <sc-for list="{{ stores }}" as="s" hint-placeholder-count="4">
-              <a href="{{ s.url }}" target="_blank" rel="noopener" style="background:#fff;border:1px solid #EADCBD;border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:center;text-decoration:none;color:inherit;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s" style-hover="border-color:#E0B85E;box-shadow:0 6px 18px rgba(120,84,24,0.12)">
-                <div style="width:46px;height:46px;border-radius:11px;background:#FBEFD2;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #EAD9B2">
-                  <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:15px;color:#9A6B16;line-height:1">{{ s.dist }}</div>
-                  <div style="font-size:8px;color:#B0935C;letter-spacing:0.05em">km</div>
+              <a href="{{ s.url }}" target="_blank" rel="noopener" style="background:#FFFFFF;border:1px solid #E0E0E0;border-radius:0;padding:16px 18px;display:flex;gap:14px;align-items:center;text-decoration:none;color:inherit;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s" style-hover="border-color:#D4AF6A;box-shadow:none">
+                <div style="width:46px;height:46px;border-radius:0;background:#2A2A2A;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #E0E0E0">
+                  <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:15px;color:#D4AF6A;line-height:1">{{ s.dist }}</div>
+                  <div style="font-size:8px;color:#888888;letter-spacing:0.05em">km</div>
                 </div>
                 <div style="flex:1">
-                  <div style="font-weight:700;font-size:14.5px;color:#241708">{{ s.name }}</div>
-                  <div style="font-size:12.5px;color:#8A6F45">{{ s.addr }}</div>
+                  <div style="font-weight:700;font-size:14.5px;color:#171717">{{ s.name }}</div>
+                  <div style="font-size:12.5px;color:#555555">{{ s.addr }}</div>
                   <div style="font-size:11.5px;color:#3E8E5A;font-weight:600;margin-top:3px">● {{ s.stock }}</div>
                 </div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:2px;color:#B97B12;flex-shrink:0">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:2px;color:#D4AF6A;flex-shrink:0">
                   <span style="font-size:16px;line-height:1">↗</span>
                   <span style="font-size:9px;font-weight:700;letter-spacing:0.03em;text-align:center;line-height:1.2">Visit<br>store</span>
                 </div>
@@ -293,41 +300,41 @@
       </div>
 
       <!-- cart -->
-      <div style="background:#fff;border:1px solid #EADCBD;border-radius:18px;box-shadow:0 10px 30px rgba(120,84,24,0.07);overflow:hidden;position:sticky;top:90px">
-        <div style="background:#2A1C0E;color:#F4E9D6;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
-          <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:17px">🛒 Your cart</span>
-          <span style="font-size:13px;color:#D9C49A">{{ cartStore }}</span>
+      <div style="background:#FFFFFF;border:1px solid #E0E0E0;border-radius:0;box-shadow:none;overflow:hidden;position:sticky;top:90px">
+        <div style="background:#000000;color:#FFFFFF;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:17px">🛒 Your cart</span>
+          <span style="font-size:13px;color:#CCCCCC">{{ cartStore }}</span>
         </div>
         <div style="padding:8px 20px">
           <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
-            <div style="padding:34px 10px;text-align:center;color:#9A7E50;font-size:14px;line-height:1.5">Adapt a recipe, then hit <strong>Build a cart</strong> — your honey and ingredients land here.</div>
+            <div style="padding:34px 10px;text-align:center;color:#666666;font-size:14px;line-height:1.5">Adapt a recipe, then hit <strong>Build a cart</strong> — your honey and ingredients land here.</div>
           </sc-if>
           <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
             <div>
               <sc-for list="{{ cart }}" as="c" hint-placeholder-count="5">
-                <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #F0E7D2">
-                  <span style="width:34px;height:34px;border-radius:8px;flex-shrink:0;background:{{ c.swatch }};display:flex;align-items:center;justify-content:center;font-size:15px">{{ c.icon }}</span>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #F2F2F2">
+                  <span style="width:34px;height:34px;border-radius:0;flex-shrink:0;background:{{ c.swatch }};display:flex;align-items:center;justify-content:center;font-size:15px">{{ c.icon }}</span>
                   <div style="flex:1">
-                    <div style="font-weight:600;font-size:13.5px;color:#241708;line-height:1.3">{{ c.name }}</div>
-                    <div style="font-size:11.5px;color:#9A7E50">{{ c.sub }}</div>
+                    <div style="font-weight:600;font-size:13.5px;color:#171717;line-height:1.3">{{ c.name }}</div>
+                    <div style="font-size:11.5px;color:#666666">{{ c.sub }}</div>
                   </div>
                   <div style="font-weight:700;font-size:13.5px;color:#3A2A14">{{ c.price }}</div>
-                  <button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:18px;color:#C9B58A;line-height:1;padding:0 4px">×</button>
+                  <button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:18px;color:#999999;line-height:1;padding:0 4px">×</button>
                 </div>
               </sc-for>
             </div>
           </sc-if>
         </div>
         <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
-          <div style="padding:16px 20px;background:#FBF3E1;border-top:1px solid #EAD9B2">
-            <div style="display:flex;justify-content:space-between;font-size:13px;color:#6B5430;margin-bottom:5px"><span>Babe's honey</span><span>{{ cartHoneyTotal }}</span></div>
-            <div style="display:flex;justify-content:space-between;font-size:13px;color:#6B5430;margin-bottom:11px"><span>Other ingredients</span><span>{{ cartOtherTotal }}</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #EAD9B2;padding-top:11px">
-              <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:18px;color:#241708">Total</span>
-              <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:22px;color:#241708">{{ cartTotal }}</span>
+          <div style="padding:16px 20px;background:#E8E8E8;border-top:1px solid #E0E0E0">
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:5px"><span>Babe's honey</span><span>{{ cartHoneyTotal }}</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:11px"><span>Other ingredients</span><span>{{ cartOtherTotal }}</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E0E0E0;padding-top:11px">
+              <span style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:18px;color:#171717">Total</span>
+              <span style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:22px;color:#171717">{{ cartTotal }}</span>
             </div>
-            <button style="width:100%;margin-top:14px;background:{{ accent }};color:#2A1C0E;font-weight:800;font-size:15px;padding:14px;border:none;border-radius:11px;cursor:pointer">Checkout</button>
-            <div style="text-align:center;font-size:11px;color:#A08A60;margin-top:8px">Demo cart · prices are estimates</div>
+            <button style="width:100%;margin-top:14px;background:{{ accent }};color:#171717;font-weight:800;font-size:15px;padding:14px;border:none;border-radius:0;cursor:pointer">Checkout</button>
+            <div style="text-align:center;font-size:11px;color:#888888;margin-top:8px">Demo cart · prices are estimates</div>
           </div>
         </sc-if>
       </div>
@@ -335,18 +342,18 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer style="background:#2A1C0E;color:#D9C49A">
+  <footer style="background:#171717;color:#CCCCCC">
     <div style="max-width:1200px;margin:0 auto;padding:46px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
       <div>
-        <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:20px;color:#F4E9D6;letter-spacing:0.02em">BABE'S HONEY</div>
-        <div style="font-size:12px;letter-spacing:0.2em;color:#A8895A;margin-top:2px">FARM &amp; FERMENTORIUM · EST 1945</div>
+        <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:700;font-size:20px;color:#171717;letter-spacing:0.02em">BABE'S HONEY</div>
+        <div style="font-size:12px;letter-spacing:0.2em;color:#888888;margin-top:2px">FARM &amp; FERMENTORIUM · EST 1945</div>
       </div>
-      <div style="font-size:13px;color:#A8895A;text-align:right;line-height:1.6">4150 Blenkinsop Rd, Saanich, BC<br>Raw · Unpasteurized · Local since 1945</div>
+      <div style="font-size:13px;color:#888888;text-align:right;line-height:1.6">4150 Blenkinsop Rd, Saanich, BC<br>Raw · Unpasteurized · Local since 1945</div>
     </div>
   </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;honeyAccent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E0A422&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;defaultSwap&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Partial (75%)&quot;,&quot;options&quot;:[&quot;Partial (50%)&quot;,&quot;Partial (75%)&quot;,&quot;Full (100%)&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;heroHeadline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Bake it with honey instead.&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;honeyAccent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#D4AF6A&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;defaultSwap&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Partial (75%)&quot;,&quot;options&quot;:[&quot;Partial (50%)&quot;,&quot;Partial (75%)&quot;,&quot;Full (100%)&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;heroHeadline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Bake it with honey instead.&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 const FRAC = {'¼':.25,'½':.5,'¾':.75,'⅓':1/3,'⅔':2/3,'⅛':.125,'⅜':.375,'⅝':.625,'⅞':.875,'⅙':1/6};
 const UNITS = {cup:1,cups:1,c:1,tablespoon:1/16,tablespoons:1/16,tbsp:1/16,tbsps:1/16,tbs:1/16,tablespoonful:1/16,teaspoon:1/48,teaspoons:1/48,tsp:1/48,tsps:1/48,gram:1/200,grams:1/200,g:1/200};
 
@@ -392,8 +399,8 @@ function isLiquid(n){ return LIQUIDS.some(l=>n.toLowerCase().includes(l)) && !/s
 const HONEYS={
   wildflower:{name:"Wildflower Raw Honey",swatch:"#D99A1F",note:"Mild & floral — the all-purpose baker's pick.",why:"A gentle, neutral honey that adapts to almost any bake without overpowering it."},
   clover:{name:"Clover Honey",swatch:"#ECC15A",note:"Light & delicate — lovely in sponge cakes & meringues.",why:"The lightest of our honeys — perfect when you want moisture without changing the flavour."},
-  creamed:{name:"Creamed Honey",swatch:"#E8CF9C",note:"Smooth & spreadable — ideal for frostings, glazes & toast.",why:"Naturally crystallized and spoonable — great for frostings, glazes and no-bake recipes."},
-  bakers:{name:"Baker's Honey",swatch:"#B97B12",note:"Value-sized & robust — built for heavy baking.",why:"Our value-sized workhorse — robust flavour and the right pick for big-batch baking."},
+  creamed:{name:"Creamed Honey",swatch:"#DDDDDD",note:"Smooth & spreadable — ideal for frostings, glazes & toast.",why:"Naturally crystallized and spoonable — great for frostings, glazes and no-bake recipes."},
+  bakers:{name:"Baker's Honey",swatch:"#D4AF6A",note:"Value-sized & robust — built for heavy baking.",why:"Our value-sized workhorse — robust flavour and the right pick for big-batch baking."},
   blueberry:{name:"Blueberry Honey",swatch:"#B98A3C",note:"Bright & fruity — sings in muffins & fruit bakes.",why:"A bright, fruity note that pairs beautifully with berries, muffins and morning bakes."},
   fireweed:{name:"Fireweed Honey",swatch:"#E0A85C",note:"Buttery & complex — a bold note for breads.",why:"Buttery and complex — adds real character to breads, spice cakes and rustic bakes."},
   blackberry:{name:"Blackberry Honey",swatch:"#7A4B2E",note:"Deep & fruity — stands up to chocolate & gingerbread.",why:"Deep and full-bodied — bold enough to hold its own against chocolate and warm spices."}
@@ -731,7 +738,7 @@ Bake at 375°F for 9 minutes`, result:null});
       const key=nm.toLowerCase();
       if(seen[key]) return; seen[key]=1;
       const {price,icon}=priceFor(nm);
-      items.push({id:key,name:nm.charAt(0).toUpperCase()+nm.slice(1),sub:L.raw,price,icon,swatch:'#FBEFD2',honey:false});
+      items.push({id:key,name:nm.charAt(0).toUpperCase()+nm.slice(1),sub:L.raw,price,icon,swatch:'#2A2A2A',honey:false});
     });
     return items;
   }
@@ -739,40 +746,40 @@ Bake at 375°F for 9 minutes`, result:null});
   removeItem = id => { this.setState(s=>({cart:(s.cart||[]).filter(x=>x.id!==id)})); };
 
   renderVals(){
-    const accent=this.props.honeyAccent || '#E0A422';
+    const accent=this.props.honeyAccent || '#D4AF6A'; // site honey gold; primary CTAs use black below
     const swap=this.curSwap();
     const SWAPS=[{label:'50%',val:50},{label:'75%',val:75},{label:'Full',val:100}];
     const swapOptions=SWAPS.map(o=>({
       label:o.label,
       onClick:()=>this.setSwap(o.val),
-      bg: swap===o.val? accent : '#FFFDF8',
-      fg: swap===o.val? '#2A1C0E' : '#8A6F45',
-      border: swap===o.val? accent : '#E6D6B4'
+      bg: swap===o.val? accent : '#FFFFFF',
+      fg: swap===o.val? '#171717' : '#555555',
+      border: swap===o.val? accent : '#DDDDDD'
     }));
-    const chipDefs=[['auto','Auto-pick','#CDB07A'],['wildflower','Wildflower',HONEYS.wildflower.swatch],['clover','Clover',HONEYS.clover.swatch],['blackberry','Blackberry',HONEYS.blackberry.swatch],['fireweed','Fireweed',HONEYS.fireweed.swatch]];
+    const chipDefs=[['auto','Auto-pick','#D4AF6A'],['wildflower','Wildflower',HONEYS.wildflower.swatch],['clover','Clover',HONEYS.clover.swatch],['blackberry','Blackberry',HONEYS.blackberry.swatch],['fireweed','Fireweed',HONEYS.fireweed.swatch]];
     const honeyChips=chipDefs.map(([k,label,sw])=>({
       label,swatch:sw,onClick:()=>this.setHoney(k),
-      bg:this.state.honey===k? '#FBEFD2':'#fff',
-      fg:this.state.honey===k? '#9A6B16':'#8A6F45',
-      border:this.state.honey===k? '#E0B85E':'#E6D6B4'
+      bg:this.state.honey===k? '#2A2A2A':'#FFFFFF',
+      fg:this.state.honey===k? '#D4AF6A':'#555555',
+      border:this.state.honey===k? '#D4AF6A':'#DDDDDD'
     }));
 
     const r=this.state.result;
     const showResult=!!r && !r.error;
     let ingredients=[], adjustments=[], rec={};
     if(showResult){
-      const barMap={honey:accent,liquid:'#6FA8DC',soda:'#C9A227',keep:'#EADCBD'};
+      const barMap={honey:accent,liquid:'#6FA8DC',soda:'#C9A227',keep:'#E0E0E0'};
       ingredients=r.ingredients.map(x=>({
         adapted:x.adapted, original:x.original, changed:x.changed,
-        bar: x.changed? (barMap[x.kind]||accent) : '#EADCBD',
-        color: x.changed? '#241708' : '#5C4628'
+        bar: x.changed? (barMap[x.kind]||accent) : '#E0E0E0',
+        color: x.changed? '#171717' : '#333333'
       }));
       adjustments=r.adjustments;
       const H=HONEYS[r.honeyKey];
       rec={name:"Babe's "+H.name, why:H.why, swatch:H.swatch};
       if(!r.sugarFound){
         adjustments=[{icon:'🔎',title:'No sugar found:',detail:'We couldn\'t spot a sugar line. Add one like “1 cup granulated sugar” and adapt again.'}];
-        ingredients=ingredients.map(x=>({...x,bar:'#EADCBD',color:'#5C4628',changed:false}));
+        ingredients=ingredients.map(x=>({...x,bar:'#E0E0E0',color:'#333333',changed:false}));
       }
     }
 
@@ -798,14 +805,16 @@ Bake at 375°F for 9 minutes`, result:null});
     const tabDefs=[['paste','✏️','Type or paste'],['link','🔗','Paste a link'],['photo','📷','Upload a photo']];
     const inputTabs=tabDefs.map(([k,icon,label])=>({
       icon,label,onClick:()=>this.setMode(k),
-      bg: mode===k? '#fff':'transparent',
-      fg: mode===k? '#241708':'#9A7E50',
+      bg: mode===k? '#FFFFFF':'transparent',
+      fg: mode===k? '#171717':'#666666',
       shadow: mode===k? '0 2px 6px rgba(120,84,24,0.12)':'none'
     }));
     const pasteLabel = this.state.extractedFrom ? ('Pulled from '+this.state.extractedFrom+' — edit if needed') : 'Your recipe';
 
     return {
       accent,
+      ctaBg:'#000000',
+      ctaFg:'#FFFFFF',
       // input modes
       inputTabs,
       modePaste: mode==='paste', modeLink: mode==='link', modePhoto: mode==='photo',
