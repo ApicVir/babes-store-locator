@@ -8,7 +8,7 @@
     "postal": "",
     "lat": 48.655874,
     "lng": -123.416517,
-    "hours": "Wed\u2013Sat 10am\u20135pm",
+    "hours": "Wed–Sat 10am–5pm",
     "phone": "250-658-8319",
     "products": [
       "Wildflower 500g jar",
@@ -55,7 +55,7 @@
     "postal": "V8X 2C4",
     "lat": 48.478234,
     "lng": -123.356292,
-    "hours": "Daily 9am\u20135:30pm",
+    "hours": "Daily 9am–5:30pm",
     "phone": "",
     "products": [
       "Wildflower 500g jar",
@@ -97,9 +97,9 @@
     "id": "1348742",
     "name": "Country Grocer Cedar",
     "type": "retailer",
-    "address": "1824 Cedar Rd",
+    "address": "1824 Cedar Rd #3C",
     "city": "Cedar",
-    "postal": "",
+    "postal": "V9X 1H9",
     "lat": 49.107467,
     "lng": -123.862114,
     "hours": "",
@@ -122,17 +122,17 @@
     ],
     "lastInvoice": "2026-07-21",
     "notes": "",
-    "searchText": "country grocer cedar cedar 1824 cedar rd wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "country grocer cedar cedar 1824 cedar rd #3c v9x 1h9 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1345657",
     "name": "Country Grocer Chemainus",
     "type": "retailer",
-    "address": "2835 Oak St",
+    "address": "3055 Oak St",
     "city": "Chemainus",
-    "postal": "",
-    "lat": 48.925554,
-    "lng": -123.715371,
+    "postal": "V0R 1K0",
+    "lat": 48.925946,
+    "lng": -123.726366,
     "hours": "",
     "phone": "",
     "products": [
@@ -157,17 +157,17 @@
     ],
     "lastInvoice": "2026-07-21",
     "notes": "",
-    "searchText": "country grocer chemainus chemainus 2835 oak st wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "country grocer chemainus chemainus 3055 oak st v0r 1k0 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1361382",
     "name": "Jollity Farm Shop & Cafe",
     "type": "retailer",
-    "address": "2589 Oak St",
+    "address": "2859 Oak St",
     "city": "Chemainus",
-    "postal": "",
-    "lat": 48.925418,
-    "lng": -123.718709,
+    "postal": "V0R 1K1",
+    "lat": 48.925517,
+    "lng": -123.716555,
     "hours": "",
     "phone": "",
     "products": [
@@ -184,13 +184,13 @@
     ],
     "lastInvoice": "2026-07-10",
     "notes": "",
-    "searchText": "jollity farm shop & cafe chemainus 2589 oak st wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl glass  can jar  honey bee line beeline sparkling"
+    "searchText": "jollity farm shop & cafe chemainus 2859 oak st v0r 1k1 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1274615",
     "name": "Country Grocer Cobble Hill",
     "type": "retailer",
-    "address": "1400 Cowichan Bay Rd",
+    "address": "#33-1400 Cowichan Bay Rd",
     "city": "Cobble Hill",
     "postal": "V0R 1L3",
     "lat": 48.709656,
@@ -219,7 +219,7 @@
     ],
     "lastInvoice": "2026-07-20",
     "notes": "",
-    "searchText": "country grocer cobble hill cobble hill 1400 cowichan bay rd wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "country grocer cobble hill cobble hill #33-1400 cowichan bay rd v0r 1l3 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1343130",
@@ -260,7 +260,7 @@
     "id": "1246513",
     "name": "Great Greens",
     "type": "retailer",
-    "address": "4485 Trans-Canada Hwy",
+    "address": "Suite G, 4485 Trans-Canada Hwy",
     "city": "Duncan",
     "postal": "V9L 6L8",
     "lat": 48.775156,
@@ -299,7 +299,7 @@
     ],
     "lastInvoice": "2026-08-25",
     "notes": "",
-    "searchText": "great greens duncan 4485 trans-canada hwy wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar creamed 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k a-ccw-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass bottle can jar  honey bee line beeline sparkling"
+    "searchText": "great greens duncan suite g, 4485 trans-canada hwy v9l 6l8 wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar creamed 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k a-ccw-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1346872",
@@ -342,7 +342,7 @@
     "type": "retailer",
     "address": "83 Lake Cowichan Rd",
     "city": "Lake Cowichan",
-    "postal": "",
+    "postal": "V0R 2G0",
     "lat": 48.827878,
     "lng": -124.050506,
     "hours": "",
@@ -369,7 +369,7 @@
     ],
     "lastInvoice": "2026-08-25",
     "notes": "",
-    "searchText": "country grocer lake cowichan lake cowichan 83 lake cowichan rd wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "country grocer lake cowichan lake cowichan 83 lake cowichan rd v0r 2g0 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "17",
@@ -437,7 +437,7 @@
     "type": "retailer",
     "address": "1800 Dufferin Crescent",
     "city": "Nanaimo",
-    "postal": "",
+    "postal": "V9S 0A9",
     "lat": 49.184483,
     "lng": -123.984151,
     "hours": "",
@@ -464,7 +464,7 @@
     ],
     "lastInvoice": "2026-08-24",
     "notes": "",
-    "searchText": "country grocer bowen nanaimo 1800 dufferin crescent wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "country grocer bowen nanaimo 1800 dufferin crescent v9s 0a9 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1317869",
@@ -472,7 +472,7 @@
     "type": "retailer",
     "address": "82 Twelfth St",
     "city": "Nanaimo",
-    "postal": "",
+    "postal": "V9R 6R6",
     "lat": 49.129345,
     "lng": -123.923244,
     "hours": "",
@@ -499,7 +499,7 @@
     ],
     "lastInvoice": "2026-07-21",
     "notes": "",
-    "searchText": "country grocer chase river nanaimo 82 twelfth st wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "country grocer chase river nanaimo 82 twelfth st v9r 6r6 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1435517",
@@ -531,7 +531,7 @@
     "name": "Dan's Farm & Country Market",
     "type": "retailer",
     "address": "2030 Bear Hill Rd",
-    "city": "Saanich",
+    "city": "Saanichton",
     "postal": "V8M 1X7",
     "lat": 48.551049,
     "lng": -123.416752,
@@ -551,7 +551,7 @@
     ],
     "lastInvoice": "2026-07-09",
     "notes": "",
-    "searchText": "dan's farm & country market saanich 2030 bear hill rd v8m 1x7 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k glass jar honey"
+    "searchText": "dan's farm & country market saanichton 2030 bear hill rd v8m 1x7 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1373381",
@@ -588,10 +588,10 @@
   },
   {
     "id": "1353414",
-    "name": "Co-op Food Store",
+    "name": "Peninsula Co-op Food Centre",
     "type": "retailer",
     "address": "2132 Keating Cross Rd",
-    "city": "Central Saanich",
+    "city": "Saanichton",
     "postal": "V8M 2A6",
     "lat": 48.565568,
     "lng": -123.412067,
@@ -621,15 +621,15 @@
     ],
     "lastInvoice": "2026-08-13",
     "notes": "",
-    "searchText": "co-op food store central saanich 2132 keating cross rd v8m 2a6 wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar can honey bee line beeline sparkling"
+    "searchText": "peninsula co-op food centre saanichton 2132 keating cross rd v8m 2a6 wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1306835",
     "name": "Thrifty Foods Salt Spring",
     "type": "retailer",
-    "address": "114 Purvis Ln",
+    "address": "114 Purvis Rd",
     "city": "Salt Spring Island",
-    "postal": "",
+    "postal": "V8K 2S5",
     "lat": 48.85378,
     "lng": -123.499741,
     "hours": "",
@@ -646,7 +646,7 @@
     ],
     "lastInvoice": "2025-10-18",
     "notes": "",
-    "searchText": "thrifty foods salt spring salt spring island 114 purvis ln wildflower 500g jar clover 500g jar wildflower 1kg jar b-wfw-500 b-clv-500 a-wfw-1k glass   jar  honey "
+    "searchText": "thrifty foods salt spring salt spring island 114 purvis rd v8k 2s5 wildflower 500g jar clover 500g jar wildflower 1kg jar b-wfw-500 b-clv-500 a-wfw-1k glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1246525",
@@ -654,7 +654,7 @@
     "type": "retailer",
     "address": "374 Lower Ganges Rd",
     "city": "Salt Spring Island",
-    "postal": "V0R 2P2",
+    "postal": "V8K 2V7",
     "lat": 48.860602,
     "lng": -123.51123,
     "hours": "",
@@ -681,7 +681,7 @@
     ],
     "lastInvoice": "2026-08-24",
     "notes": "",
-    "searchText": "country grocer saltspring salt spring island 374 lower ganges rd wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "country grocer saltspring salt spring island 374 lower ganges rd v8k 2v7 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1169293",
@@ -689,7 +689,7 @@
     "type": "retailer",
     "address": "2531 Beacon Ave",
     "city": "Sidney",
-    "postal": "V8L 1Y2",
+    "postal": "V8L 1Y1",
     "lat": 48.648255,
     "lng": -123.395716,
     "hours": "",
@@ -712,7 +712,7 @@
     ],
     "lastInvoice": "2026-08-17",
     "notes": "",
-    "searchText": "fairway (sidney) sidney 2531 beacon ave wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "fairway (sidney) sidney 2531 beacon ave v8l 1y1 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1440455",
@@ -739,11 +739,11 @@
   },
   {
     "id": "1169685",
-    "name": "Village Food Market (Logan Group)",
+    "name": "Village Food Markets",
     "type": "retailer",
-    "address": "103-6661 Sooke Rd",
+    "address": "6661 Sooke Rd",
     "city": "Sooke",
-    "postal": "",
+    "postal": "V9Z 0A1",
     "lat": 48.377733,
     "lng": -123.723672,
     "hours": "",
@@ -772,7 +772,7 @@
     ],
     "lastInvoice": "2026-08-25",
     "notes": "",
-    "searchText": "village food market (logan group) sooke 103-6661 sooke rd wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "village food markets sooke 6661 sooke rd v9z 0a1 wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1178883",
@@ -824,7 +824,7 @@
     "id": "527274",
     "name": "Caffe Fantastico - Harbour Rd",
     "type": "retailer",
-    "address": "398 Harbour Rd",
+    "address": "102-398 Harbour Rd",
     "city": "Victoria",
     "postal": "V9A 0B7",
     "lat": 48.432226,
@@ -849,7 +849,7 @@
     ],
     "lastInvoice": "2026-08-25",
     "notes": "",
-    "searchText": "caffe fantastico - harbour rd victoria 398 harbour rd wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "caffe fantastico - harbour rd victoria 102-398 harbour rd v9a 0b7 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "665911",
@@ -1008,7 +1008,7 @@
     "type": "retailer",
     "address": "272 Gorge Rd W",
     "city": "Saanich",
-    "postal": "V9A 1M6",
+    "postal": "V9A 1M7",
     "lat": 48.448547,
     "lng": -123.398968,
     "hours": "",
@@ -1031,7 +1031,7 @@
     ],
     "lastInvoice": "2026-07-31",
     "notes": "",
-    "searchText": "fairway (gorge) saanich 272 gorge rd w v9a 1m6 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar can honey bee line beeline sparkling"
+    "searchText": "fairway (gorge) saanich 272 gorge rd w v9a 1m7 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1169283",
@@ -1097,7 +1097,7 @@
     "type": "retailer",
     "address": "3651 Shelbourne St",
     "city": "Saanich",
-    "postal": "V8P 5E3",
+    "postal": "V8P 4H1",
     "lat": 48.460131,
     "lng": -123.331959,
     "hours": "",
@@ -1118,14 +1118,14 @@
     ],
     "lastInvoice": "2026-07-28",
     "notes": "",
-    "searchText": "fairway (shelbourne) saanich 3651 shelbourne st v8p 5e3 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-gng glass jar can honey bee line beeline sparkling"
+    "searchText": "fairway (shelbourne) saanich 3651 shelbourne st v8p 4h1 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1169673",
     "name": "Fairway (West Saanich)",
     "type": "retailer",
     "address": "7108 W Saanich Rd",
-    "city": "Central Saanich",
+    "city": "Brentwood Bay",
     "postal": "V8M 1P8",
     "lat": 48.575258,
     "lng": -123.446383,
@@ -1149,7 +1149,7 @@
     ],
     "lastInvoice": "2026-06-17",
     "notes": "",
-    "searchText": "fairway (west saanich) central saanich 7108 w saanich rd v8m 1p8 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar can honey bee line beeline sparkling"
+    "searchText": "fairway (west saanich) brentwood bay 7108 w saanich rd v8m 1p8 wildflower 500g jar clover 500g jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1041601",
@@ -1277,7 +1277,7 @@
     "id": "1174999",
     "name": "Lifestyle Markets",
     "type": "retailer",
-    "address": "2950 Douglas St",
+    "address": "2950 Douglas St, Unit 180",
     "city": "Victoria",
     "postal": "V8T 4N4",
     "lat": 48.443341,
@@ -1304,15 +1304,15 @@
     ],
     "lastInvoice": "2026-08-14",
     "notes": "",
-    "searchText": "lifestyle markets victoria 2950 douglas st wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can mermaid tears 750ml bottle b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-750-mer glass bottle can jar  honey bee line beeline sparkling"
+    "searchText": "lifestyle markets victoria 2950 douglas st, unit 180 v8t 4n4 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can mermaid tears 750ml bottle b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-750-mer glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1393625",
     "name": "Lifestyle Markets Cook St.",
     "type": "retailer",
-    "address": "343 Cook Street",
+    "address": "343 Cook St",
     "city": "Victoria",
-    "postal": "V8V 3X8",
+    "postal": "V8V 3X6",
     "lat": 48.41518,
     "lng": -123.355847,
     "hours": "",
@@ -1333,15 +1333,15 @@
     ],
     "lastInvoice": "2026-06-23",
     "notes": "",
-    "searchText": "lifestyle markets cook st. victoria 343 cook street wildflower 500g jar clover 500g jar wildflower 1kg jar mermaid tears 473ml can earl grey 473ml can b-wfw-500 b-clv-500 a-wfw-1k bline-473-mer bline-473-erl glass  can jar  honey bee line beeline sparkling"
+    "searchText": "lifestyle markets cook st. victoria 343 cook st v8v 3x6 wildflower 500g jar clover 500g jar wildflower 1kg jar mermaid tears 473ml can earl grey 473ml can b-wfw-500 b-clv-500 a-wfw-1k bline-473-mer bline-473-erl glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "527547",
     "name": "Market On Millstream",
     "type": "retailer",
-    "address": "2401 Millstream Rd",
+    "address": "125-2401C Millstream Rd",
     "city": "Langford",
-    "postal": "V9B 6C6",
+    "postal": "V9B 3R5",
     "lat": 48.471525,
     "lng": -123.505618,
     "hours": "",
@@ -1374,7 +1374,7 @@
     ],
     "lastInvoice": "2026-08-26",
     "notes": "",
-    "searchText": "market on millstream victoria 2401 millstream rd wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass bottle can jar  honey bee line beeline sparkling"
+    "searchText": "market on millstream langford 125-2401c millstream rd v9b 3r5 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "509133",
@@ -1382,7 +1382,7 @@
     "type": "retailer",
     "address": "903 Yates St",
     "city": "Victoria",
-    "postal": "",
+    "postal": "V8V 3M4",
     "lat": 48.425332,
     "lng": -123.358748,
     "hours": "",
@@ -1415,7 +1415,7 @@
     ],
     "lastInvoice": "2026-08-17",
     "notes": "",
-    "searchText": "market on yates victoria 903 yates st wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass bottle can jar  honey bee line beeline sparkling"
+    "searchText": "market on yates victoria 903 yates st v8v 3m4 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1384269",
@@ -1456,7 +1456,7 @@
     "type": "retailer",
     "address": "4101 Shelbourne St",
     "city": "Saanich",
-    "postal": "",
+    "postal": "V8N 3E8",
     "lat": 48.477625,
     "lng": -123.333283,
     "hours": "",
@@ -1483,7 +1483,7 @@
     ],
     "lastInvoice": "2026-08-14",
     "notes": "",
-    "searchText": "mt douglas market saanich 4101 shelbourne st  wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar can honey bee line beeline sparkling"
+    "searchText": "mt douglas market saanich 4101 shelbourne st v8n 3e8 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1037794",
@@ -1526,7 +1526,7 @@
     "type": "retailer",
     "address": "1641 Hillside Ave",
     "city": "Victoria",
-    "postal": "V8T 2C4",
+    "postal": "V8T 5G1",
     "lat": 48.445173,
     "lng": -123.333957,
     "hours": "",
@@ -1541,7 +1541,7 @@
     ],
     "lastInvoice": "2026-05-07",
     "notes": "",
-    "searchText": "pharmasave hillside victoria 1641 hillside ave wildflower 500g jar clover 500g jar b-wfw-500 b-clv-500 glass   jar  honey "
+    "searchText": "pharmasave hillside victoria 1641 hillside ave v8t 5g1 wildflower 500g jar clover 500g jar b-wfw-500 b-clv-500 glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1361699",
@@ -1549,7 +1549,7 @@
     "type": "retailer",
     "address": "516 Fisgard St",
     "city": "Victoria",
-    "postal": "",
+    "postal": "V8W 1R4",
     "lat": 48.429456,
     "lng": -123.3689,
     "hours": "",
@@ -1564,7 +1564,7 @@
     ],
     "lastInvoice": "2026-08-12",
     "notes": "",
-    "searchText": "pinhalla pizzeria victoria 516 fisgard st mermaid tears 473ml can earl grey 473ml can bline-473-mer bline-473-erl   can    bee line beeline sparkling"
+    "searchText": "pinhalla pizzeria victoria 516 fisgard st v8w 1r4 mermaid tears 473ml can earl grey 473ml can bline-473-mer bline-473-erl glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1277925",
@@ -1572,7 +1572,7 @@
     "type": "retailer",
     "address": "2631 Quadra St",
     "city": "Victoria",
-    "postal": "V8T 4E3",
+    "postal": "V8T 4E4",
     "lat": 48.438508,
     "lng": -123.358513,
     "hours": "",
@@ -1595,7 +1595,7 @@
     ],
     "lastInvoice": "2026-08-18",
     "notes": "",
-    "searchText": "quadra village drug mart victoria 2631 quadra st wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar creamed 1kg jar b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k a-ccw-1k glass   jar  honey "
+    "searchText": "quadra village drug mart victoria 2631 quadra st v8t 4e4 wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar creamed 1kg jar b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k a-ccw-1k glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "678809",
@@ -1630,7 +1630,7 @@
     "type": "retailer",
     "address": "325 Menzies St",
     "city": "Victoria",
-    "postal": "V8V 0C2",
+    "postal": "V8V 0C3",
     "lat": 48.417183,
     "lng": -123.372668,
     "hours": "",
@@ -1649,7 +1649,7 @@
     ],
     "lastInvoice": "2026-08-26",
     "notes": "",
-    "searchText": "red barn - james bay victoria 325 menzies st mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng   can    bee line beeline sparkling"
+    "searchText": "red barn - james bay victoria 325 menzies st v8v 0c3 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1074909",
@@ -1680,7 +1680,7 @@
   },
   {
     "id": "1303005",
-    "name": "Red Barn Brookside",
+    "name": "Red Barn Market (Latoria Walk)",
     "type": "retailer",
     "address": "611 Brookside Rd",
     "city": "Colwood",
@@ -1703,13 +1703,13 @@
     ],
     "lastInvoice": "2026-08-17",
     "notes": "",
-    "searchText": "red barn brookside colwood 611 brookside rd v9c 0c3 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng can honey bee line beeline sparkling"
+    "searchText": "red barn market (latoria walk) colwood 611 brookside rd v9c 0c3 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "605654",
     "name": "Red Barn Market (Matticks Farm)",
     "type": "retailer",
-    "address": "5325 Cordova Bay Rd",
+    "address": "129-5325 Cordova Bay Rd",
     "city": "Saanich",
     "postal": "V8Y 2L3",
     "lat": 48.529502,
@@ -1730,7 +1730,7 @@
     ],
     "lastInvoice": "2026-08-14",
     "notes": "",
-    "searchText": "red barn market (matticks farm) saanich 5325 cordova bay rd v8y 2l3 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng can honey bee line beeline sparkling"
+    "searchText": "red barn market (matticks farm) saanich 129-5325 cordova bay rd v8y 2l3 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "974422",
@@ -1984,7 +1984,7 @@
     "id": "1286346",
     "name": "Save-On-Foods Tillicum",
     "type": "retailer",
-    "address": "3170 Tillicum Rd",
+    "address": "#108-3170 Tillicum Rd",
     "city": "Saanich",
     "postal": "V9A 7C5",
     "lat": 48.454854,
@@ -2005,13 +2005,13 @@
     ],
     "lastInvoice": "2026-08-23",
     "notes": "",
-    "searchText": "save-on-foods tillicum saanich 3170 tillicum rd v9a 7c5 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k glass jar honey"
+    "searchText": "save-on-foods tillicum saanich #108-3170 tillicum rd v9a 7c5 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1286347",
     "name": "Save-On-Foods Wilson",
     "type": "retailer",
-    "address": "172 Wilson St",
+    "address": "#100-172 Wilson St",
     "city": "Victoria",
     "postal": "V9A 7N6",
     "lat": 48.432646,
@@ -2036,7 +2036,7 @@
     ],
     "lastInvoice": "2026-08-10",
     "notes": "",
-    "searchText": "save-on-foods wilson victoria 172 wilson st v9a 7n6 wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar creamed 1kg jar b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k a-ccw-1k glass jar honey"
+    "searchText": "save-on-foods wilson victoria #100-172 wilson st v9a 7n6 wildflower 500g jar clover 500g jar creamed 500g jar wildflower 1kg jar clover 1kg jar creamed 1kg jar b-wfw-500 b-clv-500 b-ccw-500 a-wfw-1k a-clv-1k a-ccw-1k glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1435851",
@@ -2088,7 +2088,7 @@
     "type": "retailer",
     "address": "517 Pandora Ave",
     "city": "Victoria",
-    "postal": "",
+    "postal": "V8W 3J6",
     "lat": 48.428381,
     "lng": -123.369133,
     "hours": "",
@@ -2103,7 +2103,7 @@
     ],
     "lastInvoice": "2026-08-20",
     "notes": "",
-    "searchText": "the drake victoria 517 pandora ave wildflower 1kg jar on tap a-wfw-1k jun-k18 glass   jar keg draft tap honey bee line beeline sparkling"
+    "searchText": "the drake victoria 517 pandora ave v8w 3j6 wildflower 1kg jar on tap a-wfw-1k jun-k18 glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1306674",
@@ -2111,7 +2111,7 @@
     "type": "retailer",
     "address": "1860 Island Hwy",
     "city": "Colwood",
-    "postal": "V9B 2V3",
+    "postal": "V9B 1J2",
     "lat": 48.443512,
     "lng": -123.470192,
     "hours": "",
@@ -2130,7 +2130,7 @@
     ],
     "lastInvoice": "2026-08-06",
     "notes": "",
-    "searchText": "thrifty foods (08) colwood victoria 1860 island hwy wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k glass   jar  honey "
+    "searchText": "thrifty foods (08) colwood colwood 1860 island hwy v9b 1j2 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1306040",
@@ -2425,7 +2425,7 @@
     "type": "retailer",
     "address": "1625 Fort St",
     "city": "Victoria",
-    "postal": "V8R 1H9",
+    "postal": "V8R 1H8",
     "lat": 48.427015,
     "lng": -123.335376,
     "hours": "",
@@ -2444,14 +2444,14 @@
     ],
     "lastInvoice": "2026-08-23",
     "notes": "",
-    "searchText": "urban grocer victoria 1625 fort st mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng   can    bee line beeline sparkling"
+    "searchText": "urban grocer victoria 1625 fort st v8r 1h8 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "634168",
     "name": "Country Bee Honey Farm",
     "type": "retailer",
     "address": "6440 W Saanich Rd",
-    "city": "Central Saanich",
+    "city": "Saanichton",
     "postal": "",
     "lat": 48.55721,
     "lng": -123.441695,
@@ -2477,17 +2477,17 @@
     ],
     "lastInvoice": "2026-08-23",
     "notes": "",
-    "searchText": "country bee honey farm saanichton 6440 w saanich rd mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass bottle can    bee line beeline sparkling"
+    "searchText": "country bee honey farm saanichton 6440 w saanich rd mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can mermaid tears 750ml bottle currantly hip 750ml bottle ginger splash 750ml bottle bline-473-mer bline-473-erl bline-473-cur bline-473-gng bline-750-mer bline-750-cur bline-750-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1353012",
     "name": "Deep Cove Market",
     "type": "retailer",
-    "address": "10990 West Saanich Rd",
+    "address": "10940 West Saanich Rd",
     "city": "North Saanich",
-    "postal": "V8L 5P5",
-    "lat": 48.68035,
-    "lng": -123.45822,
+    "postal": "V8L 5R9",
+    "lat": 48.679121,
+    "lng": -123.458052,
     "hours": "",
     "phone": "",
     "products": [
@@ -2512,7 +2512,7 @@
     ],
     "lastInvoice": "2026-08-10",
     "notes": "",
-    "searchText": "deep cove market north saanich 10990 west saanich rd wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass  can jar  honey bee line beeline sparkling"
+    "searchText": "deep cove market north saanich 10940 west saanich rd v8l 5r9 wildflower 500g jar clover 500g jar wildflower 1kg jar clover 1kg jar mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k a-clv-1k bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1169245",
@@ -2583,7 +2583,7 @@
     "name": "Health Essentials",
     "type": "retailer",
     "address": "300 Gorge Rd W #101",
-    "city": "Saanich",
+    "city": "Victoria",
     "postal": "V9A 1M8",
     "lat": 48.447923,
     "lng": -123.400767,
@@ -2597,15 +2597,15 @@
     ],
     "lastInvoice": "2026-07-14",
     "notes": "",
-    "searchText": "health essentials saanich 300 gorge rd w #101 v9a 1m8 wildflower 500g jar b-wfw-500 glass jar honey"
+    "searchText": "health essentials victoria 300 gorge rd w #101 v9a 1m8 wildflower 500g jar b-wfw-500 glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "503356",
     "name": "Heart Pharmacy",
     "type": "retailer",
-    "address": "1594 Fairfield Rd",
+    "address": "#15-1594 Fairfield Rd",
     "city": "Victoria",
-    "postal": "",
+    "postal": "V8S 1G1",
     "lat": 48.412415,
     "lng": -123.337687,
     "hours": "",
@@ -2628,15 +2628,15 @@
     ],
     "lastInvoice": "2026-07-07",
     "notes": "",
-    "searchText": "heart pharmacy victoria 1594 fairfield rd  wildflower 500g jar clover 500g jar wildflower 1kg jar mermaid tears 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k bline-473-mer bline-473-cur bline-473-gng glass jar can honey bee line beeline sparkling"
+    "searchText": "heart pharmacy victoria #15-1594 fairfield rd v8s 1g1 wildflower 500g jar clover 500g jar wildflower 1kg jar mermaid tears 473ml can currantly hip 473ml can ginger splash 473ml can b-wfw-500 b-clv-500 a-wfw-1k bline-473-mer bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1298389",
-    "name": "Nootka Rose",
+    "name": "Nootka Rose Milling",
     "type": "retailer",
-    "address": "4480 Happy Valley road",
+    "address": "4480 Happy Valley Rd",
     "city": "Metchosin",
-    "postal": "",
+    "postal": "V9C 3Z3",
     "lat": 48.379602,
     "lng": -123.532708,
     "hours": "",
@@ -2655,7 +2655,7 @@
     ],
     "lastInvoice": "2026-05-04",
     "notes": "",
-    "searchText": "nootka rose metchosin 4480 happy valley road mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng   can    bee line beeline sparkling"
+    "searchText": "nootka rose milling metchosin 4480 happy valley rd v9c 3z3 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1339166",
@@ -2727,7 +2727,7 @@
     "type": "retailer",
     "address": "5550 W Saanich Rd",
     "city": "Saanich",
-    "postal": "",
+    "postal": "V9E 2G1",
     "lat": 48.533164,
     "lng": -123.438681,
     "hours": "",
@@ -2746,14 +2746,14 @@
     ],
     "lastInvoice": "2026-08-17",
     "notes": "",
-    "searchText": "red barn - west saanich saanich 5550 w saanich rd  mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng can honey bee line beeline sparkling"
+    "searchText": "red barn - west saanich saanich 5550 w saanich rd v9e 2g1 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1379081",
-    "name": "Red Barn Sidney",
+    "name": "Red Barn Market (Sandown)",
     "type": "retailer",
     "address": "10330 McDonald Park Rd",
-    "city": "Sidney",
+    "city": "North Saanich",
     "postal": "V8L 2L5",
     "lat": 48.662215,
     "lng": -123.417141,
@@ -2773,7 +2773,7 @@
     ],
     "lastInvoice": "2026-07-25",
     "notes": "",
-    "searchText": "red barn sidney sidney 10330 mcdonald park rd mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng   can    bee line beeline sparkling"
+    "searchText": "red barn market (sandown) north saanich 10330 mcdonald park rd v8l 2l5 mermaid tears 473ml can earl grey 473ml can currantly hip 473ml can ginger splash 473ml can bline-473-mer bline-473-erl bline-473-cur bline-473-gng glass jar bottle can honey bee line beeline sparkling keg draft tap"
   },
   {
     "id": "1326126",
