@@ -397,6 +397,46 @@
       color: var(--white); text-decoration: underline; cursor: pointer;
       font: inherit; font-size: 0.78rem;
     }
+
+    .size-pill.picked {
+      background: var(--black);
+      border-color: var(--black);
+    }
+    .picked-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .picked-list[hidden] { display: none !important; }
+    .picked-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+      padding: 6px 8px 6px 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    .picked-chip button {
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      padding: 0 2px;
+    }
+    .hint {
+      margin: 4px 0 0;
+      font-size: 0.72rem;
+      color: var(--white-70);
+      letter-spacing: 0.4px;
+    }
   </style>
 </head>
 <body>
@@ -423,6 +463,8 @@
           <div class="size-row" id="beeline-sizes" hidden></div>
         </div>
       </div>
+      <p class="hint">Tap sizes to build a list — only stores with <em>all</em> of them show.</p>
+      <div class="picked-list" id="picked-list" hidden></div>
       <div class="active-filter" id="active-filter" hidden></div>
     </div>
     <div class="layout">
@@ -515,8 +557,8 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
     ];
 
     let mode = "all";
-    let productKey = null;
-    let sizeId = null;
+    let openProduct = null;   // which product's size row is open
+    let picked = new Set();   // exact SKU labels — AND filter
     let query = "";
     let selected = null;
     const markers = {};
@@ -566,74 +608,93 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
     const honeySizes = document.getElementById("honey-sizes");
     const beeSizes = document.getElementById("beeline-sizes");
     const activeEl = document.getElementById("active-filter");
-
-    function clearProduct() {
-      productKey = null;
-      sizeId = null;
-    }
+    const pickedEl = document.getElementById("picked-list");
 
     function setMode(next) {
       mode = next;
-      if (next !== "all") clearProduct();
-      syncUI();
-      render(true);
-    }
-
-    function setProduct(key) {
-      mode = "all";
-      if (productKey === key && !sizeId) {
-        clearProduct();
-      } else {
-        productKey = key;
-        sizeId = null;
+      if (next !== "all") {
+        // keep picked SKUs — shops/ontap further narrow
       }
       syncUI();
       render(true);
     }
 
-    function setSize(id) {
+    function openProductSizes(key) {
+      openProduct = (openProduct === key) ? null : key;
+      syncUI();
+    }
+
+    function toggleSku(id) {
       mode = "all";
-      sizeId = (sizeId === id) ? null : id;
+      if (picked.has(id)) picked.delete(id);
+      else picked.add(id);
       syncUI();
       render(true);
     }
 
+    function clearPicked() {
+      picked.clear();
+      openProduct = null;
+      mode = "all";
+      syncUI();
+      render(true);
+    }
+
+    function productHasPicked(key) {
+      const ids = CATALOG[key].sizes.map((s) => s.id);
+      return ids.some((id) => picked.has(id));
+    }
+
     function syncUI() {
       [...modeBox.children].forEach((el) =>
-        el.classList.toggle("on", el.dataset.id === mode && !productKey && !sizeId)
+        el.classList.toggle("on", el.dataset.id === mode && picked.size === 0)
       );
       document.querySelectorAll(".product-card").forEach((el) => {
-        el.classList.toggle("on", el.dataset.key === productKey);
+        const on = el.dataset.key === openProduct || productHasPicked(el.dataset.key);
+        el.classList.toggle("on", on);
       });
-      const entry = productKey ? CATALOG[productKey] : null;
-      const sizeHost = entry ? (entry.cat === "honey" ? honeySizes : beeSizes) : null;
+
+      const entry = openProduct ? CATALOG[openProduct] : null;
       honeySizes.hidden = !(entry && entry.cat === "honey");
       beeSizes.hidden = !(entry && entry.cat === "beeline");
+      const sizeHost = entry ? (entry.cat === "honey" ? honeySizes : beeSizes) : null;
       if (entry && sizeHost) {
         sizeHost.innerHTML = "";
         entry.sizes.forEach((sz) => {
           const b = document.createElement("button");
           b.type = "button";
-          b.className = "size-pill" + (sizeId === sz.id ? " on" : "");
-          b.textContent = sz.label;
-          b.addEventListener("click", () => setSize(sz.id));
+          b.className = "size-pill" + (picked.has(sz.id) ? " picked" : "");
+          b.textContent = (picked.has(sz.id) ? "✓ " : "") + sz.label;
+          b.addEventListener("click", () => toggleSku(sz.id));
           sizeHost.appendChild(b);
         });
       }
-      if (productKey || sizeId || mode === "ontap" || mode === "shops") {
+
+      // shopping list chips
+      if (picked.size) {
+        pickedEl.hidden = false;
+        pickedEl.innerHTML = "";
+        [...picked].forEach((id) => {
+          const chip = document.createElement("span");
+          chip.className = "picked-chip";
+          chip.innerHTML = esc(id) + ' <button type="button" aria-label="Remove">&times;</button>';
+          chip.querySelector("button").onclick = () => toggleSku(id);
+          pickedEl.appendChild(chip);
+        });
+      } else {
+        pickedEl.hidden = true;
+        pickedEl.innerHTML = "";
+      }
+
+      if (picked.size || mode === "ontap" || mode === "shops") {
         activeEl.hidden = false;
-        let label = "All locations";
-        if (mode === "shops") label = "Our shops";
-        else if (mode === "ontap") label = "On Tap";
-        else if (sizeId) label = sizeId;
-        else if (productKey) label = CATALOG[productKey].name + " (any size)";
-        activeEl.innerHTML = "Showing: <strong>" + label + "</strong> <button type=\"button\" id=\"clear-filter\">Clear</button>";
-        document.getElementById("clear-filter").onclick = () => {
-          mode = "all";
-          clearProduct();
-          syncUI();
-          render(true);
-        };
+        let label;
+        if (picked.size) {
+          label = picked.size + " SKU" + (picked.size === 1 ? "" : "s") + " (must have all)";
+        } else if (mode === "shops") label = "Our shops";
+        else label = "On Tap";
+        activeEl.innerHTML = "Showing: <strong>" + label + '</strong> <button type="button" id="clear-filter">Clear</button>';
+        document.getElementById("clear-filter").onclick = clearPicked;
       } else {
         activeEl.hidden = true;
         activeEl.innerHTML = "";
@@ -656,7 +717,7 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
       b.className = "product-card";
       b.dataset.key = key;
       b.innerHTML = '<img src="' + entry.img + '" alt="" width="56" height="56" /><span class="pname">' + entry.name + "</span>";
-      b.addEventListener("click", () => setProduct(key));
+      b.addEventListener("click", () => openProductSizes(key));
       (entry.cat === "honey" ? honeyBox : beeBox).appendChild(b);
     });
 
@@ -676,12 +737,13 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
         const tokens = query.split(/\s+/).filter(Boolean);
         if (!tokens.every((tok) => blob.includes(tok))) return false;
       }
-      if (mode === "shops") return st.type === "shop";
-      if (mode === "ontap") return products.includes("On Tap");
-      if (sizeId) return products.includes(sizeId);
-      if (productKey) {
-        const ids = CATALOG[productKey].sizes.map((s) => s.id);
-        return products.some((p) => ids.includes(p));
+      if (mode === "shops" && st.type !== "shop") return false;
+      if (mode === "ontap" && !products.includes("On Tap")) return false;
+      // AND: every picked SKU must be carried
+      if (picked.size) {
+        for (const sku of picked) {
+          if (!products.includes(sku)) return false;
+        }
       }
       return true;
     }
@@ -750,7 +812,7 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
         list.appendChild(btn);
       });
       if (!shown.length) {
-        list.innerHTML = `<div class="empty">No stores match that search. Try another city or clear the filters.</div>`;
+        list.innerHTML = `<div class="empty">No stores carry all of those. Clear a SKU or try fewer items.</div>`;
       }
       document.getElementById("count").textContent = `${shown.length} place${shown.length === 1 ? "" : "s"}`;
       if (fit && mapped.length) {
