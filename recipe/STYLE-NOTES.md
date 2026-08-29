@@ -42,9 +42,17 @@ Avoided: cream `#F7F1E3`, honey-gold app chrome, painting the whole page `#17171
 
 Light cards / panels use `#171717` / `#555` — never `rgba(255,255,255,…)` body copy. White type is only on the photo hero, steel-blue stores band, black buttons, and footer.
 
-## Files / wiring (unchanged)
+## Peppers Foods delivery (v1, 29 Aug 2026)
 
-- `/workspace/recipe-adapter/index.html` — visual chrome + CSS only
+Recipe adapter can add the recommended Babe's honey to Peppers' live Shopify cart. UI chrome matches this file: square black CTAs, Rye titles, Raleway body, white card on the steel-blue Retailers band.
+
+- Result card: primary **Deliver with Peppers →** (black square) + subline “Same-day delivery or curbside · Cadboro Bay · $40 min”; **Find this honey near you** stays as an outline secondary (scrolls to `#stores`).
+- Stores band: white Peppers delivery panel (recommended honey + cart permalink + “Shop other ingredients” search checklist) above postal → locator.
+- Demo shopping list prices are labelled as estimates; **Checkout at Peppers →** is the real cart permalink.
+
+## Files / wiring
+
+- `/workspace/recipe-adapter/index.html` — chrome + Adapt engine (`PEPPERS_HONEY`, `peppersCartUrl`, `peppersSearchUrl`)
 - `/workspace/recipe-adapter/support.js` — not modified
-- Adapt engine (`<script type="text/x-dc">`) — logic untouched
-- Find Stores still opens `https://apicvir.github.io/babes-store-locator/`
+- Find Stores still opens `https://apicvir.github.io/babes-store-locator/?sku=…`
+- Peppers cart pattern: `https://shop.peppers-foods.com/cart/{variantId}:1`
