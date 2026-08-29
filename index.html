@@ -50,8 +50,12 @@
     }
     html.embed, html.embed body {
       background: var(--band-blue);
-      height: 100%;
-      overflow: hidden;
+    }
+    @media (min-width: 861px) {
+      html.embed, html.embed body {
+        height: 100%;
+        overflow: hidden;
+      }
     }
     html.embed .app {
       max-width: none;
@@ -293,20 +297,157 @@
       border-radius: 50%;
       margin-right: 6px;
     }
+
+    .filters-toggle { display: none; }
+    .mobile-tabs { display: none; }
+
     @media (max-width: 860px) {
-      .app { padding: 12px; }
-      .layout {
-        grid-template-columns: 1fr;
-        min-height: 0;
-        height: auto;
-        max-height: none;
+      html, body {
+        height: auto !important;
+        overflow: auto !important;
+        -webkit-overflow-scrolling: touch;
       }
-      #map { min-height: 42vh; height: 42vh; max-height: 420px; }
-      .list-wrap { min-height: 260px; max-height: 48vh; }
-      html.embed .layout { height: 100%; }
-      html.embed #map { height: 46%; min-height: 180px; max-height: none; }
-      html.embed .list-wrap { min-height: 0; max-height: none; flex: 1; }
+      .app {
+        padding: 10px 10px 20px !important;
+        height: auto !important;
+        min-height: 100dvh;
+        max-width: none !important;
+      }
+      .brand { padding: 2px 2px 8px !important; }
+      .brand h1 { font-size: 0.9rem !important; }
+
+      .toolbar { gap: 8px; margin-bottom: 8px; }
+      .search input {
+        font-size: 16px; /* prevent iOS zoom */
+        padding: 12px 14px 12px 40px;
+      }
+      .mode-row { gap: 6px; }
+      .mode {
+        padding: 10px 12px;
+        font-size: 0.72rem;
+        min-height: 40px;
+      }
+
+      .filters-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid var(--white-90);
+        background: rgba(0,0,0,0.35);
+        color: var(--white);
+        padding: 12px 14px;
+        font: inherit;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 0;
+      }
+      .filters-toggle .chev { transition: transform 0.15s ease; }
+      .filters-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+      .catalog {
+        display: none;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .catalog.open { display: flex; }
+      .hint { display: none; }
+      .catalog.open + .hint,
+      .catalog.open ~ .hint { display: block; }
+
+      .cat-block { padding: 8px; }
+      .product-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        scrollbar-width: thin;
+      }
+      .product-card {
+        width: 72px;
+        flex: 0 0 auto;
+        padding: 8px 4px;
+        min-height: 96px;
+      }
+      .product-card img { width: 52px; height: 52px; }
+      .size-pill {
+        padding: 10px 12px;
+        min-height: 40px;
+        font-size: 0.72rem;
+      }
+      .picked-chip {
+        font-size: 0.68rem;
+        padding: 8px 8px 8px 10px;
+      }
+
+      .mobile-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin: 0 0 8px;
+        border: 1px solid var(--line-on-blue);
+      }
+      .mobile-tabs button {
+        border: 0;
+        background: rgba(0,0,0,0.25);
+        color: var(--white-70);
+        padding: 11px 8px;
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .mobile-tabs button.on {
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .layout {
+        display: block !important;
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+      }
+      #map {
+        height: 52dvh !important;
+        min-height: 280px !important;
+        max-height: none !important;
+        width: 100%;
+      }
+      .list-wrap {
+        height: auto !important;
+        min-height: 220px !important;
+        max-height: none !important;
+        margin-top: 8px;
+      }
+      .list { max-height: 50dvh; }
+
+      /* Map / List tabs */
+      body.mobile-show-list #map { display: none !important; }
+      body.mobile-show-list .list-wrap {
+        margin-top: 0;
+        min-height: 60dvh !important;
+      }
+      body.mobile-show-list .list { max-height: none; }
+      body.mobile-show-map .list-wrap { display: none !important; }
+
+      .note { font-size: 0.75rem; margin-top: 10px; }
+      .leaflet-control-zoom a {
+        width: 36px !important;
+        height: 36px !important;
+        line-height: 36px !important;
+        font-size: 18px !important;
+      }
     }
+
 
     .mode-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .mode {
@@ -451,7 +592,11 @@
         <input id="q" type="search" placeholder="Search store, city, or SKU…" autocomplete="off" />
       </div>
       <div class="mode-row" id="modes"></div>
-      <div class="catalog">
+      <button type="button" class="filters-toggle" id="filters-toggle" aria-expanded="false">
+        <span id="filters-toggle-label">Shop products</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="catalog" id="catalog">
         <div class="cat-block" data-cat="honey">
           <div class="cat-label">Honey</div>
           <div class="product-row" id="honey-products"></div>
@@ -466,6 +611,10 @@
       <p class="hint">Tap sizes to build a list — only stores with <em>all</em> of them show.</p>
       <div class="picked-list" id="picked-list" hidden></div>
       <div class="active-filter" id="active-filter" hidden></div>
+    </div>
+    <div class="mobile-tabs" id="mobile-tabs" role="tablist">
+      <button type="button" class="on" data-tab="map">Map</button>
+      <button type="button" data-tab="list">List</button>
     </div>
     <div class="layout">
       <div id="map" role="application" aria-label="Store map"></div>
@@ -831,6 +980,51 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
         if (el) el.scrollIntoView({ block: "nearest" });
       }
     }
+
+
+    // Mobile: collapsible product shop + Map/List tabs
+    const filtersToggle = document.getElementById("filters-toggle");
+    const catalogEl = document.getElementById("catalog");
+    const filtersLabel = document.getElementById("filters-toggle-label");
+    if (filtersToggle && catalogEl) {
+      filtersToggle.addEventListener("click", () => {
+        const open = !catalogEl.classList.contains("open");
+        catalogEl.classList.toggle("open", open);
+        filtersToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        syncFilterToggleLabel();
+        setTimeout(() => map.invalidateSize(), 80);
+      });
+    }
+    function syncFilterToggleLabel() {
+      if (!filtersLabel) return;
+      if (picked.size) {
+        filtersLabel.textContent = "Shop products · " + picked.size + " selected";
+      } else {
+        filtersLabel.textContent = catalogEl && catalogEl.classList.contains("open")
+          ? "Hide products"
+          : "Shop products";
+      }
+    }
+    const _syncUI = syncUI;
+    syncUI = function () {
+      _syncUI();
+      syncFilterToggleLabel();
+    };
+
+    const tabs = document.getElementById("mobile-tabs");
+    if (tabs) {
+      document.body.classList.add("mobile-show-map");
+      tabs.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-tab]");
+        if (!btn) return;
+        const tab = btn.dataset.tab;
+        tabs.querySelectorAll("button").forEach((b) => b.classList.toggle("on", b === btn));
+        document.body.classList.toggle("mobile-show-map", tab === "map");
+        document.body.classList.toggle("mobile-show-list", tab === "list");
+        setTimeout(() => map.invalidateSize(), 80);
+      });
+    }
+
 
     syncUI();
     render(true);
