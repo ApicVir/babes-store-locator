@@ -100,6 +100,8 @@ EXCLUDE_NAME_RE = re.compile(
 )
 
 ADDRESS_OVERRIDES = {
+    "Tru Value Mayne": ("472 Village Bay Rd", "Mayne Island", "British Columbia", "V0N 2J2"),
+    "Tru Value Foods (Mayne Island)": ("472 Village Bay Rd", "Mayne Island", "British Columbia", "V0N 2J2"),
     "Peppers Foods": ("3829 Cadboro Bay Rd", "Victoria", "British Columbia", "V8N 4G1"),
     "Thrifty Foods Wallace": ("7860 Wallace Dr", "Central Saanich", "British Columbia", "V8M 2B3"),
     "Thrifty Foods (08) Colwood": ("1860 Island Hwy", "Colwood", "British Columbia", "V9B 2V3"),

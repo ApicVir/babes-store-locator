@@ -8,7 +8,7 @@
     "postal": "",
     "lat": 48.655874,
     "lng": -123.416517,
-    "hours": "Wed–Sat 10am–5pm",
+    "hours": "Wed\u2013Sat 10am\u20135pm",
     "phone": "250-658-8319",
     "products": [
       "Wildflower 500g jar",
@@ -55,7 +55,7 @@
     "postal": "V8X 2C4",
     "lat": 48.478234,
     "lng": -123.356292,
-    "hours": "Daily 9am–5:30pm",
+    "hours": "Daily 9am\u20135:30pm",
     "phone": "",
     "products": [
       "Wildflower 500g jar",
@@ -406,7 +406,7 @@
   },
   {
     "id": "1318633",
-    "name": "Tru Value Mayne",
+    "name": "Tru Value Foods (Mayne Island)",
     "type": "retailer",
     "address": "472 Village Bay Rd",
     "city": "Mayne Island",
@@ -414,7 +414,7 @@
     "lat": 48.850444,
     "lng": -123.298511,
     "hours": "",
-    "phone": "",
+    "phone": "250-539-2548",
     "products": [
       "Wildflower 500g jar",
       "Clover 500g jar",
@@ -429,7 +429,7 @@
     ],
     "lastInvoice": "2026-07-03",
     "notes": "",
-    "searchText": "tru value mayne mayne island 472 village bay rd v0n 2j2 wildflower 500g jar clover 500g jar creamed 500g jar creamed 1kg jar b-wfw-500 b-clv-500 b-ccw-500 a-ccw-1k glass jar honey"
+    "searchText": "tru value foods mayne island mayne 472 village bay rd v0n 2j2 wildflower 500g jar clover 500g jar creamed 500g jar creamed 1kg jar b-wfw-500 b-clv-500 b-ccw-500 a-ccw-1k glass jar honey"
   },
   {
     "id": "1317863",
