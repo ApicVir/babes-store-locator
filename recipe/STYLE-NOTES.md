@@ -35,7 +35,7 @@ Avoided: cream `#F7F1E3`, honey-gold app chrome, painting the whole page `#17171
 3. **Adapter** — `#F2F2F2` band, dark Rye headings, white square cards, black Adapt CTA.
 4. **Science** — white band, dark headings, white rule cards with `#555` body (not white-on-white).
 5. **Honey** — `#F2F2F2`, white product cards, gold used only as swatch bars.
-6. **Stores** — steel-blue over Retailers farm photo (`IMG_4496.JPG`), white titles, light inputs, black Search; white cart/store cards with dark ink.
+6. **Stores** — steel-blue over Retailers farm photo (`IMG_4496.JPG`), white titles, light inputs, black **Use my location** + Search; white cart/store cards with dark ink.
 7. **Footer** — short `#171717` strip.
 
 ## Contrast QA
@@ -47,12 +47,22 @@ Light cards / panels use `#171717` / `#555` — never `rgba(255,255,255,…)` bo
 Recipe adapter can add the recommended Babe's honey to Peppers' live Shopify cart. UI chrome matches this file: square black CTAs, Rye titles, Raleway body, white card on the steel-blue Retailers band.
 
 - Result card: primary **Deliver with Peppers →** (black square) + subline “Same-day delivery or curbside · Cadboro Bay · $40 min”; **Find this honey near you** stays as an outline secondary (scrolls to `#stores`).
-- Stores band: white Peppers delivery panel (recommended honey + cart permalink + “Shop other ingredients” search checklist) above postal → locator.
+- Stores band: white Peppers delivery panel (recommended honey + cart permalink + “Shop other ingredients” search checklist) above **Use my location** + postal → locator.
 - Demo shopping list prices are labelled as estimates; **Checkout at Peppers →** is the real cart permalink.
+
+## Geolocation (29 Aug 2026)
+
+Shoppers can skip typing a postal code. Permission is requested **only** when they click **Use my location** — never on page load.
+
+- Stores band: square black **Use my location** next to postal Search (Search stays the primary CTA). Status line: “Getting location…” / denied / error. Postal still works if they decline.
+- State stores `userLat` / `userLng`. Peppers **Delivers to your area** is Greater Victoria if postal is `V8`/`V9` **or** haversine ≤ ~35 km of Peppers (48.4609521, −123.296921) or Victoria centre (~48.428, −123.365) — works with an empty postal field.
+- Optional Nominatim reverse (`https://nominatim.openstreetmap.org/reverse?lat=&lon=&format=json`) fills the postal field for display. If it fails, lat/lng still apply.
+- Find Stores with location opens `https://apicvir.github.io/babes-store-locator/?lat={lat}&lng={lng}&sku=…`. Typed-postal-only keeps the previous sku-only URL.
 
 ## Files / wiring
 
-- `/workspace/recipe-adapter/index.html` — chrome + Adapt engine (`PEPPERS_HONEY`, `peppersCartUrl`, `peppersSearchUrl`)
+- `/workspace/recipe-adapter/index.html` — chrome + Adapt engine (`PEPPERS_HONEY`, `peppersCartUrl`, `peppersSearchUrl`, geolocation)
 - `/workspace/recipe-adapter/support.js` — not modified
-- Find Stores still opens `https://apicvir.github.io/babes-store-locator/?sku=…`
+- Find Stores: `https://apicvir.github.io/babes-store-locator/?sku=…` plus `lat`/`lng` when the shopper shared location
 - Peppers cart pattern: `https://shop.peppers-foods.com/cart/{variantId}:1`
+

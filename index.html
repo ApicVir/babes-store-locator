@@ -278,6 +278,36 @@
       background: #c5d0db;
     }
     .leaflet-control-attribution { font-size: 10px !important; }
+    .babes-locate a {
+      background: #000 !important;
+      color: #fff !important;
+      border-radius: 0 !important;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      border: 0 !important;
+      font-size: 0;
+    }
+    .babes-locate a:hover { background: #222 !important; }
+    .babes-locate a.busy { opacity: 0.65; }
+    .you-pin {
+      width: 14px; height: 14px;
+      background: #000;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px #000;
+    }
+    .row .km {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--ink);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
     .legend {
       background: rgba(242,242,242,0.95);
       padding: 7px 10px;
@@ -445,6 +475,11 @@
         height: 36px !important;
         line-height: 36px !important;
         font-size: 18px !important;
+      }
+      .babes-locate a {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
       }
     }
 
@@ -711,6 +746,19 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
     let query = "";
     let selected = null;
     const markers = {};
+    let userLat = null;
+    let userLng = null;
+    let userMarker = null;
+    // URL ?lat=&lng= — no permission prompt
+    try {
+      const _qp = new URLSearchParams(location.search);
+      const _lat = parseFloat(_qp.get("lat"));
+      const _lng = parseFloat(_qp.get("lng"));
+      if (Number.isFinite(_lat) && Number.isFinite(_lng) && Math.abs(_lat) <= 90 && Math.abs(_lng) <= 180) {
+        userLat = _lat;
+        userLng = _lng;
+      }
+    } catch (e) {}
 
     function esc(s) {
       return String(s ?? "").replace(/[&<>"']/g, (c) => ({
@@ -735,13 +783,36 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
       iconAnchor: [14, 36],
       popupAnchor: [0, -34],
     });
+    const youIcon = L.divIcon({
+      className: "",
+      html: '<div class="you-pin"></div>',
+      iconSize: [14, 14],
+      iconAnchor: [7, 7],
+    });
+
+    function haversineKm(lat1, lng1, lat2, lng2) {
+      const R = 6371, toRad = (d) => d * Math.PI / 180;
+      const dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1);
+      const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;
+      return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
+    }
+    function distKm(st) {
+      if (userLat == null || userLng == null || st.lat == null || st.lng == null) return null;
+      return haversineKm(userLat, userLng, st.lat, st.lng);
+    }
+    function formatDist(km) {
+      if (km == null || !isFinite(km)) return "";
+      if (km < 10) return km.toFixed(1) + " km";
+      return Math.round(km) + " km";
+    }
 
     const map = L.map("map", { scrollWheelZoom: true });
     L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
       maxZoom: 16,
       attribution: '&copy; Esri',
     }).addTo(map);
-    map.setView([48.55, -123.45], 9);
+    if (userLat != null && userLng != null) map.setView([userLat, userLng], 12);
+    else map.setView([48.55, -123.45], 9);
 
     const legend = L.control({ position: "bottomleft" });
     legend.onAdd = function () {
@@ -750,6 +821,56 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
       return d;
     };
     legend.addTo(map);
+
+    const LocateControl = L.Control.extend({
+      options: { position: "topleft" },
+      onAdd: function () {
+        const wrap = L.DomUtil.create("div", "leaflet-bar leaflet-control babes-locate");
+        const a = L.DomUtil.create("a", "", wrap);
+        a.href = "#";
+        a.title = "Near me";
+        a.setAttribute("role", "button");
+        a.setAttribute("aria-label", "Near me");
+        a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>';
+        L.DomEvent.disableClickPropagation(wrap);
+        L.DomEvent.on(a, "click", L.DomEvent.stop);
+        L.DomEvent.on(a, "click", () => {
+          a.classList.add("busy");
+          map.locate({ setView: false, enableHighAccuracy: false, timeout: 10000, maximumAge: 60000, watch: false });
+        });
+        this._btn = a;
+        return wrap;
+      }
+    });
+    const locateCtl = new LocateControl();
+    locateCtl.addTo(map);
+
+    function setUserLocation(lat, lng, recenter) {
+      userLat = lat;
+      userLng = lng;
+      upsertUserMarker();
+      render(false);
+      if (recenter) map.setView([lat, lng], Math.max(map.getZoom() || 0, 12), { animate: true });
+    }
+    function upsertUserMarker() {
+      if (userLat == null || userLng == null) return;
+      if (userMarker) map.removeLayer(userMarker);
+      userMarker = L.marker([userLat, userLng], {
+        icon: youIcon,
+        title: "You",
+        zIndexOffset: 2000,
+        keyboard: false
+      }).addTo(map);
+      userMarker.bindPopup('<div class="pop"><h3>You are here</h3></div>');
+    }
+    map.on("locationfound", (e) => {
+      if (locateCtl._btn) locateCtl._btn.classList.remove("busy");
+      setUserLocation(e.latitude, e.longitude, true);
+    });
+    map.on("locationerror", () => {
+      if (locateCtl._btn) locateCtl._btn.classList.remove("busy");
+      // Denied / timeout / unavailable: leave the map as-is. No modal.
+    });
 
     const modeBox = document.getElementById("modes");
     const honeyBox = document.getElementById("honey-products");
@@ -911,10 +1032,12 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
       const badge = st.type === "shop" ? ` <span class="badge">Babe's shop</span>` : "";
       const prod = esc((st.products || []).join(" · "));
       const cityline = esc(`${st.city}${st.postal ? ", " + st.postal : ""}`);
+      const km = formatDist(distKm(st));
+      const distLine = km ? `<div class="meta">${esc(km)} away</div>` : "";
       return `<div class="pop">
         <h3>${esc(st.name)}${badge}</h3>
         <div class="meta">${esc(st.address)}<br>${cityline}</div>
-        ${hours}${phone}
+        ${distLine}${hours}${phone}
         <div class="meta" style="margin-top:6px">${prod}</div>
         ${notes}
         <div style="margin-top:8px"><a href="${mapsUrl(st)}" target="_blank" rel="noopener">Directions</a></div>
@@ -927,6 +1050,15 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
       Object.values(markers).forEach((m) => map.removeLayer(m));
       for (const k of Object.keys(markers)) delete markers[k];
       const shown = STORES.filter(matches);
+      if (userLat != null && userLng != null) {
+        shown.sort((a, b) => {
+          const da = distKm(a), db = distKm(b);
+          if (da == null && db == null) return 0;
+          if (da == null) return 1;
+          if (db == null) return -1;
+          return da - db;
+        });
+      }
       const mapped = [];
       shown.forEach((st) => {
         if (st.lat != null && st.lng != null) {
@@ -946,7 +1078,9 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
         btn.className = "row" + (selected === st.id ? " active" : "");
         btn.dataset.id = st.id;
         const extra = st.hours ? `<div class="addr">${esc(st.hours)}${st.phone ? " · " + esc(st.phone) : ""}</div>` : "";
-        btn.innerHTML = `<div class="nm">${esc(st.name)}${st.type === "shop" ? ' <span class="badge">Babe\'s shop</span>' : ""}</div>
+        const km = formatDist(distKm(st));
+        const kmEl = km ? `<span class="km">${esc(km)}</span>` : "";
+        btn.innerHTML = `<div class="nm">${esc(st.name)}${st.type === "shop" ? ' <span class="badge">Babe\'s shop</span>' : ""}${kmEl}</div>
           <div class="addr">${esc(st.address)}, ${esc(st.city)}${st.postal ? " " + esc(st.postal) : ""}</div>
           ${extra}
           <div class="prods">${(st.products || []).map((p) => `<span class="tag">${esc(p)}</span>`).join("")}</div>`;
@@ -963,8 +1097,12 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
       if (!shown.length) {
         list.innerHTML = `<div class="empty">No stores carry all of those. Clear a SKU or try fewer items.</div>`;
       }
-      document.getElementById("count").textContent = `${shown.length} place${shown.length === 1 ? "" : "s"}`;
-      if (fit && mapped.length) {
+      const near = (userLat != null && userLng != null) ? " · nearest first" : "";
+      document.getElementById("count").textContent = `${shown.length} place${shown.length === 1 ? "" : "s"}${near}`;
+      upsertUserMarker();
+      if (userLat != null && userLng != null) {
+        if (fit) map.setView([userLat, userLng], Math.max(map.getZoom() || 0, 12));
+      } else if (fit && mapped.length) {
         map.fitBounds(L.featureGroup(mapped).getBounds().pad(0.14), { maxZoom: 12 });
       } else if (fit) {
         map.setView([48.55, -123.45], 9);
@@ -1028,6 +1166,7 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
 
 
     // Deep-link: ?sku=Wildflower%20500g%20jar&sku=Creamed%201kg%20jar (AND)
+    // Location coords already applied from ?lat=&lng= above (no geolocation prompt).
     (function applyQuerySkus() {
       try {
         const params = new URLSearchParams(location.search);
