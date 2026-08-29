@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Babe's Honey Recipe Adapter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#F4E9D6}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes floatUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  ::selection{background:#E9B949;color:#2A1C0E}
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',system-ui,sans-serif;color:#2A1C0E;background:#F4E9D6;min-height:100vh;-webkit-font-smoothing:antialiased">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(244,233,214,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #E1CFA8">
+    <div style="max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <nav style="display:flex;gap:22px;flex:1;font-size:12px;letter-spacing:0.14em;font-weight:600;color:#6B5430;text-transform:uppercase">
+        <a href="#adapter" style="color:#6B5430;text-decoration:none">Adapter</a>
+        <a href="#science" style="color:#6B5430;text-decoration:none">The Science</a>
+        <a href="#honey" style="color:#6B5430;text-decoration:none">Our Honey</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;align-items:center;line-height:1;flex-shrink:0">
+        <div style="display:flex;align-items:center;gap:8px;color:#9A7A3E;font-size:9px;letter-spacing:0.32em;font-weight:700">
+          <span style="width:22px;height:1.5px;background:#9A7A3E"></span>EST 1945<span style="width:22px;height:1.5px;background:#9A7A3E"></span>
+        </div>
+        <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:24px;letter-spacing:0.02em;color:#2A1C0E;margin-top:3px">BABE'S HONEY</div>
+        <div style="font-family:'Zilla Slab',serif;font-weight:500;font-size:10px;letter-spacing:0.22em;color:#6B5430;margin-top:1px">FARM &amp; FERMENTORIUM</div>
+      </div>
+      <nav style="display:flex;gap:22px;flex:1;justify-content:flex-end;font-size:12px;letter-spacing:0.14em;font-weight:600;color:#6B5430;text-transform:uppercase">
+        <a href="https://apicvir.github.io/babes-store-locator/" target="_blank" rel="noopener" style="color:#6B5430;text-decoration:none">Find Stores</a>
+        <a href="https://www.babes-honey-farm.com/retailers" target="_blank" rel="noopener" style="color:#6B5430;text-decoration:none">Retailers</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section style="max-width:1200px;margin:0 auto;padding:64px 28px 40px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:#FBEFD2;border:1px solid #E6Cf95;color:#9A6B16;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:0.04em;margin-bottom:22px">
+        🍯 Real honey, not refined sugar
+      </div>
+      <h1 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:56px;line-height:1.02;letter-spacing:-0.01em;margin:0 0 18px;color:#241708">Bake it with<br>honey instead.</h1>
+      <p style="font-size:18px;line-height:1.55;color:#5C4628;max-width:480px;margin:0 0 28px;text-wrap:pretty">Paste any recipe and we'll convert the sugar to raw Babe's honey — adjusting the liquid, leavening and oven temperature using real baking science. Then we'll pick the honey that pairs best.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#adapter" style="background:{{ accent }};color:#2A1C0E;font-weight:700;font-size:15px;padding:14px 26px;border-radius:12px;text-decoration:none;box-shadow:0 6px 18px rgba(186,123,18,0.28)">Adapt a recipe →</a>
+        <a href="#science" style="background:#fff;color:#5C4628;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;text-decoration:none;border:1px solid #E1CFA8">How it works</a>
+      </div>
+      <div style="display:flex;gap:28px;margin-top:34px">
+        <div><div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:#241708">1945</div><div style="font-size:12px;color:#8A6F45;font-weight:600;letter-spacing:0.03em">Family farm, est.</div></div>
+        <div style="width:1px;background:#E1CFA8"></div>
+        <div><div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:#241708">Raw</div><div style="font-size:12px;color:#8A6F45;font-weight:600;letter-spacing:0.03em">Unpasteurized &amp; local</div></div>
+        <div style="width:1px;background:#E1CFA8"></div>
+        <div><div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:#241708">7</div><div style="font-size:12px;color:#8A6F45;font-weight:600;letter-spacing:0.03em">Honey varieties</div></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div style="position:absolute;inset:-14px;background:radial-gradient(circle at 50% 40%,#F7D98A,#EFC25E 60%,#E6A82F);border-radius:28px;transform:rotate(-2deg)"></div>
+      <div style="position:relative;display:block;width:100%;height:440px;border-radius:20px;overflow:hidden;box-shadow:0 20px 48px rgba(80,52,12,0.28);background:radial-gradient(circle at 50% 35%,#F7D98A,#E6A82F 70%,#C9871F);display:flex;align-items:center;justify-content:center;font-size:130px">🍯</div>
+    </div>
+  </section>
+
+  <!-- ============ ADAPTER ============ -->
+  <section id="adapter" style="max-width:1200px;margin:0 auto;padding:44px 28px 24px;scroll-margin-top:90px">
+    <div style="text-align:center;margin-bottom:30px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">The Recipe Adapter</div>
+      <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:38px;margin:0;color:#241708">Paste a recipe. Get the honey version.</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:24px;align-items:start">
+
+      <!-- INPUT CARD -->
+      <div style="background:#fff;border:1px solid #EADCBD;border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(120,84,24,0.07)">
+        <!-- input mode tabs -->
+        <div style="display:flex;gap:6px;background:#F6ECD6;border:1px solid #EADCBD;border-radius:13px;padding:5px;margin-bottom:16px">
+          <sc-for list="{{ inputTabs }}" as="t" hint-placeholder-count="3">
+            <button onClick="{{ t.onClick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 6px;border:none;border-radius:9px;cursor:pointer;font-weight:700;font-size:13px;background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.shadow }}"><span style="font-size:14px">{{ t.icon }}</span>{{ t.label }}</button>
+          </sc-for>
+        </div>
+
+        <!-- TYPE / PASTE -->
+        <sc-if value="{{ modePaste }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <label style="font-weight:700;font-size:14px;color:#5C4628">{{ pasteLabel }}</label>
+            <button onClick="{{ loadExample }}" style="background:#FBEFD2;border:1px solid #E6Cf95;color:#9A6B16;font-weight:600;font-size:12.5px;padding:7px 13px;border-radius:9px;cursor:pointer">Load example</button>
+          </div>
+          <textarea value="{{ recipeText }}" onChange="{{ onRecipeChange }}" placeholder="Type or paste a recipe — e.g.&#10;1 cup granulated sugar&#10;1/2 cup brown sugar&#10;1 cup milk&#10;2 cups flour&#10;Bake at 350°F" style="width:100%;height:264px;resize:vertical;border:1.5px solid #E6D6B4;border-radius:13px;padding:15px;font-family:'Hanken Grotesk',monospace;font-size:14px;line-height:1.6;color:#3A2A14;background:#FFFDF8;outline:none"></textarea>
+        </sc-if>
+
+        <!-- PASTE A LINK -->
+        <sc-if value="{{ modeLink }}" hint-placeholder-val="{{ false }}">
+          <label style="font-weight:700;font-size:14px;color:#5C4628;display:block;margin-bottom:10px">Paste a recipe link</label>
+          <div style="display:flex;gap:9px">
+            <input value="{{ linkUrl }}" onChange="{{ onLinkChange }}" placeholder="https://… a recipe page" style="flex:1;min-width:0;border:1.5px solid #E6D6B4;border-radius:12px;padding:13px 15px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;color:#3A2A14;background:#FFFDF8;outline:none">
+            <button onClick="{{ fetchLink }}" style="background:{{ accent }};color:#2A1C0E;font-weight:700;font-size:14px;padding:0 20px;border:none;border-radius:12px;cursor:pointer;white-space:nowrap">{{ fetchLabel }}</button>
+          </div>
+          <div style="margin-top:14px;height:200px;border:1.5px dashed #E0CD9F;border-radius:13px;background:#FCF6E9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px">
+            <sc-if value="{{ extracting }}" hint-placeholder-val="{{ false }}"><span style="width:28px;height:28px;border:3px solid rgba(186,123,18,0.25);border-top-color:#B97B12;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite;margin-bottom:14px"></span></sc-if>
+            <sc-if value="{{ showLinkIcon }}" hint-placeholder-val="{{ true }}"><div style="font-size:34px;margin-bottom:10px">🔗</div></sc-if>
+            <div style="font-size:14px;color:#9A7E50;line-height:1.5;max-width:330px">{{ linkNote }}</div>
+          </div>
+        </sc-if>
+
+        <!-- UPLOAD A PHOTO -->
+        <sc-if value="{{ modePhoto }}" hint-placeholder-val="{{ false }}">
+          <label style="font-weight:700;font-size:14px;color:#5C4628;display:block;margin-bottom:10px">Upload a photo of a recipe</label>
+          <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:262px;border:1.5px dashed #E0CD9F;border-radius:13px;background:#FCF6E9;cursor:pointer;padding:24px;position:relative;overflow:hidden" style-hover="border-color:#E0B85E;background:#FBF3E1">
+            <input type="file" accept="image/*" onChange="{{ onPhoto }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+            {{ photoPreviewEl }}
+            <sc-if value="{{ extracting }}" hint-placeholder-val="{{ false }}"><span style="position:relative;width:30px;height:30px;border:3px solid rgba(186,123,18,0.25);border-top-color:#B97B12;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite;margin-bottom:14px"></span></sc-if>
+            <sc-if value="{{ showPhotoIcon }}" hint-placeholder-val="{{ true }}"><div style="position:relative;font-size:38px;margin-bottom:10px">📷</div></sc-if>
+            <div style="position:relative;font-size:14px;color:#9A7E50;line-height:1.5;max-width:320px;font-weight:600">{{ photoNote }}</div>
+          </label>
+        </sc-if>
+
+        <div style="margin-top:18px">
+          <div style="font-weight:700;font-size:13px;color:#5C4628;margin-bottom:9px">How much sugar to swap</div>
+          <div style="display:flex;gap:8px">
+            <sc-for list="{{ swapOptions }}" as="opt" hint-placeholder-count="3">
+              <button onClick="{{ opt.onClick }}" style="flex:1;padding:11px 6px;border-radius:11px;cursor:pointer;font-weight:700;font-size:13px;border:1.5px solid {{ opt.border }};background:{{ opt.bg }};color:{{ opt.fg }}">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <div style="font-weight:700;font-size:13px;color:#5C4628;margin-bottom:9px">Honey variety</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ honeyChips }}" as="chip" hint-placeholder-count="4">
+              <button onClick="{{ chip.onClick }}" style="display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;cursor:pointer;font-weight:600;font-size:12.5px;border:1.5px solid {{ chip.border }};background:{{ chip.bg }};color:{{ chip.fg }}"><span style="width:11px;height:11px;border-radius:50%;background:{{ chip.swatch }};box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)"></span>{{ chip.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <button onClick="{{ adapt }}" style="width:100%;margin-top:22px;background:{{ accent }};color:#2A1C0E;font-weight:800;font-size:16px;padding:16px;border:none;border-radius:13px;cursor:pointer;box-shadow:0 8px 20px rgba(186,123,18,0.3);display:flex;align-items:center;justify-content:center;gap:10px">
+          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;border:2.5px solid rgba(42,28,14,0.3);border-top-color:#2A1C0E;border-radius:50%;display:inline-block;animation:spin 0.7s linear infinite"></span></sc-if>
+          {{ adaptLabel }}
+        </button>
+        <div style="text-align:center;font-size:11.5px;color:#A08A60;margin-top:9px">{{ engineNote }}</div>
+      </div>
+
+      <!-- OUTPUT CARD -->
+      <div style="min-height:200px">
+        <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#FCF6E9;border:1.5px dashed #E0CD9F;border-radius:20px;padding:54px 30px;text-align:center;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="font-size:46px;margin-bottom:14px">🐝</div>
+            <div style="font-family:'Zilla Slab',serif;font-weight:600;font-size:21px;color:#5C4628;margin-bottom:6px">Your honey-adapted recipe appears here</div>
+            <div style="font-size:14px;color:#9A7E50;max-width:300px;line-height:1.5">Paste a recipe on the left (or load the example) and hit <strong>Adapt</strong>.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showResult }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:floatUp 0.4s ease both">
+            <!-- ingredient diff -->
+            <div style="background:#fff;border:1px solid #EADCBD;border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(120,84,24,0.07);margin-bottom:16px">
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:16px">
+                <span style="width:30px;height:30px;border-radius:8px;background:{{ accent }};display:flex;align-items:center;justify-content:center;font-size:16px">🍯</span>
+                <h3 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:20px;margin:0;color:#241708">Honey-adapted ingredients</h3>
+              </div>
+              <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="6">
+                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #F0E7D2">
+                  <span style="width:5px;border-radius:3px;flex-shrink:0;background:{{ ing.bar }}"></span>
+                  <div style="flex:1">
+                    <div style="font-size:14.5px;font-weight:600;color:{{ ing.color }};line-height:1.4">{{ ing.adapted }}</div>
+                    <sc-if value="{{ ing.changed }}" hint-placeholder-val="{{ false }}">
+                      <div style="font-size:12.5px;color:#A08A60;text-decoration:line-through;margin-top:2px">{{ ing.original }}</div>
+                    </sc-if>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+
+            <!-- adjustments -->
+            <div style="background:#FBF3E1;border:1px solid #EAD9B2;border-radius:20px;padding:22px;margin-bottom:16px">
+              <h3 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:17px;margin:0 0 13px;color:#241708">What we changed &amp; why</h3>
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <sc-for list="{{ adjustments }}" as="adj" hint-placeholder-count="4">
+                  <div style="display:flex;gap:11px;align-items:flex-start">
+                    <span style="font-size:17px;line-height:1.2;flex-shrink:0">{{ adj.icon }}</span>
+                    <div><span style="font-weight:700;font-size:13.5px;color:#3A2A14">{{ adj.title }} </span><span style="font-size:13.5px;color:#6B5430;line-height:1.45">{{ adj.detail }}</span></div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <!-- recommendation -->
+            <div style="background:#fff;border:1px solid #EADCBD;border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(120,84,24,0.07)">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B97B12;margin-bottom:12px">Recommended for this recipe</div>
+              <div style="display:flex;gap:16px;align-items:center">
+                <span style="width:54px;height:54px;border-radius:12px;flex-shrink:0;background:{{ rec.swatch }};box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1),0 4px 10px rgba(0,0,0,0.12)"></span>
+                <div style="flex:1">
+                  <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:18px;color:#241708">{{ rec.name }}</div>
+                  <div style="font-size:13.5px;color:#6B5430;line-height:1.45;margin-top:2px">{{ rec.why }}</div>
+                </div>
+              </div>
+              <a href="#stores" onClick="{{ goStores }}" style="display:block;text-align:center;margin-top:18px;background:#2A1C0E;color:#F4E9D6;font-weight:700;font-size:14.5px;padding:13px;border-radius:11px;text-decoration:none">🗺️ Find this honey near you →</a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCIENCE ============ -->
+  <section id="science" style="max-width:1200px;margin:0 auto;padding:60px 28px;scroll-margin-top:90px">
+    <div style="text-align:center;margin-bottom:36px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">The Baking Science</div>
+      <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:34px;margin:0;color:#241708">Five rules, locked in.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+      <sc-for list="{{ rules }}" as="r" hint-placeholder-count="5">
+        <div style="background:#fff;border:1px solid #EADCBD;border-radius:16px;padding:20px">
+          <div style="font-size:26px;margin-bottom:12px">{{ r.icon }}</div>
+          <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:15px;color:#241708;margin-bottom:7px">{{ r.title }}</div>
+          <div style="font-size:13px;color:#6B5430;line-height:1.5">{{ r.body }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ HONEY ============ -->
+  <section id="honey" style="background:#EFE0C3;scroll-margin-top:90px">
+    <div style="max-width:1200px;margin:0 auto;padding:60px 28px">
+      <div style="text-align:center;margin-bottom:36px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">From our hives</div>
+        <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:34px;margin:0;color:#241708">Seven raw honeys to bake with.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="7">
+          <div style="background:#fff;border:1px solid #E6D3AB;border-radius:16px;overflow:hidden">
+            <div style="height:8px;background:{{ p.swatch }}"></div>
+            <div style="padding:18px">
+              <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:17px;color:#241708;margin-bottom:5px">{{ p.name }}</div>
+              <div style="font-size:13px;color:#6B5430;line-height:1.5">{{ p.note }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORES + CART ============ -->
+  <section id="stores" style="max-width:1200px;margin:0 auto;padding:60px 28px;scroll-margin-top:90px">
+    <div style="text-align:center;margin-bottom:30px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B97B12;margin-bottom:8px">Find it near you</div>
+      <h2 style="font-family:'Zilla Slab',serif;font-weight:700;font-size:34px;margin:0;color:#241708">Stores &amp; a ready-to-shop cart.</h2>
+      <p style="font-size:15px;color:#6B5430;max-width:520px;margin:14px auto 0;line-height:1.5">Enter your postal code to find stores carrying Babe's, then build a cart with your honey plus everything else the recipe needs.</p>
+    </div>
+
+    <div style="max-width:560px;margin:0 auto 26px;display:flex;gap:10px">
+      <input value="{{ postal }}" onChange="{{ onPostalChange }}" placeholder="Postal code (e.g. V8X 2H7)" style="flex:1;border:1.5px solid #E6D6B4;border-radius:12px;padding:14px 16px;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#3A2A14;background:#fff;outline:none">
+      <button onClick="{{ findStores }}" style="background:{{ accent }};color:#2A1C0E;font-weight:700;font-size:15px;padding:0 24px;border:none;border-radius:12px;cursor:pointer">Search</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+      <!-- stores -->
+      <div>
+        <sc-if value="{{ showStoresEmpty }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#FCF6E9;border:1.5px dashed #E0CD9F;border-radius:16px;padding:40px 24px;text-align:center;color:#9A7E50;font-size:14px">📍 Enter a postal code to see nearby stores.</div>
+        </sc-if>
+        <sc-if value="{{ hasStores }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ stores }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.url }}" target="_blank" rel="noopener" style="background:#fff;border:1px solid #EADCBD;border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:center;text-decoration:none;color:inherit;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s" style-hover="border-color:#E0B85E;box-shadow:0 6px 18px rgba(120,84,24,0.12)">
+                <div style="width:46px;height:46px;border-radius:11px;background:#FBEFD2;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #EAD9B2">
+                  <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:15px;color:#9A6B16;line-height:1">{{ s.dist }}</div>
+                  <div style="font-size:8px;color:#B0935C;letter-spacing:0.05em">km</div>
+                </div>
+                <div style="flex:1">
+                  <div style="font-weight:700;font-size:14.5px;color:#241708">{{ s.name }}</div>
+                  <div style="font-size:12.5px;color:#8A6F45">{{ s.addr }}</div>
+                  <div style="font-size:11.5px;color:#3E8E5A;font-weight:600;margin-top:3px">● {{ s.stock }}</div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:2px;color:#B97B12;flex-shrink:0">
+                  <span style="font-size:16px;line-height:1">↗</span>
+                  <span style="font-size:9px;font-weight:700;letter-spacing:0.03em;text-align:center;line-height:1.2">Visit<br>store</span>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- cart -->
+      <div style="background:#fff;border:1px solid #EADCBD;border-radius:18px;box-shadow:0 10px 30px rgba(120,84,24,0.07);overflow:hidden;position:sticky;top:90px">
+        <div style="background:#2A1C0E;color:#F4E9D6;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:17px">🛒 Your cart</span>
+          <span style="font-size:13px;color:#D9C49A">{{ cartStore }}</span>
+        </div>
+        <div style="padding:8px 20px">
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:34px 10px;text-align:center;color:#9A7E50;font-size:14px;line-height:1.5">Adapt a recipe, then hit <strong>Build a cart</strong> — your honey and ingredients land here.</div>
+          </sc-if>
+          <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <sc-for list="{{ cart }}" as="c" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #F0E7D2">
+                  <span style="width:34px;height:34px;border-radius:8px;flex-shrink:0;background:{{ c.swatch }};display:flex;align-items:center;justify-content:center;font-size:15px">{{ c.icon }}</span>
+                  <div style="flex:1">
+                    <div style="font-weight:600;font-size:13.5px;color:#241708;line-height:1.3">{{ c.name }}</div>
+                    <div style="font-size:11.5px;color:#9A7E50">{{ c.sub }}</div>
+                  </div>
+                  <div style="font-weight:700;font-size:13.5px;color:#3A2A14">{{ c.price }}</div>
+                  <button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:18px;color:#C9B58A;line-height:1;padding:0 4px">×</button>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:16px 20px;background:#FBF3E1;border-top:1px solid #EAD9B2">
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:#6B5430;margin-bottom:5px"><span>Babe's honey</span><span>{{ cartHoneyTotal }}</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:#6B5430;margin-bottom:11px"><span>Other ingredients</span><span>{{ cartOtherTotal }}</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #EAD9B2;padding-top:11px">
+              <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:18px;color:#241708">Total</span>
+              <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:22px;color:#241708">{{ cartTotal }}</span>
+            </div>
+            <button style="width:100%;margin-top:14px;background:{{ accent }};color:#2A1C0E;font-weight:800;font-size:15px;padding:14px;border:none;border-radius:11px;cursor:pointer">Checkout</button>
+            <div style="text-align:center;font-size:11px;color:#A08A60;margin-top:8px">Demo cart · prices are estimates</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#2A1C0E;color:#D9C49A">
+    <div style="max-width:1200px;margin:0 auto;padding:46px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+      <div>
+        <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:20px;color:#F4E9D6;letter-spacing:0.02em">BABE'S HONEY</div>
+        <div style="font-size:12px;letter-spacing:0.2em;color:#A8895A;margin-top:2px">FARM &amp; FERMENTORIUM · EST 1945</div>
+      </div>
+      <div style="font-size:13px;color:#A8895A;text-align:right;line-height:1.6">4150 Blenkinsop Rd, Saanich, BC<br>Raw · Unpasteurized · Local since 1945</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;honeyAccent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E0A422&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;defaultSwap&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Partial (75%)&quot;,&quot;options&quot;:[&quot;Partial (50%)&quot;,&quot;Partial (75%)&quot;,&quot;Full (100%)&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;heroHeadline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Bake it with honey instead.&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const FRAC = {'¼':.25,'½':.5,'¾':.75,'⅓':1/3,'⅔':2/3,'⅛':.125,'⅜':.375,'⅝':.625,'⅞':.875,'⅙':1/6};
+const UNITS = {cup:1,cups:1,c:1,tablespoon:1/16,tablespoons:1/16,tbsp:1/16,tbsps:1/16,tbs:1/16,tablespoonful:1/16,teaspoon:1/48,teaspoons:1/48,tsp:1/48,tsps:1/48,gram:1/200,grams:1/200,g:1/200};
+
+function fracToNum(t){
+  if(FRAC[t]!=null) return FRAC[t];
+  if(/^\d+\/\d+$/.test(t)){const [a,b]=t.split('/').map(Number); return b?a/b:null;}
+  const n=parseFloat(t); return isNaN(n)?null:n;
+}
+function parseQty(words){
+  let qty=0,i=0,found=false;
+  while(i<words.length){
+    let w=words[i];
+    let m=w.match(/^(\d+)([¼½¾⅓⅔⅛⅜⅝⅞⅙])$/); // 1½
+    if(m){qty+=parseFloat(m[1])+FRAC[m[2]];found=true;i++;continue;}
+    if(/^\d+(\.\d+)?-\d/.test(w)) w=w.split('-')[0]; // 8-10 -> 8
+    const v=fracToNum(w);
+    if(v!=null){qty+=v;found=true;i++;continue;}
+    break;
+  }
+  return {qty:found?qty:null,rest:words.slice(i)};
+}
+// cups -> pretty fraction string
+function frac(x){
+  if(x==null||x<=0.0001) return '0';
+  const whole=Math.floor(x+1e-6); let f=x-whole;
+  const e=Math.round(f*8);
+  const map={1:'⅛',2:'¼',3:'⅜',4:'½',5:'⅝',6:'¾',7:'⅞'};
+  if(e===8) return ''+(whole+1);
+  if(e===0) return ''+whole;
+  return whole>0 ? whole+' '+map[e] : map[e];
+}
+function honeyAmt(cups){
+  if(cups<0.24){ const t=Math.round(cups*48); return t+' tsp'; }
+  if(cups<0.95) return frac(cups)+' cup';
+  return frac(cups)+' cup'+(cups>=1.95?'s':(cups>1.05?'s':''));
+}
+function tspStr(c){ const t=c*48; return (t>=1?frac(t/48*48/48*1):'')+''; } // unused
+
+const SUGAR_RE=/\b(granulated|white|caster|superfine|brown|raw|cane|turbinado|demerara|coconut|icing|powdered|confectioner'?s?)?\s*sugar\b/i;
+const LIQUIDS=['milk','water','buttermilk','cream','half-and-half','juice','coffee','espresso','tea','broth','stock'];
+function isLiquid(n){ return LIQUIDS.some(l=>n.toLowerCase().includes(l)) && !/sour cream|cream of tartar|creamed/i.test(n); }
+
+const HONEYS={
+  wildflower:{name:"Wildflower Raw Honey",swatch:"#D99A1F",note:"Mild & floral — the all-purpose baker's pick.",why:"A gentle, neutral honey that adapts to almost any bake without overpowering it."},
+  clover:{name:"Clover Honey",swatch:"#ECC15A",note:"Light & delicate — lovely in sponge cakes & meringues.",why:"The lightest of our honeys — perfect when you want moisture without changing the flavour."},
+  creamed:{name:"Creamed Honey",swatch:"#E8CF9C",note:"Smooth & spreadable — ideal for frostings, glazes & toast.",why:"Naturally crystallized and spoonable — great for frostings, glazes and no-bake recipes."},
+  bakers:{name:"Baker's Honey",swatch:"#B97B12",note:"Value-sized & robust — built for heavy baking.",why:"Our value-sized workhorse — robust flavour and the right pick for big-batch baking."},
+  blueberry:{name:"Blueberry Honey",swatch:"#B98A3C",note:"Bright & fruity — sings in muffins & fruit bakes.",why:"A bright, fruity note that pairs beautifully with berries, muffins and morning bakes."},
+  fireweed:{name:"Fireweed Honey",swatch:"#E0A85C",note:"Buttery & complex — a bold note for breads.",why:"Buttery and complex — adds real character to breads, spice cakes and rustic bakes."},
+  blackberry:{name:"Blackberry Honey",swatch:"#7A4B2E",note:"Deep & fruity — stands up to chocolate & gingerbread.",why:"Deep and full-bodied — bold enough to hold its own against chocolate and warm spices."}
+};
+
+function recommend(text){
+  const t=text.toLowerCase();
+  if(/frosting|glaze|spread|icing|no-bake|drizzle/.test(t)) return 'creamed';
+  if(/blueberr|berry|muffin|jam|fruit/.test(t)) return 'blueberry';
+  if(/chocolate|brownie|gingerbread|molasses|ginger|coffee|espresso/.test(t)) return 'blackberry';
+  if(/\bpie\b|apple|crumble|cobbler|bread|sourdough|oat|granola|cinnamon|spice|rye|whole wheat/.test(t)) return 'fireweed';
+  if(/sponge|angel|meringue|delicate|light|vanilla cake|pound cake/.test(t)) return 'clover';
+  if(/cookie|cake|batch|dozen/.test(t)) return 'wildflower';
+  return 'wildflower';
+}
+
+// Pull just the ingredient lines out of a pasted recipe page (intro, directions,
+// nutrition facts and prose are stripped). Falls back gracefully.
+function cleanRecipeText(text){
+  if(!text) return '';
+  const STOP=/^(directions?|instructions?|method|steps?|preparation|prep\b|nutrition|cook'?s ?note|notes?|tips?|equipment|how to make|video|reviews?|you'?ll also love|related)/i;
+  const lines=text.split(/\n/).map(l=>l.replace(/^[\s•\-\*\u2022\u00b7\u25aa\u25cf\d]*[\.\)]?\s*/,'').trim());
+  const raw=text.split(/\n/).map(l=>l.replace(/^[\s•\-\*\u2022\u00b7\u25aa\u25cf]+/,'').trim());
+  // Header path: capture between "Ingredients" and the next section header.
+  let start=-1;
+  for(let i=0;i<raw.length;i++){ if(/^ingredients?\s*:?\s*$/i.test(raw[i])){ start=i+1; break; } }
+  if(start>=0){
+    const out=[];
+    for(let i=start;i<raw.length;i++){
+      const l=raw[i];
+      if(STOP.test(l)) break;
+      if(!l) continue;
+      if(/:\s*$/.test(l)) continue;          // sub-section label like "For the filling:"
+      out.push(l);
+    }
+    if(out.length) return out.join('\n');
+  }
+  // No header: keep only lines that begin with a quantity.
+  const kept=raw.filter(l=>{
+    if(!l || STOP.test(l)) return false;
+    const {qty}=parseQty(l.split(/\s+/));
+    return qty!=null;
+  });
+  return kept.length ? kept.join('\n') : text;
+}
+
+const PRICES=[
+  [/honey/,0,null],
+  [/\bbutter\b/,6.49,'🧈'],[/\begg/,5.99,'🥚'],[/flour/,4.99,'🌾'],
+  [/chocolate|choc chip|cocoa/,5.49,'🍫'],[/vanilla/,8.99,'🌱'],
+  [/\bmilk\b|buttermilk|cream/,3.99,'🥛'],[/baking (soda|powder)|bicarb/,2.49,'🧂'],
+  [/\bsalt\b/,1.99,'🧂'],[/oil|shortening/,5.99,'🫙'],[/oat|cereal/,4.49,'🌾'],
+  [/\bnut|almond|walnut|pecan/,7.99,'🥜'],[/berr|blueberr|raspberr/,4.99,'🫐'],
+  [/spice|cinnamon|ginger|nutmeg/,3.49,'🌿'],[/yeast/,2.99,'🧫']
+];
+function priceFor(name){
+  for(const [re,p,icon] of PRICES){ if(re.test(name.toLowerCase())) return {price:p,icon:icon}; }
+  return {price:3.99,icon:'🛒'};
+}
+const HONEY_PRICE=14.5;
+const money=n=>'$'+n.toFixed(2);
+
+const STORE_POOL=[
+  {name:"Country Grocer — Royal Oak",addr:"100 Royal Oak Dr, Saanich",site:"https://countrygrocer.com/"},
+  {name:"Thrifty Foods — Broadmead",addr:"310-777 Royal Oak Dr, Victoria",site:"https://www.thriftyfoods.com/"},
+  {name:"The Root Cellar Village Green",addr:"1286 McKenzie Ave, Victoria",site:"https://therootcellar.ca/"},
+  {name:"Red Barn Market — Mattick's Farm",addr:"5325 Cordova Bay Rd, Saanich",site:"https://redbarnmarket.ca/"},
+  {name:"Lifestyle Markets",addr:"2950 Douglas St, Victoria",site:"https://lifestylemarkets.com/search?q=honey"},
+  {name:"Fairway Market — Quadra",addr:"3475 Quadra St, Victoria",site:"https://www.fairwaymarkets.com/"},
+  {name:"Peppers Foods — Cadboro Bay",addr:"3829 Cadboro Bay Rd, Victoria",site:"https://www.peppers-foods.com/"}
+];
+const STOCK=["All 7 varieties in stock","Wildflower & Clover in stock","Creamed & Wildflower in stock","Full Babe's shelf — well stocked"];
+
+class Component extends DCLogic {
+  state = { recipeText:'', result:null, swapPct:null, honey:'auto', loading:false, postal:'', stores:null, cart:null, cartStoreName:'',
+            inputMode:'paste', linkUrl:'', photoPreview:null, extracting:false, linkNote:'', photoNote:'', extractedFrom:null };
+
+  swapDefault(){
+    const d=(this.props.defaultSwap||'Partial (75%)');
+    if(d.includes('50')) return 50;
+    if(d.includes('100')||/full/i.test(d)) return 100;
+    return 75;
+  }
+  curSwap(){ return this.state.swapPct ?? this.swapDefault(); }
+
+  onRecipeChange = e => this.setState({recipeText:e.target.value, extractedFrom:null});
+  onPostalChange = e => this.setState({postal:e.target.value});
+  onLinkChange = e => this.setState({linkUrl:e.target.value});
+
+  setMode = m => this.setState({inputMode:m, linkNote:'', photoNote:''});
+
+  // ---- AI helper (graceful if unavailable) ----
+  async askClaude(prompt){
+    if(!(window.claude && window.claude.complete)) return null;
+    try{ const out = await window.claude.complete({messages:[{role:'user',content:prompt}]}); return (out||'').trim(); }
+    catch(e){ return null; }
+  }
+
+  // reject refusals / chatter — only accept text that reads like an ingredient list
+  looksLikeRecipe(out){
+    if(!out) return false;
+    const t=out.trim();
+    if(t.length<12) return false;
+    if(/^unknown\b/i.test(t)) return false;
+    if(/\b(i (don'?t|do not|cannot|can'?t)|i'?m (unable|not able)|as an ai|i don'?t have (the )?(ability|access)|browse the internet|access (external|the internet)|share the recipe|happy to help)\b/i.test(t)) return false;
+    // need at least 2 lines that carry a quantity or a measurement word
+    const measure=/(\d|¼|½|¾|⅓|⅔|⅛|⅜|⅝|⅞|cup|tbsp|tsp|tablespoon|teaspoon|gram|\bg\b|\boz\b|ounce|pound|\blb\b|ml|°)/i;
+    const hits=t.split(/\n/).filter(l=>measure.test(l)).length;
+    return hits>=2;
+  }
+
+  // ---- LINK: pull a recipe from a URL via Claude's knowledge ----
+  fetchLink = async () => {
+    const url=(this.state.linkUrl||'').trim();
+    if(!url){ this.setState({linkNote:'Paste a recipe link above first.'}); return; }
+    if(!/^https?:\/\//i.test(url)){ this.setState({linkNote:'That doesn’t look like a web link — include https://'}); return; }
+    let domain=url; try{ domain=new URL(url).hostname.replace(/^www\./,''); }catch(e){}
+    this.setState({extracting:true, linkNote:'Reading the recipe from '+domain+'…'});
+    const prompt=`Extract the recipe from this page: ${url}\n\nIf you recognize this specific recipe, output ONLY the ingredient list — one ingredient per line with its quantity (e.g. "1 cup granulated sugar") — followed by a line with the bake temperature and time if known (e.g. "Bake at 350°F for 12 minutes"). No title, no numbering, no steps, no commentary. If you do not know this exact recipe, output exactly: UNKNOWN`;
+    const out=await this.askClaude(prompt);
+    if(out===null){ this.setState({extracting:false, linkNote:'Couldn’t reach the recipe reader. Use the “Type or paste” tab and paste the recipe text.'}); return; }
+    if(!this.looksLikeRecipe(out)){
+      this.setState({extracting:false, linkNote:'Can’t open links directly yet — that needs a server to fetch the page. For now, open the recipe, copy the ingredients, and use the “Type or paste” tab.'});
+      return;
+    }
+    this.setState({extracting:false, recipeText:out, inputMode:'paste', extractedFrom:domain, result:null, linkNote:''});
+  };
+
+  // ---- PHOTO: OCR in the browser, then tidy with Claude ----
+  loadTesseract(){
+    if(window.Tesseract) return Promise.resolve(window.Tesseract);
+    if(this._tess) return this._tess;
+    this._tess=new Promise((res,rej)=>{
+      const s=document.createElement('script');
+      s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+      s.onload=()=>res(window.Tesseract); s.onerror=()=>rej(new Error('load'));
+      document.head.appendChild(s);
+    });
+    return this._tess;
+  }
+
+  onPhoto = async (e) => {
+    const file=e.target.files && e.target.files[0];
+    if(!file) return;
+    const preview=URL.createObjectURL(file);
+    this.setState({photoPreview:preview, extracting:true, photoNote:'Reading the text in your photo…'});
+    let raw='';
+    try{
+      const T=await this.loadTesseract();
+      const {data}=await T.recognize(file,'eng');
+      raw=(data && data.text || '').trim();
+    }catch(err){
+      this.setState({extracting:false, photoNote:'Couldn’t read that image. Try a clearer photo, or use the “Type or paste” tab.'});
+      return;
+    }
+    if(!raw || raw.replace(/\s/g,'').length<8){
+      this.setState({extracting:false, photoNote:'No readable text found. Try a sharper, well-lit photo of the ingredient list.'});
+      return;
+    }
+    this.setState({photoNote:'Tidying up the ingredients…'});
+    const cleaned=await this.askClaude(`The text below was read by OCR from a photo of a recipe and may be messy. Clean it into a plain ingredient list — one ingredient per line with its quantity — followed by the bake temperature and time if present. Drop page noise, ads, headings and step instructions. Output ONLY the list, no commentary.\n\nOCR TEXT:\n${raw}`);
+    const finalText=(cleaned && !/^unknown$/i.test(cleaned)) ? cleaned : raw;
+    this.setState({extracting:false, recipeText:finalText, inputMode:'paste', extractedFrom:'your photo', result:null, photoNote:''});
+  };
+
+  loadExample = () => {
+    this.setState({recipeText:
+`1 cup salted butter, softened
+1 cup granulated sugar
+1 cup packed brown sugar
+2 large eggs
+2 tsp vanilla extract
+3 cups all-purpose flour
+1 tsp baking soda
+1/2 tsp baking powder
+1 tsp salt
+2 cups chocolate chips
+Bake at 375°F for 9 minutes`, result:null});
+  };
+
+  setSwap = p => this.setState({swapPct:p, result:null});
+  setHoney = h => this.setState({honey:h, result:null});
+
+  parseLines(text){
+    return text.split(/\n/).map(l=>l.trim()).filter(Boolean).map(raw=>{
+      const words=raw.split(/\s+/);
+      const {qty,rest}=parseQty(words);
+      let unit=null, name=raw, cups=null;
+      if(qty!=null){
+        let r=rest.slice();
+        const u=(r[0]||'').toLowerCase().replace(/[.,]/g,'');
+        if(UNITS[u]!=null){ unit=u; cups=qty*UNITS[u]; r=r.slice(1); }
+        name=r.join(' ');
+      }
+      const isSugar=SUGAR_RE.test(raw) && cups!=null;
+      return {raw,qty,unit,cups,name:name||raw,isSugar,isLiquid:isLiquid(raw)&&cups!=null,isSoda:/baking soda|bicarb/i.test(raw)};
+    });
+  }
+
+  build(){
+    const fullText=this.state.recipeText;
+    const text=cleanRecipeText(fullText);
+    const lines=this.parseLines(text);
+    const p=this.curSwap()/100;
+    let honeyCups=0;
+    const ing=[];
+    // sugar conversions
+    const honeyKey = this.state.honey==='auto' ? recommend(fullText) : this.state.honey;
+    const honeyName = HONEYS[honeyKey].name;
+    let sugarFound=false;
+    lines.forEach(L=>{
+      if(L.isSugar){
+        sugarFound=true;
+        const swapped=L.cups*p, remaining=L.cups*(1-p);
+        const hc=swapped*0.75; honeyCups+=hc;
+        let adapted=honeyAmt(hc)+" Babe's "+honeyName;
+        if(remaining>0.03) adapted+=" + "+frac(remaining)+" cup "+L.name.replace(/^(of\s+)?/,'');
+        ing.push({adapted, original:L.raw, changed:true, kind:'honey'});
+      } else {
+        ing.push({adapted:L.raw, original:L.raw, changed:false, kind:'keep', _L:L});
+      }
+    });
+    // liquid reduction
+    const reduce=0.25*honeyCups;
+    let liqNote=null;
+    if(reduce>0.02){
+      const liquids=ing.filter(x=>x._L&&x._L.isLiquid).sort((a,b)=>b._L.cups-a._L.cups);
+      if(liquids.length){
+        const target=liquids[0]; const L=target._L;
+        const newC=Math.max(0,L.cups-reduce);
+        target.adapted="Reduce "+L.name+" to "+frac(newC)+" cup"+(newC>=1.95?'s':'');
+        target.original=L.raw; target.changed=true; target.kind='liquid';
+        liqNote={name:L.name,amt:Math.min(reduce,L.cups)};
+      }
+    }
+    // baking soda
+    const sodaTsp=0.5*honeyCups; // ~1/4-1/2 tsp per cup honey, use upper
+    let sodaHandled=false;
+    if(sodaTsp>0.02){
+      const sodaLine=ing.find(x=>x._L&&x._L.isSoda);
+      if(sodaLine){
+        const cur=sodaLine._L.cups? sodaLine._L.cups*48 : (sodaLine._L.qty||0);
+        const newTsp=Math.round((cur+sodaTsp)*4)/4;
+        const rest=sodaLine._L.name || 'baking soda';
+        sodaLine.adapted=frac(newTsp)+" tsp "+rest;
+        sodaLine.original=sodaLine._L.raw; sodaLine.changed=true; sodaLine.kind='soda';
+        sodaLine._addedSoda=Math.round(sodaTsp*4)/4;
+        sodaHandled=true;
+      }
+    }
+    // adjustments list
+    const adj=[];
+    if(sugarFound){
+      adj.push({icon:'🍯',title:'Sugar → honey:',detail:'Swapped '+this.curSwap()+'% of the sugar for ~¾ cup honey per cup ('+honeyAmt(honeyCups)+' total).'});
+    }
+    if(liqNote){
+      adj.push({icon:'💧',title:'Liquid:',detail:liqNote.name?('Reduced '+liqNote.name+' by ~'+frac(liqNote.amt)+' cup so it isn\'t soggy.'):('Reduce total liquid by ~'+frac(liqNote.amt)+' cup (¼ cup per cup of honey).')});
+    }
+    if(sodaTsp>0.02){
+      const addAmt=frac(Math.round(sodaTsp*4)/4);
+      adj.push({icon:'🧂',title:sodaHandled?'Baking soda:':'Add baking soda:',detail:(sodaHandled?('Increased by ~'+addAmt+' tsp (¼–½ tsp per cup of honey)'):('Add ~'+addAmt+' tsp baking soda (¼–½ tsp per cup of honey)'))+' to neutralize honey\'s acidity and help the rise.'});
+    }
+    // temperature
+    const tm=fullText.match(/(\d{2,3})\s*°?\s*(?:f\b|fahrenheit|degrees?)/i);
+    let newTemp=null;
+    if(tm){ newTemp=parseInt(tm[1],10)-25; adj.push({icon:'🌡️',title:'Oven:',detail:'Lower to '+newTemp+'°F (−25°F) — honey browns and caramelizes faster than sugar.'}); }
+    // swap guidance
+    if(sugarFound){
+      const g=this.curSwap()===100
+        ? 'Full swap works great in quick breads, muffins & many bakes — expect a moister, deeper-flavoured result.'
+        : 'A partial swap keeps the best texture in cookies & cakes while adding real honey flavour & moisture.';
+      adj.push({icon:'✅',title:'Texture tip:',detail:g});
+    }
+
+    // strip helper
+    ing.forEach(x=>{ delete x._L; });
+
+    return {ingredients:ing, adjustments:adj, honeyKey, honeyCups, sugarFound, newTemp, recipeLines:lines};
+  }
+
+  adapt = async () => {
+    if(!this.state.recipeText.trim()) return;
+    this.setState({loading:true});
+    // brief async tick so spinner shows; AI enrichment optional
+    await new Promise(r=>setTimeout(r,260));
+    let result;
+    try { result=this.build(); }
+    catch(e){ result={error:true}; }
+    this.setState({loading:false, result});
+  };
+
+  goStores = (e) => { /* anchor handles scroll */ };
+
+  findStores = () => {
+    // Real Babe's store locator (FreshBooks-backed), pre-filtered to recommended honey SKU
+    const SKU_FOR = {
+      wildflower: 'Wildflower 500g jar',
+      clover: 'Clover 500g jar',
+      creamed: 'Creamed 500g jar',
+      blackberry: 'Wildflower 500g jar',
+      fireweed: 'Wildflower 500g jar'
+    };
+    const hk = (this.state.result && !this.state.result.error && this.state.result.honeyKey)
+      || (this.state.honey !== 'auto' ? this.state.honey : 'wildflower');
+    const sku = SKU_FOR[hk] || 'Wildflower 500g jar';
+    const locator = 'https://apicvir.github.io/babes-store-locator/?sku=' + encodeURIComponent(sku);
+    window.open(locator, '_blank', 'noopener');
+    // Keep a local shopping list for the adapted recipe (illustrative other-ingredient prices)
+    let cart = this.state.cart, cartStoreName = "Babe's store locator";
+    if (this.state.result && !this.state.result.error) {
+      cart = this.makeCart(this.state.result);
+    }
+    const stores = [{
+      name: "Open live store map",
+      addr: 'Filtered for ' + sku,
+      dist: '→',
+      stock: 'Live inventory map',
+      url: locator
+    }];
+    this.setState({stores, cartStoreName, cart});
+  };
+
+  makeCart(result){
+    const items=[];
+    const hk=result.honeyKey;
+    items.push({id:'honey',name:"Babe's "+HONEYS[hk].name,sub:'500g jar · raw & local',price:HONEY_PRICE,icon:'🍯',swatch:HONEYS[hk].swatch,honey:true});
+    const seen={};
+    result.recipeLines.forEach(L=>{
+      if(L.isSugar) return; // replaced by honey
+      if(L.qty==null) return; // instruction / heading line
+      if(/\b(bake|baking time|preheat|oven|minutes?|mins?|degrees|°f|°c|mix|stir|beat|whisk|combine|cool|chill|fold|pour|knead|grease|line a|drop by|roll into)\b/i.test(L.raw)) return;
+      const nm=L.name.replace(/,.*$/,'').replace(/\s+(softened|melted|packed|sifted|chopped|room temperature|large|cold|warm|fresh|of)\b/gi,'').trim();
+      if(!nm || nm.length<2) return;
+      if(/^water$/i.test(nm)) return; // free
+      const key=nm.toLowerCase();
+      if(seen[key]) return; seen[key]=1;
+      const {price,icon}=priceFor(nm);
+      items.push({id:key,name:nm.charAt(0).toUpperCase()+nm.slice(1),sub:L.raw,price,icon,swatch:'#FBEFD2',honey:false});
+    });
+    return items;
+  }
+
+  removeItem = id => { this.setState(s=>({cart:(s.cart||[]).filter(x=>x.id!==id)})); };
+
+  renderVals(){
+    const accent=this.props.honeyAccent || '#E0A422';
+    const swap=this.curSwap();
+    const SWAPS=[{label:'50%',val:50},{label:'75%',val:75},{label:'Full',val:100}];
+    const swapOptions=SWAPS.map(o=>({
+      label:o.label,
+      onClick:()=>this.setSwap(o.val),
+      bg: swap===o.val? accent : '#FFFDF8',
+      fg: swap===o.val? '#2A1C0E' : '#8A6F45',
+      border: swap===o.val? accent : '#E6D6B4'
+    }));
+    const chipDefs=[['auto','Auto-pick','#CDB07A'],['wildflower','Wildflower',HONEYS.wildflower.swatch],['clover','Clover',HONEYS.clover.swatch],['blackberry','Blackberry',HONEYS.blackberry.swatch],['fireweed','Fireweed',HONEYS.fireweed.swatch]];
+    const honeyChips=chipDefs.map(([k,label,sw])=>({
+      label,swatch:sw,onClick:()=>this.setHoney(k),
+      bg:this.state.honey===k? '#FBEFD2':'#fff',
+      fg:this.state.honey===k? '#9A6B16':'#8A6F45',
+      border:this.state.honey===k? '#E0B85E':'#E6D6B4'
+    }));
+
+    const r=this.state.result;
+    const showResult=!!r && !r.error;
+    let ingredients=[], adjustments=[], rec={};
+    if(showResult){
+      const barMap={honey:accent,liquid:'#6FA8DC',soda:'#C9A227',keep:'#EADCBD'};
+      ingredients=r.ingredients.map(x=>({
+        adapted:x.adapted, original:x.original, changed:x.changed,
+        bar: x.changed? (barMap[x.kind]||accent) : '#EADCBD',
+        color: x.changed? '#241708' : '#5C4628'
+      }));
+      adjustments=r.adjustments;
+      const H=HONEYS[r.honeyKey];
+      rec={name:"Babe's "+H.name, why:H.why, swatch:H.swatch};
+      if(!r.sugarFound){
+        adjustments=[{icon:'🔎',title:'No sugar found:',detail:'We couldn\'t spot a sugar line. Add one like “1 cup granulated sugar” and adapt again.'}];
+        ingredients=ingredients.map(x=>({...x,bar:'#EADCBD',color:'#5C4628',changed:false}));
+      }
+    }
+
+    const cart=this.state.cart||[];
+    const hasCart=cart.length>0;
+    const honeyTotal=cart.filter(c=>c.honey).reduce((s,c)=>s+c.price,0);
+    const otherTotal=cart.filter(c=>!c.honey).reduce((s,c)=>s+c.price,0);
+    const cartView=cart.map(c=>({...c, price:money(c.price), sub:c.sub, remove:()=>this.removeItem(c.id)}));
+
+    const rules=[
+      {icon:'🍯',title:'Quantity',body:'Swap 1 cup sugar for about ¾ cup honey (⅔–¾ cup range).'},
+      {icon:'💧',title:'Liquids',body:'Cut other liquids by ~¼ cup per cup of honey so it isn\'t soggy.'},
+      {icon:'🧂',title:'Acidity',body:'Add ¼–½ tsp baking soda per cup of honey to balance acid & help rise.'},
+      {icon:'🌡️',title:'Temperature',body:'Drop the oven 25°F — honey browns faster than sugar.'},
+      {icon:'⚖️',title:'How much',body:'Partial swaps (50–75%) suit cookies & cakes; full works in breads & muffins.'}
+    ];
+
+    const products=Object.keys(HONEYS).map(k=>({name:HONEYS[k].name,note:HONEYS[k].note,swatch:HONEYS[k].swatch}));
+
+    const stores=this.state.stores;
+
+    const mode=this.state.inputMode;
+    const tabDefs=[['paste','✏️','Type or paste'],['link','🔗','Paste a link'],['photo','📷','Upload a photo']];
+    const inputTabs=tabDefs.map(([k,icon,label])=>({
+      icon,label,onClick:()=>this.setMode(k),
+      bg: mode===k? '#fff':'transparent',
+      fg: mode===k? '#241708':'#9A7E50',
+      shadow: mode===k? '0 2px 6px rgba(120,84,24,0.12)':'none'
+    }));
+    const pasteLabel = this.state.extractedFrom ? ('Pulled from '+this.state.extractedFrom+' — edit if needed') : 'Your recipe';
+
+    return {
+      accent,
+      // input modes
+      inputTabs,
+      modePaste: mode==='paste', modeLink: mode==='link', modePhoto: mode==='photo',
+      pasteLabel,
+      linkUrl:this.state.linkUrl, onLinkChange:this.onLinkChange, fetchLink:this.fetchLink,
+      fetchLabel:this.state.extracting?'Reading…':'Fetch',
+      onPhoto:this.onPhoto,
+      photoPreviewEl: this.state.photoPreview ? React.createElement('img',{src:this.state.photoPreview,style:{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',opacity:0.3}}) : null,
+      extracting:this.state.extracting,
+      showLinkIcon: !this.state.extracting,
+      showPhotoIcon: !this.state.extracting && !this.state.photoPreview,
+      linkNote: this.state.linkNote || 'Works for well-known recipes the assistant recognizes. Reading any link directly needs a server — coming soon. For anything else, use “Type or paste.”',
+      photoNote: this.state.photoNote || 'Click to upload, or drop a screenshot / photo of a recipe here.',
+      recipeText:this.state.recipeText,
+      onRecipeChange:this.onRecipeChange,
+      onPostalChange:this.onPostalChange,
+      postal:this.state.postal,
+      loadExample:this.loadExample,
+      adapt:this.adapt,
+      loading:this.state.loading,
+      adaptLabel:this.state.loading?'Adapting…':'Adapt my recipe 🍯',
+      engineNote:'Applies Babe\'s locked-in baking-science rules. Find Stores opens the live retail map.',
+      swapOptions, honeyChips,
+      showEmpty:!showResult, showResult,
+      ingredients, adjustments, rec,
+      goStores:this.goStores,
+      // stores
+      findStores:this.findStores,
+      stores:stores||[],
+      hasStores:!!stores && stores.length>0,
+      showStoresEmpty:!stores,
+      // cart
+      cart:cartView, hasCart, cartEmpty:!hasCart,
+      cartStore:this.state.cartStoreName||'',
+      cartHoneyTotal:money(honeyTotal),
+      cartOtherTotal:money(otherTotal),
+      cartTotal:money(honeyTotal+otherTotal),
+      rules, products
+    };
+  }
+}
+</script>
+</body>
+</html>

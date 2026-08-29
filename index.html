@@ -1026,6 +1026,26 @@ const STORES = [{"id":"shop-sidney","name":"Babe's Honey Sidney","type":"shop","
     }
 
 
+
+    // Deep-link: ?sku=Wildflower%20500g%20jar&sku=Creamed%201kg%20jar (AND)
+    (function applyQuerySkus() {
+      try {
+        const params = new URLSearchParams(location.search);
+        const list = [...params.getAll("sku"), ...(params.get("skus") || "").split(",")].map((s) => s.trim()).filter(Boolean);
+        if (!list.length) return;
+        list.forEach((id) => picked.add(id));
+        // open first matching product panel
+        for (const [key, entry] of Object.entries(CATALOG)) {
+          if (entry.sizes.some((sz) => list.includes(sz.id))) { openProduct = key; break; }
+        }
+        mode = "all";
+        if (catalogEl) {
+          catalogEl.classList.add("open");
+          if (filtersToggle) filtersToggle.setAttribute("aria-expanded", "true");
+        }
+      } catch (e) {}
+    })();
+
     syncUI();
     render(true);
     window.addEventListener("resize", () => map.invalidateSize());
