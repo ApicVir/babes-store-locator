@@ -4,6 +4,8 @@ Research compiled 29 Aug 2026 (PT).
 
 **Peppers v1 is implemented** in `/workspace/recipe-adapter/index.html` (`PEPPERS_HONEY`, `peppersCartUrl`, `peppersSearchUrl`): honey goes to a live Shopify cart permalink; other recipe ingredients use Peppers search links. Find Stores still opens the locator. This file remains the SKU/research source of truth.
 
+**Market Stores Express v1 is implemented** in the same adapter (`MARKET_HONEY`, `mapMarketHoney`, `marketProductUrl`): opens the matching Babe's product page (shopper hits Add). No public cart permalink. Wildflower/clover map to live `babes-*` product URLs; other varieties fall back to wildflower 500g with a short “closest Babe's listing” note.
+
 **Question:** which Babe’s retail customers already have a usable grocery / e-commerce portal (home delivery or curbside) so the recipe adapter can drop Babe’s honey into a cart **along with other recipe ingredients**.
 
 **Sources:** `/workspace/locator/stores.json`, `/workspace/customer-products-from-freshbooks.csv`, `/workspace/babes-retailers.md`, live retailer sites (fetched 29 Aug 2026). FreshBooks is treated as source of truth for *who currently receives* which SKUs.
@@ -194,11 +196,12 @@ https://www.peninsulaco-op.com/services/food-centre/ — “Now offering fast gr
 
 **Peppers v1 (implemented 29 Aug 2026):** cart permalink for the mapped honey SKU (default 500g) + per-ingredient Peppers search links. No invented flour/egg variant IDs. V8*/V9* postals emphasize Peppers; locator remains for drive-to-store.
 
+**Market Stores Express v1 (implemented 29 Aug 2026):** open the matching Babe's product page (no public cart permalink — shopper hits Add on their site). Mapping: wildflower → 500g URL; clover 500g / clover 1kg; everything else (creamed, blackberry, fireweed, baker's) → wildflower 500g + “closest Babe's listing” note. No wildflower 1kg listing — 1kg wildflower stays on 500g with a note (clover 1kg only when the honey is clover). V9B/V9C postals emphasize West Shore / Langford. Cart inject later (no public permalink).
+
 Remaining (not implemented):
 
-1. **Millstream / West Shore / downtown:** “Open at The Market Stores” → product URL for the matching honey size. Cart inject later (no public permalink).
-2. **Lifestyle local delivery / Douglas curbside** for 1kg jars only, if Peppers is out of zone.
-3. **Always keep** the existing locator (“Find Stores”) for everyone else — Country Grocer, Fairway, Root Cellar, Thrifty, Save-On, etc. still sell it in person. (Locator path is already preserved in v1.)
+1. **Lifestyle local delivery / Douglas curbside** for 1kg jars only, if Peppers is out of zone.
+2. **Always keep** the existing locator (“Find Stores”) for everyone else — Country Grocer, Fairway, Root Cellar, Thrifty, Save-On, etc. still sell it in person. (Locator path is already preserved in v1.)
 
 Do **not** send recipe shoppers to Red Barn Uber Eats, Health Essentials Shopify, or Root Cellar gift-card Shopify.
 
@@ -242,4 +245,4 @@ Useful when choosing who is worth the integration work:
 
 ---
 
-*File: `/workspace/recipe-adapter/online-stockists.md` · research date 29 Aug 2026 PT · Peppers v1 wired in the recipe adapter; live babes-honey-farm.com not modified.*
+*File: `/workspace/recipe-adapter/online-stockists.md` · research date 29 Aug 2026 PT · Peppers v1 and Market Stores Express v1 (open product page) wired in the recipe adapter; live babes-honey-farm.com not modified.*

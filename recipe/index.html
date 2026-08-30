@@ -217,9 +217,13 @@
               </div>
               <div style="display:flex;flex-direction:column;gap:8px;margin-top:18px">
                 <a href="{{ rec.peppersCartUrl }}" target="_blank" rel="noopener" style="display:block;text-align:center;background:#000000;color:#FFFFFF;font-weight:700;font-size:14.5px;padding:13px;border-radius:0;text-decoration:none;letter-spacing:1px;text-transform:uppercase">Deliver with Peppers →</a>
+                <a href="{{ rec.marketProductUrl }}" target="_blank" rel="noopener" style="display:block;text-align:center;background:transparent;color:#171717;font-weight:700;font-size:14.5px;padding:13px;border:1.5px solid #171717;border-radius:0;text-decoration:none;letter-spacing:1px;text-transform:uppercase">Shop at Market Stores →</a>
                 <a href="https://shop.peppers-foods.com/pages/faqs" target="_blank" rel="noopener" style="text-align:center;font-size:12px;color:#555555;line-height:1.45;text-decoration:none">Same-day delivery or curbside · Cadboro Bay · $40 min</a>
                 <sc-if value="{{ rec.peppersFallback }}" hint-placeholder-val="{{ false }}">
                   <div style="text-align:center;font-size:12px;color:#666666;line-height:1.45">{{ rec.peppersNote }}</div>
+                </sc-if>
+                <sc-if value="{{ rec.marketFallback }}" hint-placeholder-val="{{ false }}">
+                  <div style="text-align:center;font-size:12px;color:#666666;line-height:1.45">{{ rec.marketNote }}</div>
                 </sc-if>
                 <a href="#stores" onClick="{{ goStores }}" style="display:block;text-align:center;background:transparent;color:#171717;font-weight:700;font-size:13px;padding:12px;border:1.5px solid #171717;border-radius:0;text-decoration:none;letter-spacing:1px;text-transform:uppercase">Find this honey near you →</a>
               </div>
@@ -277,7 +281,7 @@
     <div style="text-align:center;margin-bottom:30px">
       <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:8px">Find it near you</div>
       <h2 style="font-family:Rye, Rockwell, Georgia, serif;font-weight:400;font-size:34px;margin:0;color:#FFFFFF">Delivery, or pick it up nearby.</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,0.85);max-width:560px;margin:14px auto 0;line-height:1.5;font-weight:300">Have Babe's delivered from Peppers Foods in Cadboro Bay. Use your location or enter a postal code to open the live store map.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.85);max-width:560px;margin:14px auto 0;line-height:1.5;font-weight:300">Have Babe's delivered from Peppers Foods in Cadboro Bay, or open the matching jar at Market Stores Express (Millstream). Use your location or enter a postal code to open the live store map.</p>
     </div>
 
     <!-- Peppers delivery panel -->
@@ -316,6 +320,31 @@
         </div>
       </sc-if>
       <div style="margin-top:16px;font-size:12px;color:#666666;line-height:1.5">Optional Bee Line (not needed for baking): <a href="https://shop.peppers-foods.com/cart/45360227647671:1" target="_blank" rel="noopener" style="color:#171717;font-weight:600">Ginger Splash</a> · <a href="https://shop.peppers-foods.com/cart/45123672866999:1" target="_blank" rel="noopener" style="color:#171717;font-weight:600">Mermaid Tears</a></div>
+    </div>
+
+    <!-- Market Stores Express panel -->
+    <div style="background:#FFFFFF;color:#171717;border:1px solid #E0E0E0;border-radius:0;padding:24px 28px;margin:0 auto 28px;max-width:920px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#555555;margin-bottom:8px">{{ marketEyebrow }}</div>
+          <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:400;font-size:22px;color:#171717;margin:0 0 6px">Market Stores Express</div>
+          <div style="font-size:13.5px;color:#555555;line-height:1.5">Home delivery &amp; pickup · fulfilled from Millstream · tap Add on their page</div>
+        </div>
+        <sc-if value="{{ marketWestShore }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#000000;color:#FFFFFF;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:8px 12px">West Shore / Langford</div>
+        </sc-if>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;margin:18px 0 16px">
+        <span style="width:46px;height:46px;border-radius:0;flex-shrink:0;background:{{ marketSwatch }};box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1)"></span>
+        <div style="flex:1">
+          <div style="font-family:Rye, Rockwell, Georgia, serif;font-weight:400;font-size:17px;color:#171717">{{ marketHoneyLabel }}</div>
+          <div style="font-size:13px;color:#555555;margin-top:2px">{{ marketSkuNote }}</div>
+        </div>
+      </div>
+      <sc-if value="{{ marketFallback }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:12.5px;color:#666666;line-height:1.45;margin:0 0 14px">{{ marketNote }} <a href="{{ marketHoneyAisle }}" target="_blank" rel="noopener" style="color:#171717;font-weight:700">Honey aisle ↗</a></div>
+      </sc-if>
+      <a href="{{ marketProductUrl }}" target="_blank" rel="noopener" style="display:inline-block;text-align:center;background:transparent;color:#171717;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:13px 22px;border:1.5px solid #171717;border-radius:0;text-decoration:none">Open at Market Stores</a>
     </div>
 
     <div style="max-width:560px;margin:0 auto 8px;display:flex;gap:10px;flex-wrap:wrap">
@@ -560,8 +589,49 @@ function peppersCartUrl(honeyName, extraText){
   const m=mapPeppersHoney(honeyName, extraText);
   return PEPPERS_BASE+'/cart/'+m.variantId+':1';
 }
+
+// Market Stores Express (live 29 Aug 2026) — open product page; no public cart permalink
+const MARKET_BASE='https://express.themarketstores.com';
+const MARKET_HONEY={
+  wildflower:{url:MARKET_BASE+'/product/babes-wildflower-honey-500g/',size:'500g',label:"Babe's Wildflower Honey 500g"},
+  clover:{url:MARKET_BASE+'/product/babes-clover-blossom-honey-500g/',size:'500g',label:"Babe's Clover Blossom Honey 500g"},
+  clover1kg:{url:MARKET_BASE+'/product/babes-clover-blssm-honey-1kg/',size:'1kg',label:"Babe's Clover Blossom Honey 1kg"}
+};
+const MARKET_HONEY_AISLE=MARKET_BASE+'/shop-online/grocery/jam-peanut-butter-spreads/honey/';
+function mapMarketHoney(honeyName, extraText){
+  const t=String(honeyName||'').toLowerCase();
+  const blob=(t+' '+String(extraText||'')).toLowerCase();
+  const want1kg=/\b1\s*-?\s*kg\b|\b1\s*kilo|\b1000\s*g\b/.test(blob);
+  if(t==='clover'||/\bclover\b/.test(t)){
+    const sku=want1kg?MARKET_HONEY.clover1kg:MARKET_HONEY.clover;
+    return Object.assign({fallback:false,key:want1kg?'clover1kg':'clover'}, sku);
+  }
+  if(t==='wildflower'||/\bwildflower\b/.test(t)){
+    // No wildflower 1kg listing — stay on 500g (do not switch to clover 1kg)
+    if(want1kg){
+      return Object.assign({
+        fallback:true,
+        key:'wildflower',
+        note:"No wildflower 1kg listing — closest Babe's listing is Wildflower 500g."
+      }, MARKET_HONEY.wildflower);
+    }
+    return Object.assign({fallback:false,key:'wildflower'}, MARKET_HONEY.wildflower);
+  }
+  // Creamed / blackberry / fireweed / baker's / anything else
+  return Object.assign({
+    fallback:true,
+    key:'wildflower',
+    note:"Closest Babe's listing — Market Stores doesn't list this variety online yet."
+  }, MARKET_HONEY.wildflower);
+}
+function marketProductUrl(honeyName, extraText){
+  return mapMarketHoney(honeyName, extraText).url;
+}
 function isGreaterVictoriaPostal(postal){
   return /^V[89]/i.test(String(postal||'').replace(/\s/g,''));
+}
+function isWestShorePostal(postal){
+  return /^V9[BC]/i.test(String(postal||'').replace(/\s/g,''));
 }
 function haversineKm(lat1,lng1,lat2,lng2){
   const R=6371, toRad=d=>d*Math.PI/180;
@@ -574,6 +644,11 @@ const VIC_LAT=48.428, VIC_LNG=-123.365;
 function isGreaterVictoriaCoords(lat,lng){
   if(lat==null||lng==null||!isFinite(lat)||!isFinite(lng)) return false;
   return haversineKm(lat,lng,PEPPERS_LAT,PEPPERS_LNG)<=35 || haversineKm(lat,lng,VIC_LAT,VIC_LNG)<=35;
+}
+const MILLSTREAM_LAT=48.447, MILLSTREAM_LNG=-123.505;
+function isWestShoreCoords(lat,lng){
+  if(lat==null||lng==null||!isFinite(lat)||!isFinite(lng)) return false;
+  return haversineKm(lat,lng,MILLSTREAM_LAT,MILLSTREAM_LNG)<=12;
 }
 
 const STORE_POOL=[
@@ -933,7 +1008,8 @@ Bake at 375°F for 9 minutes`, result:null});
       adjustments=r.adjustments;
       const H=HONEYS[r.honeyKey];
       const recMap=mapPeppersHoney(H.name, this.state.recipeText);
-      rec={name:"Babe's "+H.name, why:H.why, swatch:H.swatch, peppersCartUrl:peppersCartUrl(H.name, this.state.recipeText), peppersFallback:!!recMap.fallback, peppersNote:recMap.note||''};
+      const recMarket=mapMarketHoney(H.name, this.state.recipeText);
+      rec={name:"Babe's "+H.name, why:H.why, swatch:H.swatch, peppersCartUrl:peppersCartUrl(H.name, this.state.recipeText), peppersFallback:!!recMap.fallback, peppersNote:recMap.note||'', marketProductUrl:recMarket.url, marketFallback:!!recMarket.fallback, marketNote:recMarket.note||''};
       if(!r.sugarFound){
         adjustments=[{icon:'🔎',title:'No sugar found:',detail:'We couldn\'t spot a sugar line. Add one like “1 cup granulated sugar” and adapt again.'}];
         ingredients=ingredients.map(x=>({...x,bar:'#E0E0E0',color:'#333333',changed:false}));
@@ -982,6 +1058,14 @@ Bake at 375°F for 9 minutes`, result:null});
       : "Adapt a recipe for a matched jar, or add our all-purpose Wildflower 500g.";
     const peppersSwatch = (showResult && HONEYS[r.honeyKey]) ? HONEYS[r.honeyKey].swatch : HONEYS.wildflower.swatch;
     const peppersEyebrow = 'Cadboro Bay · Greater Victoria';
+    const marketMap = mapMarketHoney(honeyNameForPeppers, this.state.recipeText);
+    const marketWestShore = isWestShorePostal(this.state.postal) || isWestShoreCoords(this.state.userLat, this.state.userLng);
+    const marketHoneyLabel = marketMap.label;
+    const marketSkuNote = showResult
+      ? (marketMap.fallback ? "Closest Babe's listing on Market Stores" : 'Opens their product page · tap Add there')
+      : "Adapt a recipe for a matched jar, or open our all-purpose Wildflower 500g.";
+    const marketSwatch = peppersSwatch;
+    const marketEyebrow = 'Millstream · West Shore / Langford';
 
     return {
       accent,
@@ -1008,7 +1092,7 @@ Bake at 375°F for 9 minutes`, result:null});
       adapt:this.adapt,
       loading:this.state.loading,
       adaptLabel:this.state.loading?'Adapting…':'Adapt my recipe 🍯',
-      engineNote:'Applies Babe\'s locked-in baking-science rules. Deliver with Peppers adds a real Shopify cart; Find Stores opens the live retail map.',
+      engineNote:'Applies Babe\'s locked-in baking-science rules. Deliver with Peppers adds a real Shopify cart; Shop at Market Stores opens their product page; Find Stores opens the live retail map.',
       swapOptions, honeyChips,
       showEmpty:!showResult, showResult,
       ingredients, adjustments, rec,
@@ -1039,6 +1123,16 @@ Bake at 375°F for 9 minutes`, result:null});
       peppersSearchHoney:peppersSearchUrl("babes honey"),
       peppersShopList,
       hasPeppersShopList:peppersShopList.length>0,
+      // Market Stores Express
+      marketProductUrl:marketMap.url,
+      marketHoneyLabel,
+      marketSkuNote,
+      marketSwatch,
+      marketEyebrow,
+      marketWestShore,
+      marketFallback:!!marketMap.fallback,
+      marketNote:marketMap.note||'',
+      marketHoneyAisle:MARKET_HONEY_AISLE,
       rules, products
     };
   }
